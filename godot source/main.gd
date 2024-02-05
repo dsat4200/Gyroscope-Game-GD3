@@ -9,23 +9,39 @@ extends Node
 # This is a 3D example however reading the phones orientation is also invaluable for 2D
 
 export(NodePath) var camera_path
-#export(NodePath) var base_path
 export(NodePath) var origin_path
+export(NodePath) var ui_path
+
 
 onready var camera = get_node(camera_path)
-#onready var base = get_node(base_path)
 onready var origin = get_node(origin_path)
+onready var ui = get_node(ui_path)
 
 var gyro_s = -.02
 var invert_y = 1
 
+
+#control variables. make these into a class later
+var LOOKAROUND_SPEED = .005
+var drag_input_enabled = true
+
+
+func zero_camera():
+	origin.rotation_degrees = Vector3(0,0,0)
+	camera.rotation_degrees = Vector3(0,0,0)
+
 func rotate_camera(basis):
 	#base.transform.basis = basis
 	var gyroscope = Input.get_gyroscope()
-	if(gyroscope.length() > .01):
-		origin.rotate_y((gyroscope.y ) * -(gyro_s))
-		camera.rotate_x((gyroscope.x * (gyro_s) * -invert_y))
+	if(gyroscope.length() > .01 && drag_input_enabled):
+		origin.rotate_camera(gyroscope.y, gyro_s, gyroscope.x, invert_y)
 
+func _ready():
+	#ui.camera = camera
+	ui.drag_input_enabled = drag_input_enabled
+	origin.camera = camera
+	ui.init_input()
+	
 func _process(delta):
 	# Get our data
 	var acc = Input.get_accelerometer()
@@ -34,9 +50,7 @@ func _process(delta):
 	var gyro = Input.get_gyroscope()
 
 	# Show our base values
-	get_node("Control/Accelerometer").text = "Accelerometer: " + str(acc) + ", gravity: " + str(grav)
-	get_node("Control/Magnetometer").text = "Magnetometer: " + str(mag)
-	get_node("Control/Gyroscope").text = "Gyroscope: " + str(gyro)
+	ui.pass_data(str(acc),str(grav),str(mag),str(gyro))
 
 	# Check if we have all needed data
 	if grav.length() < 0.1:
@@ -51,16 +65,8 @@ func _process(delta):
 	if mag.length() < 0.1:
 		mag = Vector3(1.0, 0.0, 0.0)
 
-	# Update our arrow showing gravity
-	get_node("Arrows/AccelerometerArrow").transform.basis = get_basis_for_arrow(grav)
-
-	# Update our arrow showing our magnetometer
-	# Note that in absense of other strong magnetic forces this will point to magnetic north, which is not horizontal thanks to the earth being, uhm, round
-	get_node("Arrows/MagnetoArrow").transform.basis = get_basis_for_arrow(mag)
-
 	# Calculate our north vector and show that
 	var north = calc_north(grav,mag)
-	get_node("Arrows/NorthArrow").transform.basis = get_basis_for_arrow(north)
 
 	# Combine our magnetometer and gravity vector to position our box. This will be fairly accurate
 	# but our magnetometer can be easily influenced by magnets. Cheaper phones often don't have gyros
@@ -75,6 +81,24 @@ func _process(delta):
 	
 	var basis = new_basis
 	rotate_camera(basis)
+
+	
+#mouse control
+func _input(event):
+	if event is InputEventMouseMotion:
+		var rot_x = event.relative.x * LOOKAROUND_SPEED
+		var rot_y = event.relative.y * LOOKAROUND_SPEED
+		origin.rotate_object_local(Vector3(0, 1, 0), -rot_x) # first rotate in Y
+		camera.rotate_object_local(Vector3(1, 0, 0), -invert_y * rot_y) # then rotate in X
+	
+
+
+
+
+
+
+
+
 
 
 # This function calculates a rotation matrix based on a direction vector. As our arrows are cylindrical we don't

@@ -3,31 +3,11 @@
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://cube_6.png" type="Texture" id=2]
 [ext_resource path="res://small_empty_room_1_2k.hdr" type="Texture" id=3]
-
-[sub_resource type="CylinderMesh" id=2]
-top_radius = 0.2
-bottom_radius = 0.1
-height = 4.0
-radial_segments = 16
-
-[sub_resource type="SpatialMaterial" id=3]
-params_diffuse_mode = 1
-albedo_color = Color( 0.356557, 1, 0.366611, 1 )
-roughness = 0.0
-
-[sub_resource type="CylinderMesh" id=4]
-top_radius = 0.1
-radial_segments = 16
-
-[sub_resource type="SpatialMaterial" id=5]
-params_diffuse_mode = 1
-albedo_color = Color( 0.0266393, 0.292793, 1, 1 )
-roughness = 0.0
-
-[sub_resource type="SpatialMaterial" id=6]
-params_diffuse_mode = 1
-albedo_color = Color( 0.957031, 0.801627, 0.0921731, 1 )
-roughness = 0.0
+[ext_resource path="res://UI/crosshair.svg" type="Texture" id=4]
+[ext_resource path="res://UI.gd" type="Script" id=5]
+[ext_resource path="res://UI/default_theme.tres" type="Theme" id=6]
+[ext_resource path="res://origin.gd" type="Script" id=7]
+[ext_resource path="res://test_scene/Sphere.tscn" type="PackedScene" id=8]
 
 [sub_resource type="CubeMesh" id=7]
 size = Vector3( 4, 4, 4 )
@@ -49,73 +29,66 @@ ambient_light_color = Color( 0.648438, 0.64578, 0.64578, 1 )
 script = ExtResource( 1 )
 camera_path = NodePath("origin/Camera")
 origin_path = NodePath("origin")
+ui_path = NodePath("ui")
 
-[node name="Control" type="Control" parent="."]
-margin_right = 1025.0
-margin_bottom = 602.0
+[node name="ui" type="Control" parent="."]
+pause_mode = 2
+margin_right = 1920.0
+margin_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource( 6 )
+script = ExtResource( 5 )
 
-[node name="Accelerometer" type="Label" parent="Control"]
+[node name="menu" type="Button" parent="ui"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -130.0
+margin_right = -1.0
+margin_bottom = 130.0
+text = "="
+
+[node name="re_center" type="Button" parent="ui/menu"]
+margin_left = -326.0
+margin_right = -19.0
+margin_bottom = 128.0
+rect_pivot_offset = Vector2( -1236, -59 )
+text = "Re-Center"
+
+[node name="drag_input" type="Button" parent="ui/menu"]
+margin_left = -652.0
+margin_right = -345.0
+margin_bottom = 128.0
+rect_pivot_offset = Vector2( -1236, -59 )
+text = "drag_input"
+
+[node name="data" type="Node2D" parent="ui"]
+position = Vector2( 10, 10 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Accelerometer" type="Label" parent="ui/data"]
 margin_right = 340.0
-margin_bottom = 14.0
+margin_bottom = 52.0
 rect_scale = Vector2( 2, 2 )
-text = "Accelerometer"
+text = "A"
 
-[node name="Magnetometer" type="Label" parent="Control"]
-margin_top = 30.0
+[node name="Magnetometer" type="Label" parent="ui/data"]
+margin_top = 80.0
 margin_right = 340.0
-margin_bottom = 44.0
+margin_bottom = 132.0
 rect_scale = Vector2( 2, 2 )
-text = "Magnetometer"
+text = "M"
 
-[node name="Gyroscope" type="Label" parent="Control"]
-margin_top = 60.0
+[node name="Gyroscope" type="Label" parent="ui/data"]
+margin_top = 160.0
 margin_right = 340.0
-margin_bottom = 74.0
+margin_bottom = 212.0
 rect_scale = Vector2( 2, 2 )
-text = "Gyroscope"
+text = "G"
 
-[node name="Arrows" type="Spatial" parent="."]
-
-[node name="AccelerometerArrow" type="Spatial" parent="Arrows"]
-transform = Transform( 1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0 )
-
-[node name="Bottom" type="MeshInstance" parent="Arrows/AccelerometerArrow"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 18.1988 )
-mesh = SubResource( 2 )
-material/0 = SubResource( 3 )
-
-[node name="Top" type="MeshInstance" parent="Arrows/AccelerometerArrow"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 18.1988 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 3 )
-
-[node name="MagnetoArrow" type="Spatial" parent="Arrows"]
-transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0 )
-
-[node name="Bottom" type="MeshInstance" parent="Arrows/MagnetoArrow"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -18.1988 )
-mesh = SubResource( 2 )
-material/0 = SubResource( 5 )
-
-[node name="Top" type="MeshInstance" parent="Arrows/MagnetoArrow"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -18.1988 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
-
-[node name="NorthArrow" type="Spatial" parent="Arrows"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
-
-[node name="Bottom" type="MeshInstance" parent="Arrows/NorthArrow"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16.1988, 7.95494e-07 )
-mesh = SubResource( 2 )
-material/0 = SubResource( 6 )
-
-[node name="Top" type="MeshInstance" parent="Arrows/NorthArrow"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13.1988, 7.95494e-07 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 6 )
+[node name="Crosshair" type="Sprite" parent="ui"]
+position = Vector2( 960, 540 )
+texture = ExtResource( 4 )
 
 [node name="Boxes" type="Spatial" parent="."]
 
@@ -133,8 +106,17 @@ material/0 = SubResource( 8 )
 transform = Transform( 0.884838, -0.329433, 0.329449, 0, 0.707124, 0.707089, -0.4659, -0.625659, 0.62569, 0, 4.69444, 0 )
 
 [node name="origin" type="Spatial" parent="."]
+script = ExtResource( 7 )
 
 [node name="Camera" type="Camera" parent="origin"]
 environment = SubResource( 1 )
 fov = 74.0
 near = 0.1
+
+[node name="ray" type="RayCast" parent="origin/Camera"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+enabled = true
+
+[node name="level_editor" type="Spatial" parent="."]
+
+[node name="Sphere" parent="level_editor" instance=ExtResource( 8 )]
