@@ -29,7 +29,6 @@ func init_input():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 func toggle_menu():
-	menu_open = not menu_open
 	if !menu_open:
 		menu.text = "X"
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -38,8 +37,10 @@ func toggle_menu():
 		menu.text = "="
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
+	menu_open = not menu_open
 	get_tree().paused = menu_open
 	menu.get_node("re_center").visible = menu_open
+	menu.get_node("drag_input").visible = menu_open
 	
 
 func pass_data(acc, grav, mag, gyro):

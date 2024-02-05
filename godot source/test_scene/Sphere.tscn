@@ -19,7 +19,6 @@ surfaces/0 = {
 }
 
 [node name="Sphere" type="Spatial"]
-transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
 
 [node name="Sphere" type="MeshInstance" parent="."]
 material_override = SubResource( 2 )

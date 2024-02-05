@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
 [ext_resource path="res://cube_6.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://UI/default_theme.tres" type="Theme" id=6]
 [ext_resource path="res://origin.gd" type="Script" id=7]
 [ext_resource path="res://test_scene/Sphere.tscn" type="PackedScene" id=8]
+[ext_resource path="res://UI/hover_dot.tscn" type="PackedScene" id=9]
 
 [sub_resource type="CubeMesh" id=7]
 size = Vector3( 4, 4, 4 )
@@ -27,7 +28,7 @@ ambient_light_color = Color( 0.648438, 0.64578, 0.64578, 1 )
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
-camera_path = NodePath("origin/Camera")
+camera_path = NodePath("origin/camera")
 origin_path = NodePath("origin")
 ui_path = NodePath("ui")
 
@@ -49,6 +50,7 @@ margin_bottom = 130.0
 text = "="
 
 [node name="re_center" type="Button" parent="ui/menu"]
+visible = false
 margin_left = -326.0
 margin_right = -19.0
 margin_bottom = 128.0
@@ -56,6 +58,7 @@ rect_pivot_offset = Vector2( -1236, -59 )
 text = "Re-Center"
 
 [node name="drag_input" type="Button" parent="ui/menu"]
+visible = false
 margin_left = -652.0
 margin_right = -345.0
 margin_bottom = 128.0
@@ -91,6 +94,7 @@ position = Vector2( 960, 540 )
 texture = ExtResource( 4 )
 
 [node name="Boxes" type="Spatial" parent="."]
+visible = false
 
 [node name="MagAndGrav" type="MeshInstance" parent="Boxes"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -4, -18.1988 )
@@ -108,15 +112,19 @@ transform = Transform( 0.884838, -0.329433, 0.329449, 0, 0.707124, 0.707089, -0.
 [node name="origin" type="Spatial" parent="."]
 script = ExtResource( 7 )
 
-[node name="Camera" type="Camera" parent="origin"]
+[node name="camera" type="Camera" parent="origin"]
 environment = SubResource( 1 )
 fov = 74.0
 near = 0.1
 
-[node name="ray" type="RayCast" parent="origin/Camera"]
+[node name="ray" type="RayCast" parent="origin/camera"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 enabled = true
+cast_to = Vector3( 0, -1.5, 0 )
+debug_shape_thickness = 3
 
 [node name="level_editor" type="Spatial" parent="."]
 
 [node name="Sphere" parent="level_editor" instance=ExtResource( 8 )]
+
+[node name="hover_dot" parent="." instance=ExtResource( 9 )]
