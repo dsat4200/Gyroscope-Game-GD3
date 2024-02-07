@@ -18,6 +18,8 @@ func _set_timeScale(x):
 	clipNode.timeScale = x
 
 func _get_timeScale():
+	#print("get timescale!")
+	#print("CS ts:"+String(timeScale) + ", but CN ts is"+String(clipNode.timeScale))
 	return clipNode.timeScale
 
 func _set_sample(x):
@@ -26,6 +28,7 @@ func _set_sample(x):
 	end = 0.0 if x == null else x.get_length()
 	mix_rate = 44100 if x == null else x.mix_rate
 	clipNode.sample = x
+	
 
 func _get_sample():
 	return clipNode.sample
@@ -49,7 +52,8 @@ func stop():
 	$AudioStreamPlayer.stop()
 
 func timeToPixels(t:float) -> float:
-	return t * mix_rate / timeScale
+		print(String(t)+" * " + String(mix_rate)+" / "+String(timeScale))
+		return t * mix_rate / timeScale
 
 func pixelsToTime(px:float) -> float:
 	return px * timeScale / mix_rate
