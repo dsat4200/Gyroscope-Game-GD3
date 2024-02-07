@@ -16,28 +16,23 @@ func _ready():
 	pass # Replace with function body.
 	
 func _process(delta):
-	if(ray.is_colliding()):
-		if(!collided):
-			if(hover):
-				#if nulll collision, and hover, unhover
+	if ray.is_colliding():
+		var new_hover = ray.get_collider().get_parent()
+		if not collided or collided.name != new_hover.name:
+			if hover:
+				hover.hover(false)
 				print("no longer hovering over " + hover.name)
-				hover = null
-				hover.hover(false) #HOVER IMPLEMENT PLEASE
-			collided = ray.get_collider().get_parent()	
-			hover = collided
-			
-			print("hovering over "+ hover.name)
-		#if not null, check if not the same	
-		elif(collided.name != ray.get_collider().get_parent().name):
-				collided.hover(true);
-				collided = ray.get_collider().get_parent()
-				print(collided.name)
-
-	elif(hover and collided):
-		#if not colliding, and you were hovering, you aren't anymore
-		collided = null
+			hover = new_hover
+			collided = hover
+			print("hovering over " + hover.name)
+			hover.hover(true)  # Added line to enable hover
+	elif hover:
+		hover.hover(false)
 		print("no longer hovering over " + hover.name)
 		hover = null
+		collided = null
+
+
 			
 		
 	

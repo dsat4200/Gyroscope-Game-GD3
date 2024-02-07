@@ -1,0 +1,96 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://AudioClip.gd" type="Script" id=1]
+[ext_resource path="res://main.gd" type="Script" id=2]
+[ext_resource path="res://Prompter.gd" type="Script" id=3]
+[ext_resource path="res://ClipContainer.gd" type="Script" id=4]
+[ext_resource path="res://ClipScroller.gd" type="Script" id=5]
+[ext_resource path="res://test.wav" type="AudioStream" id=6]
+
+[node name="main" type="Node2D"]
+script = ExtResource( 2 )
+clip = ExtResource( 6 )
+
+[node name="AudioStreamInput" type="AudioStreamPlayer" parent="."]
+autoplay = true
+bus = "Record"
+
+[node name="Label" type="Label" parent="."]
+margin_right = 194.0
+margin_bottom = 14.0
+text = "Hold shift  to record. Press space to play sample."
+
+[node name="ClipScroller" type="ScrollContainer" parent="."]
+margin_left = 41.0
+margin_top = 50.0
+margin_right = 1861.0
+margin_bottom = 318.0
+scroll_vertical_enabled = false
+script = ExtResource( 5 )
+
+[node name="ClipContainer" type="Container" parent="ClipScroller"]
+margin_right = 1820.0
+margin_bottom = 256.0
+rect_min_size = Vector2( 1820, 256 )
+mouse_filter = 2
+script = ExtResource( 4 )
+
+[node name="AudioClip" type="ColorRect" parent="ClipScroller/ClipContainer"]
+margin_right = 1820.0
+margin_bottom = 256.0
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayHead" type="ColorRect" parent="ClipScroller/ClipContainer"]
+margin_right = 1.0
+margin_bottom = 256.0
+rect_min_size = Vector2( 1, 256 )
+mouse_filter = 2
+color = Color( 0.972549, 0.113725, 0.0235294, 1 )
+
+[node name="HoverHead" type="ColorRect" parent="ClipScroller/ClipContainer"]
+margin_right = 1.0
+margin_bottom = 256.0
+rect_min_size = Vector2( 1, 256 )
+mouse_filter = 2
+color = Color( 0.380392, 0.380392, 0.380392, 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ClipScroller"]
+autoplay = true
+
+[node name="Prompter" type="Node2D" parent="."]
+position = Vector2( 42, 321 )
+script = ExtResource( 3 )
+
+[node name="card" type="VBoxContainer" parent="Prompter"]
+margin_right = 1820.0
+margin_bottom = 48.0
+mouse_filter = 0
+
+[node name="prompt" type="Label" parent="Prompter/card"]
+visible = false
+margin_right = 1820.0
+margin_bottom = 14.0
+text = "Here is the text."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="clip" type="ColorRect" parent="Prompter/card"]
+margin_right = 1820.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 0, 48 )
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+active = false
+
+[connection signal="mouse_entered" from="ClipScroller" to="ClipScroller" method="_on_ClipScroller_mouse_entered"]
+[connection signal="mouse_exited" from="ClipScroller" to="ClipScroller" method="_on_ClipScroller_mouse_exited"]
+[connection signal="mouse_entered" from="Prompter/card" to="ClipScroller" method="_on_card_mouse_entered"]
+[connection signal="mouse_exited" from="Prompter/card" to="ClipScroller" method="_on_card_mouse_exited"]

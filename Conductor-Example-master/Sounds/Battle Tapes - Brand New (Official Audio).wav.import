@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Battle Tapes - Brand New (Official Audio).wav-335b7c4b90fe1fabf0b197d816e00e2b.sample"
+
+[deps]
+
+source_file="res://Sounds/Battle Tapes - Brand New (Official Audio).wav"
+dest_files=[ "res://.import/Battle Tapes - Brand New (Official Audio).wav-335b7c4b90fe1fabf0b197d816e00e2b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
