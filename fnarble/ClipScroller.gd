@@ -4,11 +4,12 @@ export var sample : AudioStreamSample setget _set_sample,_get_sample
 export var start  : float = 0.0
 export var end    : float = 0.0
 export var head   : float = 0.0 setget _set_head
-export var timeScale : int = 494 setget _set_timeScale, _get_timeScale
+export var timeScale : int = 128 setget _set_timeScale, _get_timeScale
 
 onready var clipNode = $ClipContainer/AudioClip
 onready var headNode = $ClipContainer/PlayHead
 onready var hoverNode = $ClipContainer/HoverHead
+onready var timelineNode = $Prompter/card/clip
 
 var playing = false
 var mix_rate = 44100
@@ -16,6 +17,7 @@ var mix_rate = 44100
 
 func _set_timeScale(x):
 	clipNode.timeScale = x
+	timelineNode.timeScale = x
 
 func _get_timeScale():
 	#print("get timescale!")
@@ -31,6 +33,7 @@ func _set_sample(x):
 	
 	timeScale = (clipNode.sample.get_length()*mix_rate)/rect_size.x
 	clipNode.timeScale = (clipNode.sample.get_length()*mix_rate)/rect_size.x
+	timelineNode.timeScale = (clipNode.sample.get_length()*mix_rate)/rect_size.x
 	
 func _get_sample():
 	return clipNode.sample

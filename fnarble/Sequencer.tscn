@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://ClipScroller.gd" type="Script" id=1]
 [ext_resource path="res://Prompter.gd" type="Script" id=2]
@@ -7,8 +7,9 @@
 [ext_resource path="res://ClipContainer.gd" type="Script" id=5]
 [ext_resource path="res://Scrub.gd" type="Script" id=6]
 [ext_resource path="res://test.wav" type="AudioStream" id=7]
+[ext_resource path="res://Timeline.gd" type="Script" id=8]
 
-[node name="AudioSequencer" type="Node2D"]
+[node name="sequencer" type="Control"]
 script = ExtResource( 4 )
 clip = ExtResource( 7 )
 
@@ -56,41 +57,48 @@ rect_min_size = Vector2( 1, 64 )
 mouse_filter = 2
 color = Color( 0.380392, 0.380392, 0.380392, 1 )
 
-[node name="LeftScrub" type="ColorRect" parent="ClipScroller/ClipContainer"]
-margin_top = 100.0
-margin_right = 16.0
-margin_bottom = 184.0
-color = Color( 0.172549, 1, 0, 1 )
+[node name="Scrub" type="Control" parent="ClipScroller/ClipContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
 script = ExtResource( 6 )
 
-[node name="ScrubRect" type="ColorRect" parent="ClipScroller/ClipContainer/LeftScrub"]
-margin_left = 16.0
-margin_top = 8.0
-margin_right = 1804.0
-margin_bottom = 72.0
+[node name="ScrubRect" type="ColorRect" parent="ClipScroller/ClipContainer/Scrub"]
+margin_right = 1820.0
+margin_bottom = 64.0
 color = Color( 0.403922, 0.403922, 0.403922, 0.47451 )
 
-[node name="RightScrub" type="ColorRect" parent="ClipScroller/ClipContainer/LeftScrub"]
-margin_left = 1820.0
-margin_right = 1836.0
-margin_bottom = 84.0
+[node name="LeftScrub" type="ColorRect" parent="ClipScroller/ClipContainer/Scrub"]
+margin_top = -8.0
+margin_right = 16.0
+margin_bottom = 76.0
 rect_scale = Vector2( -1, 1 )
+color = Color( 0.172549, 1, 0, 1 )
+
+[node name="RightScrub" type="ColorRect" parent="ClipScroller/ClipContainer/Scrub"]
+margin_left = 1820.0
+margin_top = -8.0
+margin_right = 1836.0
+margin_bottom = 76.0
 color = Color( 1, 0, 0, 1 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ClipScroller"]
 autoplay = true
 
-[node name="Prompter" type="Node2D" parent="."]
-position = Vector2( 40, 321 )
+[node name="Prompter" type="Control" parent="ClipScroller"]
+margin_top = -74.0
+margin_bottom = -74.0
 script = ExtResource( 2 )
 
-[node name="card" type="VBoxContainer" parent="Prompter"]
-margin_top = -160.0
-margin_right = 1820.0
-margin_bottom = 32.0
-mouse_filter = 0
+[node name="card" type="HScrollBar" parent="ClipScroller/Prompter"]
+margin_left = 1.0
+margin_top = -152.0
+margin_right = 1821.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 1820, 200 )
+script = ExtResource( 8 )
+scrub_rect_path = NodePath("../../ClipContainer/Scrub/ScrubRect")
 
-[node name="clip" type="ColorRect" parent="Prompter/card"]
+[node name="clip" type="ColorRect" parent="ClipScroller/Prompter/card"]
 margin_right = 1820.0
 margin_bottom = 192.0
 rect_min_size = Vector2( 0, 192 )
@@ -101,19 +109,24 @@ __meta__ = {
 }
 active = false
 
-[node name="BigPlayHead" type="ColorRect" parent="Prompter/card"]
-margin_right = 1.0
-margin_bottom = 192.0
+[node name="BigPlayHead" type="ColorRect" parent="ClipScroller/Prompter/card"]
+margin_top = 196.0
+margin_right = 1820.0
+margin_bottom = 196.0
 color = Color( 1, 0, 0, 1 )
 
-[node name="BigScrub" type="ColorRect" parent="Prompter/card"]
-margin_right = 1.0
-margin_bottom = 192.0
+[node name="BigScrub" type="ColorRect" parent="ClipScroller/Prompter/card"]
+margin_top = 200.0
+margin_right = 1820.0
+margin_bottom = 200.0
 color = Color( 0.494118, 0.494118, 0.494118, 1 )
 
 [connection signal="mouse_entered" from="ClipScroller" to="ClipScroller" method="_on_ClipScroller_mouse_entered"]
 [connection signal="mouse_exited" from="ClipScroller" to="ClipScroller" method="_on_ClipScroller_mouse_exited"]
-[connection signal="mouse_entered" from="ClipScroller/ClipContainer/LeftScrub" to="ClipScroller/ClipContainer/LeftScrub" method="_on_LeftScrub_mouse_entered"]
-[connection signal="mouse_exited" from="ClipScroller/ClipContainer/LeftScrub" to="ClipScroller/ClipContainer/LeftScrub" method="_on_LeftScrub_mouse_exited"]
-[connection signal="mouse_entered" from="ClipScroller/ClipContainer/LeftScrub/RightScrub" to="ClipScroller/ClipContainer/LeftScrub" method="_on_RightScrub_mouse_entered"]
-[connection signal="mouse_exited" from="ClipScroller/ClipContainer/LeftScrub/RightScrub" to="ClipScroller/ClipContainer/LeftScrub" method="_on_RightScrub_mouse_exited"]
+[connection signal="item_rect_changed" from="ClipScroller/ClipContainer/Scrub/ScrubRect" to="ClipScroller/Prompter/card" method="_on_ScrubRect_item_rect_changed"]
+[connection signal="mouse_entered" from="ClipScroller/ClipContainer/Scrub/ScrubRect" to="ClipScroller/ClipContainer/Scrub" method="_on_ScrubRect_mouse_entered"]
+[connection signal="mouse_exited" from="ClipScroller/ClipContainer/Scrub/ScrubRect" to="ClipScroller/ClipContainer/Scrub" method="_on_ScrubRect_mouse_exited"]
+[connection signal="mouse_entered" from="ClipScroller/ClipContainer/Scrub/LeftScrub" to="ClipScroller/ClipContainer/Scrub" method="_on_LeftScrub_mouse_entered"]
+[connection signal="mouse_exited" from="ClipScroller/ClipContainer/Scrub/LeftScrub" to="ClipScroller/ClipContainer/Scrub" method="_on_LeftScrub_mouse_exited"]
+[connection signal="mouse_entered" from="ClipScroller/ClipContainer/Scrub/RightScrub" to="ClipScroller/ClipContainer/Scrub" method="_on_RightScrub_mouse_entered"]
+[connection signal="mouse_exited" from="ClipScroller/ClipContainer/Scrub/RightScrub" to="ClipScroller/ClipContainer/Scrub" method="_on_RightScrub_mouse_exited"]

@@ -1,7 +1,8 @@
-extends Node2D
+extends Control
 
 # project settings > audio > enable audio input
 export var clip : AudioStreamSample
+
 
 func _ready():
 	import_clip()
@@ -14,16 +15,9 @@ func import_clip():
 		d.append_array(clip.data)
 		s.data = d
 	$ClipScroller.sample = s
-	$Prompter.get_clip().sample = $ClipScroller.sample
+	$ClipScroller/Prompter.get_clip().sample = $ClipScroller.sample
 
 func _process(_dt):
-	if Input.is_action_just_pressed("ui_record"):
-		# todo: replace selection with new clip
-		import_clip()
-
-	if Input.is_action_just_released("ui_save"):
-		$Prompter.save_clip()
-
 	if Input.is_action_just_released("ui_select"):
 		if $ClipScroller.playing:
 			$ClipScroller.stop()
