@@ -63,6 +63,7 @@ func _draw():
 		var o = Vector2(0,rect_size.y/2)
 		var pen = o + Vector2.ZERO
 		for x in range(rect_size.x):
+			print()
 			var i = timeScale*(offSet+x) * bytesPerSample
 			if i >= sample.data.size(): break
 			var v = getStereoSample16(i)/32768.0 * (rect_size.y /2)

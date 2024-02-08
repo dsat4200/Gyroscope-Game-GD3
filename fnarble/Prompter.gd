@@ -29,7 +29,6 @@ func _ready():
 	clearCards()
 	var c = $card.duplicate()
 	c.visible = true
-	c.get_node('prompt').text = ""
 	c.get_node('clip').sample = null # AudioStreamSample.new()
 	_set_cursor(0)
 

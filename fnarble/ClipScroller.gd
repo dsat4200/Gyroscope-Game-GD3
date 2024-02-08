@@ -1,10 +1,10 @@
-extends ScrollContainer
+extends Container
 
 export var sample : AudioStreamSample setget _set_sample,_get_sample
 export var start  : float = 0.0
 export var end    : float = 0.0
 export var head   : float = 0.0 setget _set_head
-export var timeScale : int = 128 setget _set_timeScale, _get_timeScale
+export var timeScale : int = 494 setget _set_timeScale, _get_timeScale
 
 onready var clipNode = $ClipContainer/AudioClip
 onready var headNode = $ClipContainer/PlayHead
@@ -29,7 +29,9 @@ func _set_sample(x):
 	mix_rate = 44100 if x == null else x.mix_rate
 	clipNode.sample = x
 	
-
+	timeScale = (clipNode.sample.get_length()*mix_rate)/rect_size.x
+	clipNode.timeScale = (clipNode.sample.get_length()*mix_rate)/rect_size.x
+	
 func _get_sample():
 	return clipNode.sample
 
@@ -52,19 +54,16 @@ func stop():
 	$AudioStreamPlayer.stop()
 
 func timeToPixels(t:float) -> float:
-		print(String(t)+" * " + String(mix_rate)+" / "+String(timeScale))
+		#print(String(t)+" * " + String(mix_rate)+" / "+String(timeScale) + "= "+String(t*mix_rate/timeScale))
 		return t * mix_rate / timeScale
 
 func pixelsToTime(px:float) -> float:
+	#print(String(px)+" * " + String(timeScale)+" / "+String(mix_rate))
 	return px * timeScale / mix_rate
 
 func _input(event): #change. if hovering, move scrub head. if released, move playhead and play
 	if event is InputEventMouseMotion and hover:
 		hoverNode.rect_global_position.x = event.position.x
-	if Input.is_action_just_pressed("ui_scrub") and hover_nav:
-			self.head = pixelsToTime(event.position.x - rect_position.x)
-			stop()
-			play()	
 	if Input.is_action_just_pressed("ui_scrub") and hover:
 			self.head = pixelsToTime(event.position.x - rect_position.x)
 			stop()
@@ -87,13 +86,3 @@ func _on_ClipScroller_mouse_entered():
 func _on_ClipScroller_mouse_exited():
 	hover = false
 	#print("hover: "+String(hover))
-
-
-func _on_card_mouse_entered():
-	hover_nav = true
-	#print("hover_nav: "+String(hover_nav))
-
-
-func _on_card_mouse_exited():
-	hover_nav = false
-	#print("hover_nav: "+String(hover_nav))
