@@ -11,6 +11,8 @@ onready var headNode = $ClipContainer/PlayHead
 onready var hoverNode = $ClipContainer/HoverHead
 onready var timelineNode = $Prompter/card/clip
 
+onready var big_hover_head = $Prompter/card/BigScrub
+
 var playing = false
 var mix_rate = 44100
 
@@ -64,11 +66,11 @@ func pixelsToTime(px:float) -> float:
 	#print(String(px)+" * " + String(timeScale)+" / "+String(mix_rate))
 	return px * timeScale / mix_rate
 
-func _input(event): #change. if hovering, move scrub head. if released, move playhead and play
+func _input(event): 
 	if event is InputEventMouseMotion and hover:
 		hoverNode.rect_global_position.x = event.position.x
-	if Input.is_action_just_pressed("ui_scrub") and hover:
-			self.head = pixelsToTime(event.position.x - rect_position.x)
+	if Input.is_action_just_pressed("ui_scrub") and (hover or hover_nav):
+			self.head = pixelsToTime(hoverNode.rect_global_position.x - rect_position.x)
 			stop()
 			play()	
 
@@ -89,3 +91,11 @@ func _on_ClipScroller_mouse_entered():
 func _on_ClipScroller_mouse_exited():
 	hover = false
 	#print("hover: "+String(hover))
+
+
+func _on_card_mouse_entered():
+	hover_nav = true
+
+
+func _on_card_mouse_exited():
+	hover_nav = false

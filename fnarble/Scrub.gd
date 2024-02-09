@@ -86,6 +86,7 @@ func scale_rect():
 	scrub_rect.rect_global_position.x = left_scrub.rect_global_position.x
 	scrub_rect.rect_size.x = right_scrub.rect_global_position.x - left_scrub.rect_global_position.x
 
+
 	
 func _on_RightScrub_mouse_entered():
 	r_hover = true
@@ -99,3 +100,5 @@ func _on_ScrubRect_mouse_entered():
 	rect_hover = true
 func _on_ScrubRect_mouse_exited():
 	rect_hover = false
+
+
