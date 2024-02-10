@@ -94,7 +94,7 @@ margin_left = 4.0
 margin_top = 569.0
 margin_right = 4.0
 margin_bottom = 569.0
-player_path = NodePath("../Conductor")
+conductor_path = NodePath("../Conductor")
 
 [node name="Beat" type="ColorRect" parent="."]
 margin_left = 1388.0
@@ -130,8 +130,6 @@ anims/RESET = SubResource( 1 )
 anims/beat = SubResource( 2 )
 
 [connection signal="beat" from="Conductor" to="." method="_on_Conductor_beat"]
+[connection signal="beat" from="Conductor" to="sequencer" method="_on_Conductor_beat"]
 [connection signal="beat" from="Conductor" to="Beat" method="_on_Conductor_beat"]
 [connection signal="measure" from="Conductor" to="." method="_on_Conductor_measure"]
-[connection signal="measure" from="Conductor" to="Beat/Measure" method="_on_Conductor_measure"]
-
-[editable path="sequencer"]

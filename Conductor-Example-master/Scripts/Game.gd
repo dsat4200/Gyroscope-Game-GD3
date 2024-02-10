@@ -30,7 +30,8 @@ var instance
 
 func _ready():
 	randomize()
-	#$Conductor.play_with_beat_offset(8)
+	$Conductor.play_with_beat_offset(8)
+	$sequencer.play()
 
 
 func _input(event):

@@ -21,6 +21,7 @@ func _process(delta):
 #	else: color = from_color
 
 
+
 func _on_Conductor_beat(position):
 	#beat = true
 	$anim_player.play("beat")

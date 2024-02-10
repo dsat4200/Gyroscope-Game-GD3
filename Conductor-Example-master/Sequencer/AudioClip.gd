@@ -39,12 +39,12 @@ func sampleFormat():
 	return f[sample.format]
 
 func printSampleInfo():
-	print("format:", sampleFormat())
-	print("mix rate:", sample.mix_rate)
-	print("stereo?:", sample.stereo)
-	print("length (seconds):", sample.get_length())
-	print("size(bytes):", sample.data.size())
-	print("bytes per sample:", bytesPerSample)
+	#print("format:", sampleFormat())
+	#print("mix rate:", sample.mix_rate)
+	#print("stereo?:", sample.stereo)
+	#print("length (seconds):", sample.get_length())
+	#print("size(bytes):", sample.data.size())
+	#print("bytes per sample:", bytesPerSample)
 	var s = sample
 	var t = (1.0*s.data.size()) / (bytesPerSample*s.mix_rate)
 	assert(abs(s.get_length() - t) < 0.000001)
@@ -59,7 +59,7 @@ func getStereoSample16(i):
 
 func _draw():
 	if sample:
-		printSampleInfo()
+		#printSampleInfo()
 		var o = Vector2(0,rect_size.y/2)
 		var pen = o + Vector2.ZERO
 		for x in range(rect_size.x):

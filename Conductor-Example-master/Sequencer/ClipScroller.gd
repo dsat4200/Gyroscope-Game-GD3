@@ -51,16 +51,17 @@ func _set_head(x):
 func play():
 	if head >= end: head = start
 	playing = true
-	conductor.stream = clipNode.sample
-	print("end is:", end)
-	print("length is:", clipNode.sample.get_length())
-	print("playing from ", head)
-	conductor.play(head)
+	#conductor.stream = clipNode.sample
+	#print("end is:", end)
+	#print("length is:", clipNode.sample.get_length())
+	#print("playing from ", head)
+	#conductor.play(head)
+	#replace with signal to play?
 	yield(conductor, "finished")
 
 func stop():
 	self.playing = false
-	conductor.stop()
+	#conductor.stop()
 
 func timeToPixels(t:float) -> float:
 		#print(String(t)+" * " + String(mix_rate)+" / "+String(timeScale) + "= "+String(t*mix_rate/timeScale))
@@ -78,15 +79,20 @@ func _input(event):
 		hoverNode.rect_position.x = big_hover_head.rect_position.x
 		
 	if Input.is_action_just_pressed("ui_scrub") and (hover or hover_nav):
-		self.head = pixelsToTime(hoverNode.rect_global_position.x - rect_position.x)
-		stop()
-		play()	
+		#print(String(self.head))
+		#self.head = pixelsToTime(hoverNode.rect_global_position.x - rect_position.x)
+		play_from_timecode(pixelsToTime(hoverNode.rect_global_position.x - rect_position.x))
+		#replace with signal to stop?
+		#replace with signal to play
 
+func play_from_timecode(pos):
+	conductor.play_from_nearest_beat(pos)
+	
 func _process(dt):
 	if playing:
-		self.head += dt
-		if self.head > self.end:
-			playing = false
+		self.head = conductor.song_position #if playing, head is set to song_pos
+#		if self.head > self.end:
+#			playing = false
 
 var hover = false
 var hover_nav = false
@@ -107,7 +113,6 @@ func _on_card_mouse_entered():
 
 func _on_card_mouse_exited():
 	hover_nav = false
-
 
 func _on_card_item_rect_changed():
 	pass # Replace with function body.
