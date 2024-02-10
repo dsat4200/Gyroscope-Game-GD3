@@ -5,6 +5,8 @@ export var start  : float = 0.0
 export var end    : float = 0.0
 export var head   : float = 0.0 setget _set_head
 export var timeScale : int = 128 setget _set_timeScale, _get_timeScale
+var conductor
+
 
 onready var clipNode = $ClipContainer/AudioClip
 onready var headNode = $ClipContainer/PlayHead
@@ -49,16 +51,16 @@ func _set_head(x):
 func play():
 	if head >= end: head = start
 	playing = true
-	$AudioStreamPlayer.stream = clipNode.sample
+	conductor.stream = clipNode.sample
 	print("end is:", end)
 	print("length is:", clipNode.sample.get_length())
 	print("playing from ", head)
-	$AudioStreamPlayer.play(head)
-	yield($AudioStreamPlayer, "finished")
+	conductor.play(head)
+	yield(conductor, "finished")
 
 func stop():
 	self.playing = false
-	$AudioStreamPlayer.stop()
+	conductor.stop()
 
 func timeToPixels(t:float) -> float:
 		#print(String(t)+" * " + String(mix_rate)+" / "+String(timeScale) + "= "+String(t*mix_rate/timeScale))
@@ -105,3 +107,7 @@ func _on_card_mouse_entered():
 
 func _on_card_mouse_exited():
 	hover_nav = false
+
+
+func _on_card_item_rect_changed():
+	pass # Replace with function body.

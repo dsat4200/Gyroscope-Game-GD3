@@ -3,8 +3,11 @@ extends Control
 # project settings > audio > enable audio input
 export var clip : AudioStreamSample
 
+export(NodePath) var player_path
+onready var player = get_node(player_path)
 
 func _ready():
+	$ClipScroller.conductor = player
 	import_clip()
 
 func import_clip():

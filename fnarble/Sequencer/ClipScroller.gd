@@ -105,3 +105,7 @@ func _on_card_mouse_entered():
 
 func _on_card_mouse_exited():
 	hover_nav = false
+
+
+func _on_card_item_rect_changed():
+	pass # Replace with function body.

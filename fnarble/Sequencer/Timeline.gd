@@ -58,3 +58,4 @@ func _on_card_mouse_entered():
 func _on_card_mouse_exited():
 	hover = false
 	#print(String(hover))
+
