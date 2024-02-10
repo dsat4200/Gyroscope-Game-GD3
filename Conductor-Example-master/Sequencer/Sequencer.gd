@@ -6,6 +6,9 @@ export var clip : AudioStreamSample
 export(NodePath) var conductor_path
 onready var conductor = get_node(conductor_path)
 
+export(NodePath) var beat_path
+onready var beat = get_node(beat_path)
+
 func _ready():
 	$ClipScroller.conductor = conductor
 	import_clip()
@@ -42,6 +45,12 @@ func _process(_dt):
 #		if event.scancode == KEY_HOME:
 #			$ClipScroller.head = 0.0
 
+func draw_beatmarker(position):
+	beat.draw_beatmarker(position, $ClipScroller.timeToPixels(conductor.song_position)+$ClipScroller.rect_position.x)
 
 func _on_Conductor_beat(position):
-	pass # Replace with function body.
+	draw_beatmarker(position)
+
+
+func _on_Conductor_start():
+	play()

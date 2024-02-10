@@ -81,12 +81,12 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_scrub") and (hover or hover_nav):
 		#print(String(self.head))
 		#self.head = pixelsToTime(hoverNode.rect_global_position.x - rect_position.x)
-		play_from_timecode(pixelsToTime(hoverNode.rect_global_position.x - rect_position.x))
+		play_from_timecode(pixelsToTime(hoverNode.rect_position.x))
 		#replace with signal to stop?
 		#replace with signal to play
 
 func play_from_timecode(pos):
-	conductor.play_from_nearest_beat(pos)
+	conductor.play_from_timecode(pos)
 	
 func _process(dt):
 	if playing:

@@ -34,6 +34,8 @@ func update_scrub():
 		rect_scale.x = scalefactor
 		hover_head.rect_scale.x = 1/scalefactor
 		play_head.rect_scale.x = 1/scalefactor
+		#scale beat arraylist
+		
 		#print("hover head scale:"+String(hover_head.rect_scale.x))
 		
 		

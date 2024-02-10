@@ -17,6 +17,7 @@ var time_off_beat = 0.0
 
 signal beat(position)
 signal measure(position)
+signal start
 
 #add function to show beats it calculated?z
 
@@ -70,6 +71,7 @@ func play_from_timecode(time):
 
 func seek_fix(time):
 	seek(time)
+	
 	#calculate and reset beat values?
 	
 func _on_StartTimer_timeout():
@@ -82,5 +84,7 @@ func _on_StartTimer_timeout():
 		$StartTimer.start()
 	else:
 		play()
+		emit_signal("start")
+		#create start signal for things to link to
 		$StartTimer.stop()
 	_report_beat()
