@@ -7,11 +7,11 @@
 [ext_resource path="res://Sequencer/test.wav" type="AudioStream" id=5]
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=6]
 [ext_resource path="res://Fonts/heartbit2x.tres" type="DynamicFont" id=7]
-[ext_resource path="res://Scenes/Conductor.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/ColorRect.gd" type="Script" id=9]
-[ext_resource path="res://Scenes/Measure.gd" type="Script" id=10]
+[ext_resource path="res://Conductor/Conductor.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/BeatLabel.gd" type="Script" id=9]
+[ext_resource path="res://Conductor/Measure.gd" type="Script" id=10]
 [ext_resource path="res://Sequencer/Sequencer.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Scenes/beat_draw.gd" type="Script" id=12]
+[ext_resource path="res://Beats/beats.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -129,32 +129,12 @@ margin_top = 569.0
 margin_right = 4.0
 margin_bottom = 569.0
 conductor_path = NodePath("../Conductor")
-beat_path = NodePath("../beat")
+beat_path = NodePath("../beats")
 
-[node name="beat" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-script = ExtResource( 12 )
-
-[node name="b_0" type="ColorRect" parent="beat"]
-margin_left = 44.0
-margin_top = 963.0
-margin_right = 45.0
-margin_bottom = 1027.0
-color = Color( 0, 1, 0.882353, 1 )
-
-[node name="num" type="Label" parent="beat/b_0"]
-margin_left = -4.0
-margin_top = 65.0
-margin_right = 4.0
-margin_bottom = 79.0
-rect_pivot_offset = Vector2( 4, 0 )
-text = "0"
-align = 1
+[node name="beats" parent="." instance=ExtResource( 12 )]
 
 [connection signal="beat" from="Conductor" to="." method="_on_Conductor_beat"]
 [connection signal="beat" from="Conductor" to="Beat" method="_on_Conductor_beat"]
 [connection signal="beat" from="Conductor" to="sequencer" method="_on_Conductor_beat"]
-[connection signal="beat" from="Conductor" to="beat" method="_on_Conductor_beat"]
 [connection signal="measure" from="Conductor" to="." method="_on_Conductor_measure"]
 [connection signal="start" from="Conductor" to="sequencer" method="_on_Conductor_start"]

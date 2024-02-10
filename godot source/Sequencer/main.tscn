@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Sequencer/input_handler.gd" type="Script" id=1]
+[ext_resource path="res://Sequencer/Sequencer.tscn" type="PackedScene" id=2]
+
+[node name="Spatial" type="Node"]
+
+[node name="input_handler" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[node name="sequencer" parent="." instance=ExtResource( 2 )]
+
+[node name="Spatial" type="Spatial" parent="."]
+
+[node name="Camera" type="Camera" parent="."]

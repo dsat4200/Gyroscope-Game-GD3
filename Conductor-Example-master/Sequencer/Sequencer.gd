@@ -45,11 +45,11 @@ func _process(_dt):
 #		if event.scancode == KEY_HOME:
 #			$ClipScroller.head = 0.0
 
-func draw_beatmarker(position):
-	beat.draw_beatmarker(position, $ClipScroller.timeToPixels(conductor.song_position)+$ClipScroller.rect_position.x)
+func draw_beatmarker(beatposition):
+	beat.draw_beatmarker(beatposition, $ClipScroller.timeToPixels(conductor.song_position)+$ClipScroller.rect_position.x)
 
-func _on_Conductor_beat(position):
-	draw_beatmarker(position)
+func _on_Conductor_beat(beatposition):
+	draw_beatmarker(beatposition)
 
 
 func _on_Conductor_start():
