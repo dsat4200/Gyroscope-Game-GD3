@@ -4,7 +4,7 @@
 flags_transparent = true
 albedo_color = Color( 0, 0, 0, 0.00392157 )
 
-[sub_resource type="ArrayMesh" id=1]
+[sub_resource type="ArrayMesh" id=10]
 resource_name = "Sphere_Sphere"
 surfaces/0 = {
 "aabb": AABB( -1, -1, -1, 2, 2, 2 ),
@@ -23,4 +23,4 @@ surfaces/0 = {
 [node name="Sphere" type="MeshInstance" parent="."]
 material_override = SubResource( 2 )
 cast_shadow = 0
-mesh = SubResource( 1 )
+mesh = SubResource( 10 )

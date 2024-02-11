@@ -23,10 +23,9 @@ func init_buttons():
 	menu.get_node("drag_input").connect("pressed", self, "_drag_input_pressed")
 
 	
-func toggle_menu():
+func toggle_menu() -> bool:
 	if !menu_open:
 		menu.text = "X"
-		
 	else:
 		menu.text = "="
 	
@@ -34,7 +33,7 @@ func toggle_menu():
 	get_tree().paused = menu_open
 	menu.get_node("re_center").visible = menu_open
 	menu.get_node("drag_input").visible = menu_open
-	
+	return menu_open
 
 func pass_data(acc, grav, mag, gyro):
 	get_node("data/Accelerometer").text = "A: " + acc + ", G: " + grav

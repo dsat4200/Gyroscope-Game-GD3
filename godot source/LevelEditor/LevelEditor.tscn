@@ -21,4 +21,5 @@ conductor_path = NodePath("../Conductor")
 bpm = 88
 
 [connection signal="beat" from="Conductor" to="sequencer" method="_on_Conductor_beat"]
+[connection signal="start" from="Conductor" to="3d_view" method="_on_Conductor_start"]
 [connection signal="start" from="Conductor" to="sequencer" method="_on_Conductor_start"]

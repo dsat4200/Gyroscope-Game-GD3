@@ -1,14 +1,15 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://UI/default_theme.tres" type="Theme" id=1]
-[ext_resource path="res://small_empty_room_1_2k.hdr" type="Texture" id=2]
+[ext_resource path="res://Songs/Crayon.webm" type="VideoStream" id=2]
 [ext_resource path="res://cube_6.png" type="Texture" id=3]
 [ext_resource path="res://UI/crosshair.svg" type="Texture" id=4]
 [ext_resource path="res://UI.gd" type="Script" id=5]
 [ext_resource path="res://3d_view.gd" type="Script" id=6]
 [ext_resource path="res://origin.gd" type="Script" id=7]
 [ext_resource path="res://UI/hover_dot.tscn" type="PackedScene" id=8]
-[ext_resource path="res://test_scene/Sphere.tscn" type="PackedScene" id=9]
+[ext_resource path="res://test_scene/sphere2.glb" type="PackedScene" id=9]
+[ext_resource path="res://test_scene/Video.gd" type="Script" id=10]
 
 [sub_resource type="CubeMesh" id=7]
 size = Vector3( 4, 4, 4 )
@@ -18,13 +19,28 @@ params_diffuse_mode = 1
 albedo_texture = ExtResource( 3 )
 roughness = 0.0
 
+[sub_resource type="ViewportTexture" id=13]
+flags = 64
+viewport_path = NodePath("Sphere/Viewport")
+
 [sub_resource type="PanoramaSky" id=9]
-panorama = ExtResource( 2 )
+resource_local_to_scene = true
+panorama = SubResource( 13 )
 
 [sub_resource type="Environment" id=1]
-background_mode = 2
+resource_local_to_scene = true
+background_mode = 1
 background_sky = SubResource( 9 )
+background_color = Color( 0.615686, 0.615686, 0.615686, 1 )
 ambient_light_color = Color( 0.648438, 0.64578, 0.64578, 1 )
+
+[sub_resource type="ViewportTexture" id=14]
+viewport_path = NodePath("sphere3/Sphere/Viewport")
+
+[sub_resource type="SpatialMaterial" id=15]
+resource_local_to_scene = true
+albedo_texture = SubResource( 14 )
+metallic_specular = 0.4
 
 [node name="3d_view" type="Node"]
 script = ExtResource( 6 )
@@ -94,7 +110,6 @@ position = Vector2( 960, 540 )
 texture = ExtResource( 4 )
 
 [node name="Boxes" type="Spatial" parent="."]
-visible = false
 
 [node name="MagAndGrav" type="MeshInstance" parent="Boxes"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -4, -18.1988 )
@@ -107,14 +122,13 @@ mesh = SubResource( 7 )
 material/0 = SubResource( 8 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 0.884838, -0.329433, 0.329449, 0, 0.707124, 0.707089, -0.4659, -0.625659, 0.62569, 0, 4.69444, 0 )
+light_energy = 0.518
 
 [node name="origin" type="Spatial" parent="."]
 script = ExtResource( 7 )
 
 [node name="camera" type="Camera" parent="origin"]
 environment = SubResource( 1 )
-fov = 74.0
 near = 0.1
 
 [node name="ray" type="RayCast" parent="origin/camera"]
@@ -123,8 +137,29 @@ enabled = true
 cast_to = Vector3( 0, -1.5, 0 )
 debug_shape_thickness = 3
 
-[node name="level_editor" type="Spatial" parent="."]
-
-[node name="Sphere" parent="level_editor" instance=ExtResource( 9 )]
-
 [node name="hover_dot" parent="." instance=ExtResource( 8 )]
+
+[node name="sphere3" parent="." instance=ExtResource( 9 )]
+transform = Transform( 21.0365, 0, 0, 0, 21.0365, 0, 0, 0, 21.0365, 0, 0, 0 )
+script = ExtResource( 10 )
+
+[node name="Sphere" parent="sphere3" index="0"]
+material/0 = SubResource( 15 )
+
+[node name="Viewport" type="Viewport" parent="sphere3/Sphere" index="0"]
+size = Vector2( 1920, 1080 )
+
+[node name="ViewportContainer" type="ViewportContainer" parent="sphere3/Sphere/Viewport"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="VideoPlayer" type="VideoPlayer" parent="sphere3/Sphere/Viewport/ViewportContainer"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+stream = ExtResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="sphere3/Sphere/Viewport"]
+
+[connection signal="start" from="." to="sphere3" method="_on_3d_view_start"]
+
+[editable path="sphere3"]

@@ -12,6 +12,8 @@ export(NodePath) var camera_path
 export(NodePath) var origin_path
 export(NodePath) var ui_path
 
+signal start
+
 
 onready var camera = get_node(camera_path)
 onready var origin = get_node(origin_path)
@@ -105,8 +107,12 @@ func _input(event):
 			origin.rotate_object_local(Vector3(0, 1, 0), -rot_x) # first rotate in Y
 			camera.rotate_object_local(Vector3(1, 0, 0), -invert_y * rot_y) # then rotate in X
 	if Input.is_action_just_pressed("ui_menu"):
-		toggle_focus(false)
-		$ui.toggle_menu()
+		if($ui.toggle_menu()):
+			toggle_focus(false)
+		else:
+			toggle_focus(true)
+		
+		
 		
 
 # This function calculates a rotation matrix based on a direction vector. As our arrows are cylindrical we don't
@@ -193,3 +199,7 @@ func drift_correction(p_basis, p_grav):
 		p_basis = correction * p_basis
 
 	return p_basis
+
+
+func _on_Conductor_start():
+	emit_signal("start")
