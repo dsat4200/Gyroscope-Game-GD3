@@ -16,26 +16,19 @@ func _ready():
 	init_buttons()
 	pass # Replace with function body.
 
-func _input(event):
-	if Input.is_action_just_pressed("ui_menu"):
-		toggle_menu()
 
 func init_buttons():
 	menu.connect("pressed", self, "_menu_pressed")
 	menu.get_node("re_center").connect("pressed", self, "_re_center_pressed")
 	menu.get_node("drag_input").connect("pressed", self, "_drag_input_pressed")
-			
-func init_input():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 	
 func toggle_menu():
 	if !menu_open:
 		menu.text = "X"
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		
 	else:
 		menu.text = "="
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	menu_open = not menu_open
 	get_tree().paused = menu_open

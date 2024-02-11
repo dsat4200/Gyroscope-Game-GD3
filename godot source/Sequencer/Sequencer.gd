@@ -1,31 +1,31 @@
 extends Control
 
 # project settings > audio > enable audio input
-export var clip : AudioStreamSample
+export var stream : AudioStreamSample
 
 export(NodePath) var conductor_path
 onready var conductor = get_node(conductor_path)
 
-export(NodePath) var beat_path
-onready var beat = get_node(beat_path)
+signal beat(position)
+
 
 func _ready():
-	$ClipScroller.conductor = conductor
-	import_clip()
+	pass
+	#clip = conductor.stream
 
 
 func play():
 	$ClipScroller.play()
 
-func import_clip():
-	var s : AudioStreamSample = $ClipScroller.sample
-	if s == null: s = clip
+func import_clip(s:AudioStreamSample):
+	$ClipScroller.conductor = conductor
+	if s == null: print("WARNING! NO STREAM")
 	else:
 		var d = s.data
-		d.append_array(clip.data)
+		d.append_array(s.data)
 		s.data = d
-	$ClipScroller.sample = s
-	$ClipScroller/Prompter.get_clip().sample = $ClipScroller.sample
+		$ClipScroller.sample = s
+		$ClipScroller/Prompter.get_clip().sample = $ClipScroller.sample
 
 func _process(_dt):
 	if Input.is_action_just_released("ui_select"):
@@ -44,13 +44,12 @@ func _process(_dt):
 #			$ClipScroller.sample = $Prompter.sample
 #		if event.scancode == KEY_HOME:
 #			$ClipScroller.head = 0.0
-
-func draw_beatmarker(beatposition):
-	beat.draw_beatmarker(beatposition, $ClipScroller.timeToPixels(conductor.song_position)+$ClipScroller.rect_position.x)
+	
+	
 
 func _on_Conductor_beat(beatposition):
-	draw_beatmarker(beatposition)
-
-
+	emit_signal("beat", beatposition)
+	#draw on big side too
+	
 func _on_Conductor_start():
 	play()

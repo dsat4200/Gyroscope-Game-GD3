@@ -16,6 +16,9 @@ onready var timelineNode = $Prompter/card/clip
 onready var big_hover_head = $Prompter/card/BigScrub
 onready var big_play_head = $Prompter/card/BigPlayHead
 
+onready var beats = $ClipContainer/beats
+onready var big_beats = $Prompter/card/BigBeats
+
 var playing = false
 var mix_rate = 44100
 
@@ -78,7 +81,7 @@ func _input(event):
 		big_hover_head.rect_global_position.x = event.position.x
 		hoverNode.rect_position.x = big_hover_head.rect_position.x
 		
-	if Input.is_action_just_pressed("ui_scrub") and (hover or hover_nav):
+	if Input.is_action_just_pressed("ui_tap") and (hover or hover_nav):
 		#print(String(self.head))
 		#self.head = pixelsToTime(hoverNode.rect_global_position.x - rect_position.x)
 		play_from_timecode(pixelsToTime(hoverNode.rect_position.x))
@@ -116,3 +119,51 @@ func _on_card_mouse_exited():
 
 func _on_card_item_rect_changed():
 	pass # Replace with function body.
+	
+func _on_sequencer_beat(beatposition):
+	#get control, then position big beat?
+	var newbeat = draw_beatmarker(beatposition, timeToPixels(conductor.song_position))
+	
+func draw_beatmarker(beatposition, songpos): #makes and gets the control
+	#print("beat! pos: "+String(beatposition)+", time: "+String(songpos))
+	if (beatposition > 0):
+		#rename small, set position. then, duplicate small, scale it up, and move it to big
+	
+		#first is always small
+		var dupe := beats.get_child(0) as ColorRect
+		#print(String(beatposition)
+		#print(beats.get_child(0).name)
+		dupe.rect_position.x = songpos
+		
+		var small = dupe.duplicate()
+		small.set("s_", beatposition)
+		
+		#print(small.get_child(0).text+ "at "+ String(small.get_child(0).rect_global_position.x))
+		var big = dupe.duplicate() 
+		big.set("b_", beatposition)
+		big.rect_size.y = big_play_head.rect_size.y
+		
+		#big.get_child(0).text = String(beatposition)
+		beats.add_child(small)
+		big_beats.add_child(big)
+		
+		
+		#print(newsmall.name+ "and big "+ String(newbig.name)
+		
+		#newsmall.get_node("num").text = beatposition
+		#newbig.get_node("num").text = beatposition
+		
+		#second dupe gets a fucked up name, not sure why
+		
+		
+		#print("big: "+ String(big.beat)+" small: "+String(small.beat))
+	
+		
+		#print("small beat: "+small.name+", big beat: "+big.name)
+		
+		small.visible = true
+		big.visible = true
+		
+#try this later https://forum.godotengine.org/t/how-do-i-check-if-a-specific-object-is-overlapping-an-area2d-every-frame/6944/3
+#for now, area2d overlap is fine
+

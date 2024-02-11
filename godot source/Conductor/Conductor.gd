@@ -29,13 +29,13 @@ func _physics_process(_delta):
 	if playing:
 		song_position = get_playback_position() + AudioServer.get_time_since_last_mix()
 		song_position -= AudioServer.get_output_latency()
-		song_position_in_beats = int(floor(song_position / sec_per_beat)) + beats_before_start
+		song_position_in_beats = int(floor(song_position / sec_per_beat)) #+ beats_before_start
 		#print("song_pos: "+String(song_position)+". in beats: "+String(song_position_in_beats))
 		_report_beat()
 
 
 func _report_beat():
-	if last_reported_beat < song_position_in_beats:
+	if last_reported_beat < song_position_in_beats and song_position > 0:
 		if measure > measures:
 			measure = 1
 		emit_signal("beat", song_position_in_beats)
@@ -76,6 +76,7 @@ func seek_fix(time):
 	
 func _on_StartTimer_timeout():
 	song_position_in_beats += 1
+	print("song_pos: "+String(song_position)+". in beats: "+String(song_position_in_beats))
 	if song_position_in_beats < beats_before_start - 1:
 		$StartTimer.start()
 	elif song_position_in_beats == beats_before_start - 1:
