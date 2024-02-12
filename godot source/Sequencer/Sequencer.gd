@@ -5,12 +5,10 @@ export var stream : AudioStreamSample
 
 export(NodePath) var conductor_path
 onready var conductor = get_node(conductor_path)
+export(NodePath) var remote_transform_path
 
 signal beat(position)
 
-
-func _ready():
-	pass
 	#clip = conductor.stream
 
 
