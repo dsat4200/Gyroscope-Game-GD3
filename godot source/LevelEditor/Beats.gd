@@ -2,7 +2,13 @@ tool
 extends Node
 class_name beats
 
-export var order : int = 0 setget _set_order, _get_order
+export var insert : float = 0 setget _set_insert, _get_insert
+
+func _set_insert(x):
+	find_order_to_place(x)
+	
+func _get_insert():
+	return insert
 
 onready var current_beat = get_child(0)
 onready var beats 
@@ -13,8 +19,11 @@ onready var sec_per_beat = conductor.sec_per_beat
 
 signal beats_updated(beats)
 
-
-
+func get_beats() -> Array:
+	var beat_positions : Array = []
+	for N in get_children():
+		beat_positions.append(N.pos)
+	return beat_positions
 
 func _ready():
 	print("beat interval:"+String(sec_per_beat))
@@ -33,6 +42,7 @@ func _on_sequencer_add_beat(position):
 
 func find_order_to_place(pos):
 	var arrayOfArrays = get_beats()
+	print(String(arrayOfArrays))
 	 # Iterate through the array of arrays
 	for i in range(arrayOfArrays.size() - 1):
 		var array = arrayOfArrays[i]
@@ -40,7 +50,7 @@ func find_order_to_place(pos):
 
 		# Check if the position is between the last element of the current array
 		# and the first element of the next array
-		if array.size() > 0 and nextArray.size() > 0 and array[-1] < pos < nextArray[0]:
+		if array.size() > 0 and nextArray.size() > 0 and (array[-1] < pos < nextArray[0]):
 			arrayOfArrays.insert(i + 1, [pos])
 			print("new array at "+String(arrayOfArrays))
 			return
