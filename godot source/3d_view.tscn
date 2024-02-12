@@ -28,7 +28,6 @@ resource_local_to_scene = true
 panorama = SubResource( 13 )
 
 [sub_resource type="Environment" id=1]
-resource_local_to_scene = true
 background_mode = 1
 background_sky = SubResource( 9 )
 background_color = Color( 0.615686, 0.615686, 0.615686, 1 )
@@ -36,7 +35,7 @@ ambient_light_color = Color( 0.648438, 0.64578, 0.64578, 1 )
 
 [sub_resource type="ViewportTexture" id=16]
 flags = 64
-viewport_path = NodePath("sphere3/Sphere/Viewport")
+viewport_path = NodePath("Viewport")
 
 [sub_resource type="SpatialMaterial" id=15]
 resource_local_to_scene = true
@@ -140,26 +139,27 @@ debug_shape_thickness = 3
 
 [node name="hover_dot" parent="." instance=ExtResource( 8 )]
 
-[node name="sphere3" parent="." instance=ExtResource( 9 )]
-transform = Transform( 21.0365, 0, 0, 0, 21.0365, 0, 0, 0, 21.0365, 0, 0, 0 )
-script = ExtResource( 10 )
-
-[node name="Sphere" parent="sphere3" index="0"]
-material/0 = SubResource( 15 )
-
-[node name="Viewport" type="Viewport" parent="sphere3/Sphere" index="0"]
+[node name="Viewport" type="Viewport" parent="."]
 size = Vector2( 1920, 1080 )
 
-[node name="ViewportContainer" type="ViewportContainer" parent="sphere3/Sphere/Viewport"]
+[node name="ViewportContainer" type="ViewportContainer" parent="Viewport"]
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="VideoPlayer" type="VideoPlayer" parent="sphere3/Sphere/Viewport/ViewportContainer"]
+[node name="VideoPlayer" type="VideoPlayer" parent="Viewport/ViewportContainer"]
 margin_right = 1920.0
 margin_bottom = 1080.0
 stream = ExtResource( 2 )
 
-[node name="Camera2D" type="Camera2D" parent="sphere3/Sphere/Viewport"]
+[node name="Camera2D" type="Camera2D" parent="Viewport"]
+
+[node name="sphere3" parent="." instance=ExtResource( 9 )]
+transform = Transform( 21.0365, 0, 0, 0, 21.0365, 0, 0, 0, 21.0365, 0, 0, 0 )
+script = ExtResource( 10 )
+videopath = NodePath("../Viewport/ViewportContainer/VideoPlayer")
+
+[node name="Sphere" parent="sphere3" index="0"]
+material/0 = SubResource( 15 )
 
 [connection signal="start" from="." to="sphere3" method="_on_3d_view_start"]
 
