@@ -138,7 +138,7 @@ margin_right = 40.0
 margin_bottom = 40.0
 mouse_filter = 2
 
-[node name="small" type="ColorRect" parent="ClipScroller/ClipContainer/beats"]
+[node name="b_0" type="ColorRect" parent="ClipScroller/ClipContainer/beats"]
 margin_right = 1.0
 margin_bottom = 64.0
 rect_pivot_offset = Vector2( 0.5, 0 )
@@ -146,7 +146,7 @@ mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
 script = ExtResource( 5 )
 
-[node name="num" type="Label" parent="ClipScroller/ClipContainer/beats/small"]
+[node name="num" type="Label" parent="ClipScroller/ClipContainer/beats/b_0"]
 margin_right = 24.0
 margin_bottom = 52.0
 rect_scale = Vector2( 0.5, 0.5 )
@@ -158,9 +158,9 @@ custom_constants/shadow_offset_y = 3
 custom_constants/shadow_as_outline = 2
 text = "0"
 
-[node name="col" type="StaticBody2D" parent="ClipScroller/ClipContainer/beats/small"]
+[node name="col" type="StaticBody2D" parent="ClipScroller/ClipContainer/beats/b_0"]
 
-[node name="shape" type="CollisionShape2D" parent="ClipScroller/ClipContainer/beats/small/col"]
+[node name="shape" type="CollisionShape2D" parent="ClipScroller/ClipContainer/beats/b_0/col"]
 shape = SubResource( 2 )
 
 [node name="Line2D" type="Line2D" parent="."]
@@ -173,6 +173,7 @@ position = Vector2( 205, 0 )
 points = PoolVector2Array( 0, 0, 0, 190 )
 default_color = Color( 1, 0, 0.796078, 1 )
 
+[connection signal="add_beat" from="ClipScroller" to="." method="_on_ClipScroller_add_beat"]
 [connection signal="mouse_entered" from="ClipScroller" to="ClipScroller" method="_on_ClipScroller_mouse_entered"]
 [connection signal="mouse_exited" from="ClipScroller" to="ClipScroller" method="_on_ClipScroller_mouse_exited"]
 [connection signal="item_rect_changed" from="ClipScroller/Prompter/card" to="ClipScroller" method="_on_card_item_rect_changed"]

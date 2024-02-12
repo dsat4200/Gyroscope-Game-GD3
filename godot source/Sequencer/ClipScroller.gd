@@ -19,6 +19,9 @@ onready var big_play_head = $Prompter/card/BigPlayHead
 var playing = false
 var mix_rate = 44100
 
+signal add_beat(position)
+
+
 
 func _set_timeScale(x):
 	clipNode.timeScale = x
@@ -84,6 +87,8 @@ func _input(event):
 		play_from_timecode(pixelsToTime(hoverNode.rect_position.x))
 		#replace with signal to stop?
 		#replace with signal to play
+	if Input.is_action_just_pressed("ui_right_click") and (hover or hover_nav):
+		emit_signal("add_beat", pixelsToTime(hoverNode.rect_position.x))
 
 func play_from_timecode(pos):
 	conductor.play_from_timecode(pos)

@@ -65,10 +65,10 @@ func _on_Scrub_rect_changed():
 
 func get_big_beat(i:int) -> Node2D: #dangerous stupid bitch of a method
 	#print("big beat: "+$BigBeats.get_child(i-1).name)
-	print("bbcount: "+String($BigBeats.get_child_count())+"index: "+String(i))
+	#print("bbcount: "+String($BigBeats.get_child_count())+"index: "+String(i))
 	var big = $BigBeats.get_child(i-1)
 	if(big == null):
-		print("FFFFUCK YOU STUPID BITCH! "+String($BigBeats.get_child_count())+", "+String(i))
+		#print("FFFFUCK YOU STUPID BITCH! "+String($BigBeats.get_child_count())+", "+String(i))
 		return null
 	
 	else:

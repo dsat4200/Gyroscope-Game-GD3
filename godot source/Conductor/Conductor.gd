@@ -4,12 +4,22 @@ export var bpm := 117
 export var measures := 4
 
 # Tracking the beat and song position
+export(NodePath) var beats_path
+onready var beats = get_node(beats_path).get_pure_beats()
+
 var song_position = 0.0
-var song_position_in_beats = 1
-var sec_per_beat = 60.0 / bpm
-var last_reported_beat = 0
+var song_position_in_beats = 0
+
+var next_beat_index = 0
+onready var next_beat_pos = beats[next_beat_index]
+
+onready var sec_per_beat = 60.0 / bpm
+var last_reported_beat_pos = 0.0
+var last_reported_beat_index = 0
+
 var beats_before_start = 0
 var measure = 1
+
 
 # Determining how close to the beat an event is
 var closest = 0
@@ -21,28 +31,42 @@ signal start
 
 #add function to show beats it calculated?z
 
+func _init():
+	print("INIT!")
+
 func _ready():
-	sec_per_beat = 60.0 / bpm
+	print("READY!")
+#	print("beats: "+String(beats))
+#	print("first beat at: "+String(next_beat_pos))
+#	next_beat_pos = beats[next_beat_index]
+	
 
 
 func _physics_process(_delta):
 	if playing:
 		song_position = get_playback_position() + AudioServer.get_time_since_last_mix()
 		song_position -= AudioServer.get_output_latency()
-		song_position_in_beats = int(floor(song_position / sec_per_beat)) #+ beats_before_start
-		#print("song_pos: "+String(song_position)+". in beats: "+String(song_position_in_beats))
+		if(song_position >= next_beat_pos):
+			song_position_in_beats = next_beat_pos
+		#print("song_pos: "+String(song_position)+". in beats: "+String(song_position_in_beats)+" next_pos: "+String(next_beat_pos)+" at index"+String(next_beat_index))
 		_report_beat()
 
 
 func _report_beat():
-	if last_reported_beat < song_position_in_beats and song_position > 0:
+	#print("last beat:"+String(last_reported_beat)+", pos: "+String(song_position_in_beats))
+	
+	if last_reported_beat_pos < song_position_in_beats and song_position > 0:
 		if measure > measures:
 			measure = 1
 		emit_signal("beat", song_position_in_beats)
 		emit_signal("measure", measure)
-		last_reported_beat = song_position_in_beats
-		measure += 1
-		
+		last_reported_beat_pos = song_position_in_beats
+		if(next_beat_index < beats.size()-1):
+			next_beat_index+=1
+			next_beat_pos = beats[next_beat_index]
+			measure += 1
+			print("beat!"+String(song_position_in_beats))
+		else:(print("last beat!"))
 
 func play_with_beat_offset(num):
 	beats_before_start = num

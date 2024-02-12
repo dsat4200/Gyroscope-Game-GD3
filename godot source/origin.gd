@@ -21,14 +21,14 @@ func _process(delta):
 		if not collided or collided.name != new_hover.name:
 			if hover:
 				hover.hover(false)
-				print("no longer hovering over " + hover.name)
+				#print("no longer hovering over " + hover.name)
 			hover = new_hover
 			collided = hover
-			print("hovering over " + hover.name)
+			#print("hovering over " + hover.name)
 			hover.hover(true)  # Added line to enable hover
 	elif hover:
 		hover.hover(false)
-		print("no longer hovering over " + hover.name)
+		#print("no longer hovering over " + hover.name)
 		hover = null
 		collided = null
 

@@ -7,7 +7,9 @@ export(NodePath) var conductor_path
 onready var conductor = get_node(conductor_path)
 export(NodePath) var remote_transform_path
 
+
 signal beat(position)
+signal add_beat(position)
 
 	#clip = conductor.stream
 
@@ -51,3 +53,7 @@ func _on_Conductor_beat(beatposition):
 	
 func _on_Conductor_start():
 	play()
+
+
+func _on_ClipScroller_add_beat(position):
+	emit_signal("add_beat",position)
