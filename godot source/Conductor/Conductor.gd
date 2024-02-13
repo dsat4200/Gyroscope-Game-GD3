@@ -115,10 +115,9 @@ func _on_StartTimer_timeout():
 	_report_beat()
 
 
-func _on_Beats_beats_updated(beats, next_beat_p, next_beat_i, previous_beat_p, previous_beat_i):
+func _on_Beats_beats_updated(beats):
 	beats = beats
-	next_beat_pos = next_beat_p
-	last_reported_beat_pos = previous_beat_p
-	next_beat_index = next_beat_i
-	last_reported_beat_index = previous_beat_i
+	calculate_nearby_beats()
 	
+func calculate_nearby_beats():
+	#iterate through beats, find nextbeat and lastbeat

@@ -25,7 +25,6 @@ func get_beats() -> Array:
 		beat_positions.append(N.pos)
 	return beat_positions
 
-
 func get_pure_beats() -> PoolRealArray:
 	var beat_positions : PoolRealArray = []
 	for N in get_children():
@@ -36,8 +35,12 @@ func get_pure_beats() -> PoolRealArray:
 
 func _on_sequencer_add_beat(position):
 	#take position. if between beats, add new beat.
+	add_beat(position)
 	emit_signal("beats_updated", get_pure_beats())
 
+func add_beat():
+	
+	
 func find_order_to_place(pos) -> int:#returns the index the new beat object should be placed in
 	var arrayOfArrays = get_beats()
 	#print(String(arrayOfArrays))
