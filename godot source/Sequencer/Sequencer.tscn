@@ -173,6 +173,7 @@ position = Vector2( 205, 0 )
 points = PoolVector2Array( 0, 0, 0, 190 )
 default_color = Color( 1, 0, 0.796078, 1 )
 
+[connection signal="beat" from="." to="ClipScroller" method="_on_sequencer_beat"]
 [connection signal="add_beat" from="ClipScroller" to="." method="_on_ClipScroller_add_beat"]
 [connection signal="mouse_entered" from="ClipScroller" to="ClipScroller" method="_on_ClipScroller_mouse_entered"]
 [connection signal="mouse_exited" from="ClipScroller" to="ClipScroller" method="_on_ClipScroller_mouse_exited"]

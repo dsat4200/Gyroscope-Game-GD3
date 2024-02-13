@@ -25,8 +25,6 @@ func get_beats() -> Array:
 		beat_positions.append(N.pos)
 	return beat_positions
 
-func _ready():
-	print("beat interval:"+String(sec_per_beat))
 
 func get_pure_beats() -> PoolRealArray:
 	var beat_positions : PoolRealArray = []
@@ -40,30 +38,54 @@ func _on_sequencer_add_beat(position):
 	#take position. if between beats, add new beat.
 	emit_signal("beats_updated", get_pure_beats())
 
-func find_order_to_place(pos):
+func find_order_to_place(pos) -> int:#returns the index the new beat object should be placed in
 	var arrayOfArrays = get_beats()
-	print(String(arrayOfArrays))
+	#print(String(arrayOfArrays))
 	 # Iterate through the array of arrays
-	for i in range(arrayOfArrays.size() - 1):
+	for i in range(arrayOfArrays.size()):
 		var array = arrayOfArrays[i]
-		var nextArray = arrayOfArrays[i + 1]
+		var nextArray = []
+		#print(String(i)+" "+String(arrayOfArrays.size()))
+		var size = arrayOfArrays.size()
+		if(i < size-1):
+			nextArray = arrayOfArrays[i + 1]
+		else:
+			nextArray = []
+
+		#print("array is: "+String(array))
 
 		# Check if the position is between the last element of the current array
 		# and the first element of the next array
-		if array.size() > 0 and nextArray.size() > 0 and (array[-1] < pos < nextArray[0]):
+		#print(String(array[-1])+" " + String(pos)+" " + String(nextArray[0]))
+		
+		#check end
+		if array.size() > 0 and nextArray.size() == 0 and pos > array[array.size()-1]:
+			arrayOfArrays.insert(i+1, [pos])
+			print("array"+String(arrayOfArrays))
+			return i+1
+		#if between, insert
+		if array.size() > 0 and nextArray.size() > 0 and array[-1] < pos and pos < nextArray[0]:
 			arrayOfArrays.insert(i + 1, [pos])
 			print("new array at "+String(arrayOfArrays))
-			return
+			return i+1
 
-		# Check if the position fits between two elements in the same array
+		#if inside, insert too
+		#print("Checking: "+String(array) +" with "+ String(pos))
 		for j in range(array.size() - 1):
-			if array[j] < pos < array[j + 1]:
-				array.insert(j + 1, pos)
-				print("insert to array "+ String(arrayOfArrays))
-				return
-
-	# If the position doesn't fit between any existing elements, add it to the last array
-	arrayOfArrays[-1].append(pos)
+			if array[j] < pos and pos < array[j + 1]:
+				var away = arrayOfArrays[i]
+				away.insert(j+1, pos)
+				arrayOfArrays[i] = away
+				print("array"+String(arrayOfArrays))
+				return i
+		
+		#if not last or in between, add to start
+		if array.size() > 0 and pos < array[0]:
+			arrayOfArrays.insert(0, [pos])
+			print("array"+String(arrayOfArrays))
+			return 0
+	print("array"+String(arrayOfArrays))
+	return -1
 
 func update_names():
 	for N in get_children():

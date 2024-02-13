@@ -73,7 +73,7 @@ func play_with_beat_offset(num):
 	$StartTimer.wait_time = sec_per_beat
 	$StartTimer.start()
 
-func closest_beat(pos, nth):
+func closest_beat(pos, nth): # fix
 	closest = int(round((pos / sec_per_beat) / nth) * nth) 
 	time_off_beat = closest * sec_per_beat - pos
 	print("nth: "+ String(nth)+"closest: "+ String(closest)+", off by: "+String(time_off_beat))
@@ -113,3 +113,12 @@ func _on_StartTimer_timeout():
 		#create start signal for things to link to
 		$StartTimer.stop()
 	_report_beat()
+
+
+func _on_Beats_beats_updated(beats, next_beat_p, next_beat_i, previous_beat_p, previous_beat_i):
+	beats = beats
+	next_beat_pos = next_beat_p
+	last_reported_beat_pos = previous_beat_p
+	next_beat_index = next_beat_i
+	last_reported_beat_index = previous_beat_i
+	

@@ -55,5 +55,6 @@ func _on_Conductor_start():
 	play()
 
 
+
 func _on_ClipScroller_add_beat(position):
-	emit_signal("add_beat",position)
+	emit_signal("add_beat", position)

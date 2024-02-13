@@ -123,3 +123,7 @@ func _on_card_item_rect_changed():
 	
 
 
+
+
+func _on_sequencer_beat(position):
+	pass # Replace with function body.
