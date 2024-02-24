@@ -18,24 +18,7 @@ conductor_path = NodePath("../Conductor")
 
 [node name="b_0" type="Node" parent="Beats"]
 script = ExtResource( 7 )
-pos = PoolRealArray( 1 )
-
-[node name="b_1" type="Node" parent="Beats"]
-script = ExtResource( 7 )
-type = 1
-order = 1
-pos = PoolRealArray( 2, 2.5 )
-
-[node name="b_2" type="Node" parent="Beats"]
-script = ExtResource( 7 )
-order = 2
-regularly_spaced = false
-pos = PoolRealArray( 3, 3.5, 4 )
-
-[node name="b_3" type="Node" parent="Beats"]
-script = ExtResource( 7 )
-order = 3
-pos = PoolRealArray( 8 )
+pos = PoolRealArray( 0 )
 
 [node name="3d_view" parent="." instance=ExtResource( 2 )]
 

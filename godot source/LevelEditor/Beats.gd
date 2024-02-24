@@ -22,24 +22,24 @@ signal beats_updated(beats)
 func get_beats() -> Array:
 	var beat_positions : Array = []
 	for N in get_children():
+		#if N.get_index() != 0:
 		beat_positions.append(N.pos)
 	return beat_positions
 
 func get_pure_beats() -> PoolRealArray:
 	var beat_positions : PoolRealArray = []
 	for N in get_children():
+		#if N.get_index() != 0:
 		beat_positions.append_array(N.pos)
-	print("pure beats get: "+ String(beat_positions))
+	#print("pure beats get: "+ String(beat_positions))
 	return beat_positions
 
 
 func _on_sequencer_add_beat(position):
 	#take position. if between beats, add new beat.
-	add_beat(position)
+	add_beat(find_order_to_place(position), position)
 	emit_signal("beats_updated", get_pure_beats())
 
-func add_beat():
-	
 	
 func find_order_to_place(pos) -> int:#returns the index the new beat object should be placed in
 	var arrayOfArrays = get_beats()
@@ -64,12 +64,12 @@ func find_order_to_place(pos) -> int:#returns the index the new beat object shou
 		#check end
 		if array.size() > 0 and nextArray.size() == 0 and pos > array[array.size()-1]:
 			arrayOfArrays.insert(i+1, [pos])
-			print("array"+String(arrayOfArrays))
+			#print("array"+String(arrayOfArrays))
 			return i+1
 		#if between, insert
 		if array.size() > 0 and nextArray.size() > 0 and array[-1] < pos and pos < nextArray[0]:
 			arrayOfArrays.insert(i + 1, [pos])
-			print("new array at "+String(arrayOfArrays))
+			#print("new array at "+String(arrayOfArrays))
 			return i+1
 
 		#if inside, insert too
@@ -79,15 +79,15 @@ func find_order_to_place(pos) -> int:#returns the index the new beat object shou
 				var away = arrayOfArrays[i]
 				away.insert(j+1, pos)
 				arrayOfArrays[i] = away
-				print("array"+String(arrayOfArrays))
+				#print("array"+String(arrayOfArrays))
 				return i
 		
 		#if not last or in between, add to start
 		if array.size() > 0 and pos < array[0]:
 			arrayOfArrays.insert(0, [pos])
-			print("array"+String(arrayOfArrays))
+			#print("array"+String(arrayOfArrays))
 			return 0
-	print("array"+String(arrayOfArrays))
+	#print("array"+String(arrayOfArrays))
 	return -1
 
 func update_names():
@@ -95,3 +95,11 @@ func update_names():
 		N.name = "gloop"
 	for N in get_children():
 		N.name = "b_"+String(N.order)
+
+func add_beat(index, position):
+	var zero = $b_0
+	var dupe = zero.duplicate()
+	add_child(dupe)
+	dupe.pos = [position]
+	dupe.order = index
+	print("Beat added: "+dupe.name+ " SongPosition: "+String(dupe.pos))

@@ -75,12 +75,3 @@ func get_big_beat(i:int) -> Node2D: #dangerous stupid bitch of a method
 		print(big.name+", "+String(i))
 		return big
 	
-func _on_Scrub_col_enter(body):
-	#body.get_parent().link.rect_scale.x = 1/scalefactor
-	var big = get_big_beat(body.beat)
-	if (big!= null):
-		big.rect_scale.x = 1/scalefactor
-
-func _on_Scrub_col_exit(body):
-	#print("body exit: "+body.name)
-	pass # Replace with function body.

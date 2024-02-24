@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Sequencer/Timeline.gd" type="Script" id=1]
 [ext_resource path="res://Sequencer/AudioClip.gd" type="Script" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://Sequencer/ClipScroller.gd" type="Script" id=7]
 [ext_resource path="res://Songs/crayon.wav" type="AudioStream" id=8]
 [ext_resource path="res://UI/default_theme.tres" type="Theme" id=9]
+
+[sub_resource type="SegmentShape2D" id=3]
+b = Vector2( 0, 190 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 909.5, 32 )
@@ -73,6 +76,37 @@ color = Color( 0.494118, 0.494118, 0.494118, 1 )
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="ClipScroller/Prompter/card"]
 remote_path = NodePath("../../../../Line2D")
 
+[node name="beats" type="Control" parent="ClipScroller/Prompter"]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+
+[node name="b_0" type="ColorRect" parent="ClipScroller/Prompter/beats"]
+visible = false
+margin_right = 1.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 0.5, 0 )
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 5 )
+
+[node name="num" type="Label" parent="ClipScroller/Prompter/beats/b_0"]
+margin_right = 24.0
+margin_bottom = 52.0
+rect_scale = Vector2( 0.5, 0.5 )
+theme = ExtResource( 9 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/line_spacing = -48
+custom_constants/shadow_offset_y = 3
+custom_constants/shadow_as_outline = 2
+text = "0"
+
+[node name="col" type="StaticBody2D" parent="ClipScroller/Prompter/beats/b_0"]
+
+[node name="shape" type="CollisionShape2D" parent="ClipScroller/Prompter/beats/b_0/col"]
+shape = SubResource( 3 )
+
 [node name="ClipContainer" type="Control" parent="ClipScroller"]
 margin_right = 1820.0
 margin_bottom = 64.0
@@ -133,12 +167,12 @@ mouse_filter = 2
 color = Color( 0.380392, 0.380392, 0.380392, 1 )
 
 [node name="beats" type="Control" parent="ClipScroller/ClipContainer"]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 mouse_filter = 2
 
 [node name="b_0" type="ColorRect" parent="ClipScroller/ClipContainer/beats"]
+visible = false
 margin_right = 1.0
 margin_bottom = 64.0
 rect_pivot_offset = Vector2( 0.5, 0 )
@@ -182,8 +216,6 @@ default_color = Color( 1, 0, 0.796078, 1 )
 [connection signal="mouse_entered" from="ClipScroller/Prompter/card" to="ClipScroller/Prompter/card" method="_on_card_mouse_entered"]
 [connection signal="mouse_exited" from="ClipScroller/Prompter/card" to="ClipScroller" method="_on_card_mouse_exited"]
 [connection signal="mouse_exited" from="ClipScroller/Prompter/card" to="ClipScroller/Prompter/card" method="_on_card_mouse_exited"]
-[connection signal="col_enter" from="ClipScroller/ClipContainer/Scrub" to="ClipScroller/Prompter/card" method="_on_Scrub_col_enter"]
-[connection signal="col_exit" from="ClipScroller/ClipContainer/Scrub" to="ClipScroller/Prompter/card" method="_on_Scrub_col_exit"]
 [connection signal="item_rect_changed" from="ClipScroller/ClipContainer/Scrub" to="ClipScroller/ClipContainer/Scrub" method="_on_Scrub_item_rect_changed"]
 [connection signal="rect_changed" from="ClipScroller/ClipContainer/Scrub" to="ClipScroller/Prompter/card" method="_on_Scrub_rect_changed"]
 [connection signal="scrub_changed" from="ClipScroller/ClipContainer/Scrub" to="ClipScroller/Prompter/card" method="_on_Scrub_scrub_changed"]
