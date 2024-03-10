@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/NTHE drums.wav-757a55617c27a44b345584b706ed5f9e.sample"
+
+[deps]
+
+source_file="res://Songs/NTHE drums.wav"
+dest_files=[ "res://.import/NTHE drums.wav-757a55617c27a44b345584b706ed5f9e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
