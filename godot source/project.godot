@@ -9,6 +9,31 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "DragDetector",
+"language": "GDScript",
+"path": "res://UI/Hits/TrackSelector/DragDetector.gd"
+}, {
+"base": "Node2D",
+"class": "PlacerHitBeat",
+"language": "GDScript",
+"path": "res://UI/Hits/Editor/PlacerHitBeat.gd"
+}, {
+"base": "Node2D",
+"class": "PlacerRest",
+"language": "GDScript",
+"path": "res://UI/Hits/Editor/PlacerRest.gd"
+}, {
+"base": "Path2D",
+"class": "PlacerRoller",
+"language": "GDScript",
+"path": "res://UI/Hits/Editor/PlacerHitRoller.gd"
+}, {
+"base": "Area2D",
+"class": "TrackTile",
+"language": "GDScript",
+"path": "res://UI/Hits/TrackSelector/TrackTile.gd"
+}, {
 "base": "Node",
 "class": "beat",
 "language": "GDScript",
@@ -20,6 +45,11 @@ _global_script_classes=[ {
 "path": "res://LevelEditor/Beats.gd"
 } ]
 _global_script_class_icons={
+"DragDetector": "",
+"PlacerHitBeat": "res://UI/Hits/Editor/placer_hit_beat_icon.svg",
+"PlacerRest": "res://UI/Hits/Editor/placer_rest_icon.svg",
+"PlacerRoller": "res://UI/Hits/Editor/placer_hit_roller_icon.svg",
+"TrackTile": "",
 "beat": "",
 "beats": ""
 }
@@ -32,12 +62,20 @@ These sensors are typically found on mobile devices, so don't expect this to wor
 run/main_scene="res://LevelEditor/LevelEditor.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Events="*res://Autoload/Events.gd"
+
 [display]
 
 window/size/width=1920
 window/size/height=1080
 window/size/resizable=false
 window/stretch/mode="viewport"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/csv-data-importer/plugin.cfg" )
 
 [gdnative]
 

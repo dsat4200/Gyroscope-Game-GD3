@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://UI/Hits/LabelCustom.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/Hits/Editor/PlacerHitBeat.gd" type="Script" id=2]
+[ext_resource path="res://UI/Hits/Editor/icon_beats.png" type="Texture" id=3]
+[ext_resource path="res://UI/Hits/HitBeat.tscn" type="PackedScene" id=4]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://UI/CRYSRG__.TTF"
+
+[sub_resource type="DynamicFont" id=2]
+font_data = SubResource( 1 )
+
+[node name="PlacerHitBeat" type="Position2D"]
+script = ExtResource( 2 )
+scene = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+hframes = 4
+frame = 1
+
+[node name="OrderNumber" parent="." instance=ExtResource( 1 )]
+custom_fonts/font = SubResource( 2 )

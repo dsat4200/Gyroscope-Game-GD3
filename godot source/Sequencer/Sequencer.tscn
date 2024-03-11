@@ -20,6 +20,7 @@ extents = Vector2( 909.5, 32 )
 b = Vector2( 0, 64 )
 
 [node name="sequencer" type="Control"]
+mouse_filter = 2
 script = ExtResource( 3 )
 stream = ExtResource( 8 )
 
@@ -59,6 +60,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+skip_draw = true
 active = false
 
 [node name="BigPlayHead" type="ColorRect" parent="ClipScroller/Prompter/card"]
@@ -76,13 +78,12 @@ color = Color( 0.494118, 0.494118, 0.494118, 1 )
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="ClipScroller/Prompter/card"]
 remote_path = NodePath("../../../../Line2D")
 
-[node name="beats" type="Control" parent="ClipScroller/Prompter"]
+[node name="beats" type="Control" parent="ClipScroller/Prompter/card"]
 margin_right = 40.0
 margin_bottom = 40.0
 mouse_filter = 2
 
-[node name="b_0" type="ColorRect" parent="ClipScroller/Prompter/beats"]
-visible = false
+[node name="b_0" type="ColorRect" parent="ClipScroller/Prompter/card/beats"]
 margin_right = 1.0
 margin_bottom = 64.0
 rect_pivot_offset = Vector2( 0.5, 0 )
@@ -90,7 +91,7 @@ mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
 script = ExtResource( 5 )
 
-[node name="num" type="Label" parent="ClipScroller/Prompter/beats/b_0"]
+[node name="num" type="Label" parent="ClipScroller/Prompter/card/beats/b_0"]
 margin_right = 24.0
 margin_bottom = 52.0
 rect_scale = Vector2( 0.5, 0.5 )
@@ -102,9 +103,9 @@ custom_constants/shadow_offset_y = 3
 custom_constants/shadow_as_outline = 2
 text = "0"
 
-[node name="col" type="StaticBody2D" parent="ClipScroller/Prompter/beats/b_0"]
+[node name="col" type="StaticBody2D" parent="ClipScroller/Prompter/card/beats/b_0"]
 
-[node name="shape" type="CollisionShape2D" parent="ClipScroller/Prompter/beats/b_0/col"]
+[node name="shape" type="CollisionShape2D" parent="ClipScroller/Prompter/card/beats/b_0/col"]
 shape = SubResource( 3 )
 
 [node name="ClipContainer" type="Control" parent="ClipScroller"]
@@ -119,9 +120,7 @@ margin_bottom = 64.0
 rect_min_size = Vector2( 1820, 64 )
 mouse_filter = 2
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+skip_draw = true
 timeScale = 512
 
 [node name="Scrub" type="Control" parent="ClipScroller/ClipContainer"]

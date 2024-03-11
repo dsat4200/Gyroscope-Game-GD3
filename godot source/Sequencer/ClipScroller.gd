@@ -105,12 +105,12 @@ var hover_nav = false
 
 func _on_ClipScroller_mouse_entered():
 	hover = true
-	#print("hover: "+String(hover))
+	print("hover: "+String(hover))
 
 
 func _on_ClipScroller_mouse_exited():
 	hover = false
-	#print("hover: "+String(hover))
+	print("hover: "+String(hover))
 
 
 func _on_card_mouse_entered():
@@ -133,7 +133,7 @@ func draw_beatmarker(beatposition, songpos): #makes and gets the control
 	if (beatposition > 0):
 		#rename small, set position. then, duplicate small, scale it up, and move it to big
 		var beats = $ClipContainer/beats
-		var big_beats = $Prompter/beats
+		var big_beats = $Prompter/card/beats
 		var zero := beats.get_child(0) as ColorRect
 		var zero_big := big_beats.get_child(0) as ColorRect
 		var small = zero.duplicate()

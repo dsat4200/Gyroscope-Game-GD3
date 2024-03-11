@@ -15,10 +15,14 @@ func _ready():
 	print("1")
 	conductor.stream = stream
 	sequencer.import_clip(stream)
-	conductor.play_with_beat_offset(2)
+	conductor.play_with_beat_offset(0)
 	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_Conductor_start():
+	pass # Replace with function body.

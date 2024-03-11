@@ -17,7 +17,16 @@ export(NodePath) var conductor_path
 onready var conductor = get_node(conductor_path)
 onready var sec_per_beat = conductor.sec_per_beat
 
+var data : PoolRealArray = []
+
 signal beats_updated(beats)
+
+func _ready():
+	var markers = preload("res://Songs/NTHE/Markers.csv").records
+	for N in markers:
+		#if N.get_index() != 0:
+		data.append_array(N)
+	#print(data)  # array of data
 
 func get_beats() -> Array:
 	var beat_positions : Array = []
@@ -27,12 +36,7 @@ func get_beats() -> Array:
 	return beat_positions
 
 func get_pure_beats() -> PoolRealArray:
-	var beat_positions : PoolRealArray = []
-	for N in get_children():
-		#if N.get_index() != 0:
-		beat_positions.append_array(N.pos)
-	#print("pure beats get: "+ String(beat_positions))
-	return beat_positions
+	return data
 
 
 func _on_sequencer_add_beat(position):

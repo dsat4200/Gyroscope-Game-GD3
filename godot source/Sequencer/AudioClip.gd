@@ -1,5 +1,5 @@
 extends ColorRect
-
+export var skip_draw : bool = false
 # draw audio clips
 # samples are in pcm format
 # pcm = pulse code modulation.
@@ -58,7 +58,7 @@ func getStereoSample16(i):
 	# return (a+b)>>1
 
 func _draw():
-	if sample:
+	if sample && !skip_draw:
 		#printSampleInfo()
 		var o = Vector2(0,rect_size.y/2)
 		var pen = o + Vector2.ZERO
