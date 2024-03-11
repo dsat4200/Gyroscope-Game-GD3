@@ -1,20 +1,15 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://Conductor/Conductor.tscn" type="PackedScene" id=1]
-[ext_resource path="res://3d_view.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Songs/NTHE/NTHE_mixdown_2.wav" type="AudioStream" id=3]
-[ext_resource path="res://Sequencer/Sequencer.tscn" type="PackedScene" id=4]
-[ext_resource path="res://LevelEditor/LevelEditor.gd" type="Script" id=5]
-[ext_resource path="res://LevelEditor/Beats.gd" type="Script" id=6]
-[ext_resource path="res://Sequencer/beat.gd" type="Script" id=7]
-[ext_resource path="res://Songs/NTHE/visuals/3d/fleur/fleur.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Songs/NTHE/NTHE_mixdown_drums.wav" type="AudioStream" id=1]
+[ext_resource path="res://Songs/NTHE/NTHE_mixdown_2.wav" type="AudioStream" id=2]
+[ext_resource path="res://UI/Hits/HitBeat.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/Hits/Editor/PlacerHitBeat.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Songs/NTHE/visuals/3d/fleur/fleur.tscn" type="PackedScene" id=5]
+[ext_resource path="res://LevelEditor/NTHE.gd" type="Script" id=6]
+[ext_resource path="res://UI/Hits/Editor/PlacerHitBeat.gd" type="Script" id=7]
+[ext_resource path="res://LevelEditor/ColorBgSwap.gd" type="Script" id=8]
 [ext_resource path="res://Songs/NTHE/visuals/3d/fleur/fleur.gd" type="Script" id=9]
-[ext_resource path="res://LevelEditor/NTHE.gd" type="Script" id=10]
-[ext_resource path="res://LevelEditor/ColorBgSwap.gd" type="Script" id=11]
-[ext_resource path="res://Songs/NTHE/NTHE_mixdown_drums.wav" type="AudioStream" id=12]
-[ext_resource path="res://UI/Hits/Editor/PlacerHitBeat.tscn" type="PackedScene" id=13]
-[ext_resource path="res://LevelEditor/BeatSpawner.gd" type="Script" id=14]
-[ext_resource path="res://Songs/NTHE/NTHE_mixdown.wav" type="AudioStream" id=15]
+[ext_resource path="res://LevelEditor/BeatSpawner.gd" type="Script" id=10]
 
 [sub_resource type="Animation" id=3]
 resource_name = "NTHE"
@@ -30,7 +25,7 @@ tracks/0/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource( 3 )
+"stream": ExtResource( 2 )
 } ],
 "times": PoolRealArray( 0 )
 }
@@ -101,7 +96,7 @@ tracks/5/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource( 12 )
+"stream": ExtResource( 1 )
 } ],
 "times": PoolRealArray( -0.04 )
 }
@@ -151,93 +146,39 @@ surfaces/0 = {
 flags_unshaded = true
 albedo_color = Color( 0.576471, 0.384314, 0.556863, 1 )
 
-[node name="LevelEditor" type="Spatial"]
-script = ExtResource( 5 )
-stream = ExtResource( 15 )
-
-[node name="Beats" type="Node" parent="."]
+[node name="NTHE" type="Spatial"]
 script = ExtResource( 6 )
-conductor_path = NodePath("../Conductor")
-
-[node name="b_0" type="Node" parent="Beats"]
-script = ExtResource( 7 )
-pos = PoolRealArray( 0 )
-
-[node name="b_1" type="Node" parent="Beats"]
-script = ExtResource( 7 )
-order = 1
-
-[node name="sequencer" parent="." instance=ExtResource( 4 )]
-visible = false
-margin_top = 580.0
-margin_bottom = 580.0
-conductor_path = NodePath("../Conductor")
-
-[node name="Conductor" parent="." instance=ExtResource( 1 )]
-bpm = 88
 beats_path = NodePath("../Beats")
 
-[node name="3d_view" parent="." instance=ExtResource( 2 )]
-
-[node name="ui" parent="3d_view" index="0"]
-mouse_filter = 2
-
-[node name="camera" parent="3d_view/origin" index="0"]
-fov = 40.0
-
-[node name="NTHE" type="Spatial" parent="."]
-script = ExtResource( 10 )
-beats_path = NodePath("../Beats")
-
-[node name="HitBeats" type="Control" parent="NTHE"]
+[node name="HitBeats" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
 mouse_filter = 2
-script = ExtResource( 14 )
+script = ExtResource( 10 )
 
-[node name="PlacerHitBeat" parent="NTHE/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 950, 551 )
+[node name="PlacerHitBeat" type="Position2D" parent="HitBeats" instance=ExtResource( 4 )]
+position = Vector2( 962, 536 )
+script = ExtResource( 7 )
+scene = ExtResource( 3 )
 
-[node name="PlacerHitBeat2" parent="NTHE/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 685, 438 )
-
-[node name="PlacerHitBeat3" parent="NTHE/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1089, 385 )
-
-[node name="PlacerHitBeat4" parent="NTHE/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1490, 459 )
-
-[node name="PlacerHitBeat5" parent="NTHE/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1752, 638 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="NTHE"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/NTHE = SubResource( 3 )
 anims/RESET = SubResource( 8 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="NTHE"]
-stream = ExtResource( 3 )
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
 
-[node name="DirectionalLight" type="DirectionalLight" parent="NTHE"]
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.493196, 0.73114, 1.27482 )
 
-[node name="fleur" parent="NTHE" instance=ExtResource( 8 )]
+[node name="fleur" type="Spatial" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0.71233, -0.3284, -2.01853 )
 script = ExtResource( 9 )
 
-[node name="Color" type="Spatial" parent="NTHE"]
+[node name="Color" type="Spatial" parent="."]
 transform = Transform( 21.0365, 0, 0, 0, 21.0365, 0, 0, 0, 21.0365, 0, 0, 0 )
-script = ExtResource( 11 )
+script = ExtResource( 8 )
 
-[node name="Sphere" type="MeshInstance" parent="NTHE/Color"]
+[node name="Sphere" type="MeshInstance" parent="Color"]
 mesh = SubResource( 1 )
 material/0 = SubResource( 7 )
-
-[connection signal="add_beat" from="sequencer" to="Beats" method="_on_sequencer_add_beat"]
-[connection signal="beat" from="Conductor" to="sequencer" method="_on_Conductor_beat"]
-[connection signal="beat" from="Conductor" to="NTHE" method="_on_Conductor_beat"]
-[connection signal="start" from="Conductor" to="." method="_on_Conductor_start"]
-[connection signal="start" from="Conductor" to="sequencer" method="_on_Conductor_start"]
-[connection signal="start" from="Conductor" to="NTHE" method="_on_Conductor_start"]
-[connection signal="beat" from="NTHE" to="NTHE/HitBeats" method="_on_NTHE_beat"]
-
-[editable path="3d_view"]

@@ -11,6 +11,8 @@ export var order : int = 0 setget _set_order, _get_order
 
 export(bool) var regularly_spaced = true
 
+var parent
+
 
 export var pos : PoolRealArray =  []
 
@@ -27,10 +29,12 @@ func add_pos(x):
 	
 	
 func _set_order(x): #do this with parent instead
-	if(get_parent() != null):
-		get_parent().move_child(self, x)
-		order = get_index()
-		get_parent().update_names()
+	parent = get_parent()
+	order = get_index()
+	#parent.move_child(self, x)
+	#print("update!")
+	#print(get_parent().name)
+	#parent.update_names()
 	
 	
 

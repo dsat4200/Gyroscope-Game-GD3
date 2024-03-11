@@ -29,16 +29,14 @@ func _ready() -> void:
 	_animation_player.play("show")
 
 
-func setup(data: Dictionary) -> void:
-	self.order_number = data.order_number
+func setup(data):
+	self.order_number = data[0]
 	
-	_speed = 1.0 / data.bps / _beat_delay
+	_speed = data[1]
 
-	global_position = data.global_position
-
-	_sprite.frame = data.color
-
-	_target_circle.setup(_radius_start, _radius_perfect, data.bps, _beat_delay)
+	#_sprite.frame = data.color
+	
+	_target_circle.setup(_radius_start, _radius_perfect, 2*3.16666, 1)
 
 
 func set_order_number(number: int) -> void:

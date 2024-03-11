@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.godot-csv-importer"
+type="Resource"
+path="res://.import/Markers2.csv-4dda5686c01a5cd5d736c43b27a38079.res"
+
+[deps]
+
+source_file="res://Songs/NTHE/Markers2.csv"
+dest_files=[ "res://.import/Markers2.csv-4dda5686c01a5cd5d736c43b27a38079.res" ]
+
+[params]
+
+delimiter=0
+headers=false
+detect_numbers=true
+force_float=true

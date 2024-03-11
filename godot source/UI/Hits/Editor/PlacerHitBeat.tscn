@@ -9,6 +9,7 @@
 font_path = "res://UI/CRYSRG__.TTF"
 
 [sub_resource type="DynamicFont" id=2]
+size = 80
 font_data = SubResource( 1 )
 
 [node name="PlacerHitBeat" type="Position2D"]

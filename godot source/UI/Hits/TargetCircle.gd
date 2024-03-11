@@ -31,7 +31,7 @@ func setup(radius_start: float, radius_end: float, bps: float, beat_delay: float
 
 func _process(delta: float) -> void:
 	_radius -= delta * shrink_speed
-
+	#print("running!")
 	material.set_shader_param("torus_radius", _radius / _start_radius / 2)
 
 	if _radius <= _end_radius:

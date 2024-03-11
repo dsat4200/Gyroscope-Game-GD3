@@ -22,11 +22,12 @@ var data : PoolRealArray = []
 signal beats_updated(beats)
 
 func _ready():
-	var markers = preload("res://Songs/NTHE/Markers.csv").records
+	var markers = preload("res://Songs/NTHE/Markers2.csv").records
 	for N in markers:
 		#if N.get_index() != 0:
 		data.append_array(N)
 	#print(data)  # array of data
+	get_beat_cues()
 
 func get_beats() -> Array:
 	var beat_positions : Array = []
@@ -38,6 +39,10 @@ func get_beats() -> Array:
 func get_pure_beats() -> PoolRealArray:
 	return data
 
+func get_beat_cues() -> Array:
+	var cues = preload("res://Songs/NTHE/Markers2.csv").records
+	print(cues)
+	return cues
 
 func _on_sequencer_add_beat(position):
 	#take position. if between beats, add new beat.
@@ -95,10 +100,12 @@ func find_order_to_place(pos) -> int:#returns the index the new beat object shou
 	return -1
 
 func update_names():
+	print("names update")
 	for N in get_children():
 		N.name = "gloop"
 	for N in get_children():
 		N.name = "b_"+String(N.order)
+		print("wowie!")
 
 func add_beat(index, position):
 	var zero = $b_0
