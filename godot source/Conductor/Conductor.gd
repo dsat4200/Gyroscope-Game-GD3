@@ -33,12 +33,16 @@ signal start
 
 #func _init():
 
+
 func _ready():
 	next_beat = beats[1]
+	Events.connect("score", self, "_score")
 #	print("beats: "+String(beats))
 #	print("first beat at: "+String(next_beat_pos))
 #	next_beat_pos = beats[next_beat_index]
 	
+func _score():
+	print("Score! Time: "+String(song_position)+" offset:"+ String(abs(song_position-beats[song_position_in_beats-1])))
 
 func _process(delta):
 	if Input.is_action_just_pressed("middle_click"):
@@ -105,7 +109,7 @@ func seek_fix(time):
 	#calculate and reset beat values?
 	
 func _on_StartTimer_timeout():
-	print(String(song_position_in_beats))
+	#print(String(song_position_in_beats))
 	song_position_in_beats += 1
 	if song_position_in_beats < beats_before_start - 1:
 		$StartTimer.start()

@@ -17,7 +17,8 @@ func setup(radius_start: float, radius_end: float, bps: float, beat_delay: float
 	_radius = radius_start
 	_end_radius = radius_end
 	_start_radius = _radius
-	shrink_speed = 1.0 / bps / beat_delay * (_radius - _end_radius)
+	#print(String(beat_delay))
+	shrink_speed = beat_delay
 
 	margin_left = -_radius
 	margin_right = _radius
@@ -25,12 +26,11 @@ func setup(radius_start: float, radius_end: float, bps: float, beat_delay: float
 	margin_bottom = _radius
 
 	rect_size = Vector2.ONE * _radius * 2
-
 	set_process(true)
 
 
 func _process(delta: float) -> void:
-	_radius -= delta * shrink_speed
+	_radius = lerp(_radius, _end_radius, .01)
 	#print("running!")
 	material.set_shader_param("torus_radius", _radius / _start_radius / 2)
 

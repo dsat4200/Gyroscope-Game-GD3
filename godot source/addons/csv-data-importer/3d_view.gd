@@ -19,12 +19,14 @@ onready var camera = get_node(camera_path)
 onready var origin = get_node(origin_path)
 onready var ui = get_node(ui_path)
 
+var started = false
+
 var gyro_s = -.02
 var invert_y = 1
 
 
 #control variables. make these into a class later
-var LOOKAROUND_SPEED = .005
+var LOOKAROUND_SPEED = .0048
 var drag_input_enabled = true
 
 var focused = false
@@ -32,7 +34,7 @@ var focused = false
 func toggle_focus(b):
 	focused = b
 	if(focused):
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)#captured
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
@@ -100,7 +102,7 @@ func _input(event):
 		toggle_focus(false)
 	if Input.is_action_just_released("ui_shift"):
 		toggle_focus(true)
-	if(focused):
+	if(started):
 		if event is InputEventMouseMotion:
 			var rot_x = event.relative.x * LOOKAROUND_SPEED
 			var rot_y = event.relative.y * LOOKAROUND_SPEED
@@ -203,3 +205,4 @@ func drift_correction(p_basis, p_grav):
 
 func _on_Conductor_start():
 	emit_signal("start")
+	started = true

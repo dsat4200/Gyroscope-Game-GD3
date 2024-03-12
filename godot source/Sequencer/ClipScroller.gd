@@ -126,7 +126,8 @@ func _on_card_item_rect_changed():
 
 
 func _on_sequencer_beat(position):
-	var newbeat = draw_beatmarker(position, timeToPixels(conductor.song_position))
+	pass
+	#var newbeat = draw_beatmarker(position, timeToPixels(conductor.song_position))
 	
 func draw_beatmarker(beatposition, songpos): #makes and gets the control
 	#print("beat! pos: "+String(beatposition)+", time: "+String(songpos))

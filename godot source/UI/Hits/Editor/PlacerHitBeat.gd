@@ -12,7 +12,11 @@ func _enter_tree() -> void:
 	_order_number = get_index() + 1
 	$OrderNumber.text = str(_order_number)
 
-
+func _ready():
+	if not Engine.editor_hint:	
+		$Sprite.visible=false
+		$OrderNumber.visible=false
+	
 func get_data() -> Dictionary:
 	return {
 		scene = scene,

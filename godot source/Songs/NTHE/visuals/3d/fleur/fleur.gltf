@@ -12,7 +12,7 @@
         {
             "name" : "Scene",
             "nodes" : [
-                67
+                65
             ]
         }
     ],
@@ -1245,28 +1245,8 @@
             ]
         },
         {
-            "name" : "Chest|fleur",
-            "rotation" : [
-                -4.849394827033393e-06,
-                -3.769628609262554e-09,
-                -3.77938613738138e-09,
-                1
-            ],
-            "scale" : [
-                1,
-                1.0000003576278687,
-                1.000000238418579
-            ],
-            "translation" : [
-                1.389049875122339e-09,
-                0.1328200399875641,
-                3.725290298461914e-09
-            ]
-        },
-        {
             "children" : [
-                58,
-                59
+                58
             ],
             "name" : "Bone",
             "rotation" : [
@@ -1282,30 +1262,10 @@
             ]
         },
         {
-            "name" : "Bone|fleur",
-            "rotation" : [
-                -0.005979767069220543,
-                -2.3841442953198566e-07,
-                -1.4257179881127513e-09,
-                0.9999821186065674
-            ],
-            "scale" : [
-                1,
-                1.000000238418579,
-                1.0000001192092896
-            ],
-            "translation" : [
-                -5.560313053900017e-15,
-                0.09154026955366135,
-                -2.60770320892334e-08
-            ]
-        },
-        {
             "children" : [
                 4,
                 9,
-                60,
-                61
+                59
             ],
             "name" : "Spine",
             "rotation" : [
@@ -1347,11 +1307,11 @@
         },
         {
             "children" : [
+                61,
+                62,
                 63,
                 64,
-                65,
-                66,
-                62
+                60
             ],
             "name" : "root"
         }
@@ -1362,21 +1322,21 @@
                 {
                     "sampler" : 0,
                     "target" : {
-                        "node" : 62,
+                        "node" : 60,
                         "path" : "translation"
                     }
                 },
                 {
                     "sampler" : 1,
                     "target" : {
-                        "node" : 62,
+                        "node" : 60,
                         "path" : "rotation"
                     }
                 },
                 {
                     "sampler" : 2,
                     "target" : {
-                        "node" : 62,
+                        "node" : 60,
                         "path" : "scale"
                     }
                 },
@@ -1593,21 +1553,21 @@
                 {
                     "sampler" : 33,
                     "target" : {
-                        "node" : 60,
+                        "node" : 59,
                         "path" : "translation"
                     }
                 },
                 {
                     "sampler" : 34,
                     "target" : {
-                        "node" : 60,
+                        "node" : 59,
                         "path" : "rotation"
                     }
                 },
                 {
                     "sampler" : 35,
                     "target" : {
-                        "node" : 60,
+                        "node" : 59,
                         "path" : "scale"
                     }
                 },
@@ -2643,21 +2603,21 @@
                 {
                     "sampler" : 183,
                     "target" : {
-                        "node" : 67,
+                        "node" : 65,
                         "path" : "translation"
                     }
                 },
                 {
                     "sampler" : 184,
                     "target" : {
-                        "node" : 67,
+                        "node" : 65,
                         "path" : "rotation"
                     }
                 },
                 {
                     "sampler" : 185,
                     "target" : {
-                        "node" : 67,
+                        "node" : 65,
                         "path" : "scale"
                     }
                 }
@@ -3601,21 +3561,21 @@
                 {
                     "sampler" : 0,
                     "target" : {
-                        "node" : 62,
+                        "node" : 60,
                         "path" : "translation"
                     }
                 },
                 {
                     "sampler" : 1,
                     "target" : {
-                        "node" : 62,
+                        "node" : 60,
                         "path" : "rotation"
                     }
                 },
                 {
                     "sampler" : 2,
                     "target" : {
-                        "node" : 62,
+                        "node" : 60,
                         "path" : "scale"
                     }
                 },
@@ -3832,21 +3792,21 @@
                 {
                     "sampler" : 33,
                     "target" : {
-                        "node" : 60,
+                        "node" : 59,
                         "path" : "translation"
                     }
                 },
                 {
                     "sampler" : 34,
                     "target" : {
-                        "node" : 60,
+                        "node" : 59,
                         "path" : "rotation"
                     }
                 },
                 {
                     "sampler" : 35,
                     "target" : {
-                        "node" : 60,
+                        "node" : 59,
                         "path" : "scale"
                     }
                 },
@@ -4882,21 +4842,21 @@
                 {
                     "sampler" : 183,
                     "target" : {
-                        "node" : 67,
+                        "node" : 65,
                         "path" : "translation"
                     }
                 },
                 {
                     "sampler" : 184,
                     "target" : {
-                        "node" : 67,
+                        "node" : 65,
                         "path" : "rotation"
                     }
                 },
                 {
                     "sampler" : 185,
                     "target" : {
-                        "node" : 67,
+                        "node" : 65,
                         "path" : "scale"
                     }
                 }
@@ -5840,21 +5800,21 @@
                 {
                     "sampler" : 0,
                     "target" : {
-                        "node" : 62,
+                        "node" : 60,
                         "path" : "translation"
                     }
                 },
                 {
                     "sampler" : 1,
                     "target" : {
-                        "node" : 62,
+                        "node" : 60,
                         "path" : "rotation"
                     }
                 },
                 {
                     "sampler" : 2,
                     "target" : {
-                        "node" : 62,
+                        "node" : 60,
                         "path" : "scale"
                     }
                 },
@@ -6071,21 +6031,21 @@
                 {
                     "sampler" : 33,
                     "target" : {
-                        "node" : 60,
+                        "node" : 59,
                         "path" : "translation"
                     }
                 },
                 {
                     "sampler" : 34,
                     "target" : {
-                        "node" : 60,
+                        "node" : 59,
                         "path" : "rotation"
                     }
                 },
                 {
                     "sampler" : 35,
                     "target" : {
-                        "node" : 60,
+                        "node" : 59,
                         "path" : "scale"
                     }
                 },
@@ -7121,21 +7081,21 @@
                 {
                     "sampler" : 183,
                     "target" : {
-                        "node" : 67,
+                        "node" : 65,
                         "path" : "translation"
                     }
                 },
                 {
                     "sampler" : 184,
                     "target" : {
-                        "node" : 67,
+                        "node" : 65,
                         "path" : "rotation"
                     }
                 },
                 {
                     "sampler" : 185,
                     "target" : {
-                        "node" : 67,
+                        "node" : 65,
                         "path" : "scale"
                     }
                 }
@@ -8073,92 +8033,6 @@
                     "output" : 588
                 }
             ]
-        },
-        {
-            "channels" : [
-                {
-                    "sampler" : 0,
-                    "target" : {
-                        "node" : 59,
-                        "path" : "translation"
-                    }
-                },
-                {
-                    "sampler" : 1,
-                    "target" : {
-                        "node" : 59,
-                        "path" : "rotation"
-                    }
-                },
-                {
-                    "sampler" : 2,
-                    "target" : {
-                        "node" : 59,
-                        "path" : "scale"
-                    }
-                }
-            ],
-            "name" : "Chest|fleur",
-            "samplers" : [
-                {
-                    "input" : 215,
-                    "interpolation" : "LINEAR",
-                    "output" : 589
-                },
-                {
-                    "input" : 215,
-                    "interpolation" : "LINEAR",
-                    "output" : 590
-                },
-                {
-                    "input" : 215,
-                    "interpolation" : "LINEAR",
-                    "output" : 591
-                }
-            ]
-        },
-        {
-            "channels" : [
-                {
-                    "sampler" : 0,
-                    "target" : {
-                        "node" : 61,
-                        "path" : "translation"
-                    }
-                },
-                {
-                    "sampler" : 1,
-                    "target" : {
-                        "node" : 61,
-                        "path" : "rotation"
-                    }
-                },
-                {
-                    "sampler" : 2,
-                    "target" : {
-                        "node" : 61,
-                        "path" : "scale"
-                    }
-                }
-            ],
-            "name" : "Bone|fleur",
-            "samplers" : [
-                {
-                    "input" : 215,
-                    "interpolation" : "LINEAR",
-                    "output" : 592
-                },
-                {
-                    "input" : 215,
-                    "interpolation" : "LINEAR",
-                    "output" : 593
-                },
-                {
-                    "input" : 215,
-                    "interpolation" : "LINEAR",
-                    "output" : 594
-                }
-            ]
         }
     ],
     "materials" : [
@@ -8368,7 +8242,7 @@
         {
             "inverseBindMatrices" : 7,
             "joints" : [
-                62,
+                60,
                 4,
                 3,
                 2,
@@ -8379,7 +8253,7 @@
                 7,
                 6,
                 5,
-                60,
+                59,
                 58,
                 57,
                 11,
@@ -12028,42 +11902,6 @@
             "componentType" : 5126,
             "count" : 3,
             "type" : "VEC3"
-        },
-        {
-            "bufferView" : 589,
-            "componentType" : 5126,
-            "count" : 78,
-            "type" : "VEC3"
-        },
-        {
-            "bufferView" : 590,
-            "componentType" : 5126,
-            "count" : 78,
-            "type" : "VEC4"
-        },
-        {
-            "bufferView" : 591,
-            "componentType" : 5126,
-            "count" : 78,
-            "type" : "VEC3"
-        },
-        {
-            "bufferView" : 592,
-            "componentType" : 5126,
-            "count" : 78,
-            "type" : "VEC3"
-        },
-        {
-            "bufferView" : 593,
-            "componentType" : 5126,
-            "count" : 78,
-            "type" : "VEC4"
-        },
-        {
-            "bufferView" : 594,
-            "componentType" : 5126,
-            "count" : 78,
-            "type" : "VEC3"
         }
     ],
     "bufferViews" : [
@@ -15038,36 +14876,6 @@
             "buffer" : 0,
             "byteLength" : 36,
             "byteOffset" : 563276
-        },
-        {
-            "buffer" : 0,
-            "byteLength" : 936,
-            "byteOffset" : 563312
-        },
-        {
-            "buffer" : 0,
-            "byteLength" : 1248,
-            "byteOffset" : 564248
-        },
-        {
-            "buffer" : 0,
-            "byteLength" : 936,
-            "byteOffset" : 565496
-        },
-        {
-            "buffer" : 0,
-            "byteLength" : 936,
-            "byteOffset" : 566432
-        },
-        {
-            "buffer" : 0,
-            "byteLength" : 1248,
-            "byteOffset" : 567368
-        },
-        {
-            "buffer" : 0,
-            "byteLength" : 936,
-            "byteOffset" : 568616
         }
     ],
     "samplers" : [
@@ -15078,7 +14886,7 @@
     ],
     "buffers" : [
         {
-            "byteLength" : 569552,
+            "byteLength" : 563312,
             "uri" : "fleur.bin"
         }
     ]

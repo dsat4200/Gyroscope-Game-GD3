@@ -1,13 +1,17 @@
 [remap]
 
-importer="csv_translation"
-type="Translation"
-valid=false
+importer="com.timothyqiu.godot-csv-importer"
+type="Resource"
+path="res://.import/trashraws.csv-9597da61c870540d47b497decb44e319.res"
 
 [deps]
 
 source_file="res://Songs/NTHE/trashraws.csv"
+dest_files=[ "res://.import/trashraws.csv-9597da61c870540d47b497decb44e319.res" ]
+
 [params]
 
-compress=true
 delimiter=0
+headers=false
+detect_numbers=false
+force_float=true

@@ -25,9 +25,8 @@ func _ready():
 	var markers = preload("res://Songs/NTHE/Markers2.csv").records
 	for N in markers:
 		#if N.get_index() != 0:
-		data.append_array(N)
+		data.append(N[0])
 	#print(data)  # array of data
-	get_beat_cues()
 
 func get_beats() -> Array:
 	var beat_positions : Array = []
@@ -41,7 +40,7 @@ func get_pure_beats() -> PoolRealArray:
 
 func get_beat_cues() -> Array:
 	var cues = preload("res://Songs/NTHE/Markers2.csv").records
-	print(cues)
+	#print(cues)
 	return cues
 
 func _on_sequencer_add_beat(position):
@@ -105,7 +104,7 @@ func update_names():
 		N.name = "gloop"
 	for N in get_children():
 		N.name = "b_"+String(N.order)
-		print("wowie!")
+		#print("wowie!")
 
 func add_beat(index, position):
 	var zero = $b_0
@@ -113,4 +112,4 @@ func add_beat(index, position):
 	add_child(dupe)
 	dupe.pos = [position]
 	dupe.order = index
-	print("Beat added: "+dupe.name+ " SongPosition: "+String(dupe.pos))
+	#print("Beat added: "+dupe.name+ " SongPosition: "+String(dupe.pos))
