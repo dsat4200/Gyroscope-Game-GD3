@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Conductor/Conductor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://3d_view.tscn" type="PackedScene" id=2]
@@ -15,13 +15,11 @@
 [ext_resource path="res://UI/Hits/Editor/PlacerHitBeat.tscn" type="PackedScene" id=13]
 [ext_resource path="res://LevelEditor/BeatSpawner.gd" type="Script" id=14]
 [ext_resource path="res://Songs/NTHE/NTHE_mixdown.wav" type="AudioStream" id=15]
-[ext_resource path="res://UI/Fonts/Montserrat-Bold.ttf" type="DynamicFontData" id=16]
 [ext_resource path="res://LevelEditor/showbeat.gd" type="Script" id=17]
 [ext_resource path="res://UI/Hits/Fonts/Montserrat-Bold.ttf" type="DynamicFontData" id=18]
 [ext_resource path="res://LevelEditor/Gyro.gd" type="Script" id=19]
 [ext_resource path="res://cube_6.png" type="Texture" id=20]
-[ext_resource path="res://LevelEditor/Cursor.gd" type="Script" id=21]
-[ext_resource path="res://LevelEditor/cursor_area.gd" type="Script" id=22]
+[ext_resource path="res://Songs/NTHE/visuals/3d/text/lets_go.gltf" type="PackedScene" id=23]
 
 [sub_resource type="DynamicFont" id=12]
 size = 200
@@ -35,20 +33,6 @@ params_diffuse_mode = 1
 albedo_texture = ExtResource( 20 )
 roughness = 0.0
 
-[sub_resource type="SpatialMaterial" id=16]
-flags_unshaded = true
-albedo_color = Color( 0.698039, 0.698039, 0.698039, 1 )
-
-[sub_resource type="SphereMesh" id=17]
-material = SubResource( 16 )
-radius = 75.0
-height = 150.0
-radial_segments = 4
-rings = 12
-
-[sub_resource type="CircleShape2D" id=15]
-radius = 8.24621
-
 [sub_resource type="Animation" id=3]
 resource_name = "NTHE"
 length = 164.0
@@ -58,7 +42,7 @@ tracks/0/path = NodePath("AudioStreamPlayer")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "clips": [ {
 "end_offset": 0.0,
@@ -139,28 +123,26 @@ tracks/5/keys = {
 "times": PoolRealArray( -0.04 )
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("text/lets_go:translation")
+tracks/6/path = NodePath("text:translation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 3.34, 3.5, 3.72, 5.07 ),
-"transitions": PoolRealArray( 0, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( 0, -0.152052, 22.3048 ), Vector3( 0, -0.152052, 0.337955 ), Vector3( 0, -0.152052, -1.86709 ), Vector3( 0, -0.152052, -1.86709 ), Vector3( 0, -0.152052, -3370.84 ) ]
+"values": [ Vector3( 0, 0, 0 ) ]
 }
-tracks/7/type = "value"
-tracks/7/path = NodePath("text:translation")
+tracks/7/type = "animation"
+tracks/7/path = NodePath("text/lets_go2/AnimationPlayer")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ) ]
+"clips": PoolStringArray( "lets_go" ),
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=13]
@@ -190,24 +172,12 @@ tracks/1/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("text/lets_go:translation")
+tracks/2/path = NodePath("text:translation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"update": 0,
-"values": [  ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("text:translation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -232,15 +202,8 @@ surfaces/0 = {
 flags_unshaded = true
 albedo_color = Color( 0.576471, 0.384314, 0.556863, 1 )
 
-[sub_resource type="CubeMesh" id=11]
-
-[sub_resource type="DynamicFont" id=9]
-size = 40
-font_data = ExtResource( 16 )
-
-[sub_resource type="TextMesh" id=10]
-text = "Let's GO!"
-font = SubResource( 9 )
+[sub_resource type="TextMesh" id=18]
+text = "Let's Go!"
 
 [node name="LevelEditor" type="Spatial"]
 script = ExtResource( 5 )
@@ -297,49 +260,52 @@ mouse_filter = 2
 script = ExtResource( 14 )
 
 [node name="PlacerHitBeat" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 957, 529 )
+position = Vector2( 931, 558 )
 
 [node name="PlacerHitBeat2" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 399, 200 )
+position = Vector2( 1030, 560 )
 
 [node name="PlacerHitBeat3" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 960, 529 )
+position = Vector2( 1347, 318 )
 
 [node name="PlacerHitBeat4" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1004, 189 )
+position = Vector2( 1475, 473 )
 
 [node name="PlacerHitBeat5" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1257, 197 )
+position = Vector2( 1416, 680 )
 
 [node name="PlacerHitBeat6" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1423, 271 )
+position = Vector2( 1299, 801 )
 
 [node name="PlacerHitBeat7" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1485, 498 )
+position = Vector2( 1133, 877 )
 
 [node name="PlacerHitBeat8" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1368, 677 )
+position = Vector2( 945, 873 )
 
 [node name="PlacerHitBeat9" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1176, 802 )
+position = Vector2( 761, 808 )
 
 [node name="PlacerHitBeat10" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 996, 867 )
+position = Vector2( 630, 671 )
 
 [node name="PlacerHitBeat11" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 810, 891 )
+position = Vector2( 729, 518 )
 
 [node name="PlacerHitBeat12" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 644, 803 )
+position = Vector2( 873, 435 )
 
 [node name="PlacerHitBeat13" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 524, 655 )
+position = Vector2( 1062, 440 )
 
 [node name="PlacerHitBeat14" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 592, 497 )
+position = Vector2( 1710, 610 )
 
 [node name="PlacerHitBeat15" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 838, 489 )
+position = Vector2( 1688, 790 )
+
+[node name="PlacerHitBeat16" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1596, 931 )
 
 [node name="Boxes" type="Spatial" parent="NTHE/Gyro"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -40.3652, 0 )
@@ -353,26 +319,6 @@ material/0 = SubResource( 8 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -4, -18.1988 )
 mesh = SubResource( 7 )
 material/0 = SubResource( 8 )
-
-[node name="Cursor" type="Control" parent="NTHE/Gyro"]
-margin_right = 40.0
-margin_bottom = 40.0
-mouse_filter = 2
-script = ExtResource( 21 )
-
-[node name="cursor_area" type="Area2D" parent="NTHE/Gyro/Cursor"]
-collision_layer = 2
-collision_mask = 2
-script = ExtResource( 22 )
-
-[node name="TargetSphere" type="MeshInstance2D" parent="NTHE/Gyro/Cursor/cursor_area"]
-modulate = Color( 0.603922, 0.603922, 0.603922, 1 )
-show_behind_parent = true
-scale = Vector2( 0.11, 0.11 )
-mesh = SubResource( 17 )
-
-[node name="cursor_hitbox" type="CollisionShape2D" parent="NTHE/Gyro/Cursor/cursor_area"]
-shape = SubResource( 15 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="NTHE"]
 anims/NTHE = SubResource( 3 )
@@ -401,12 +347,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -86.0836, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="NTHE/text"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, -2.79642 )
-mesh = SubResource( 11 )
+mesh = SubResource( 18 )
 
-[node name="lets_go" type="MeshInstance" parent="NTHE/text"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.152052, 22.3048 )
-mesh = SubResource( 10 )
-skeleton = NodePath("../..")
+[node name="lets_go2" parent="NTHE/text" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0599374 )
 
 [node name="3d_view" parent="." instance=ExtResource( 2 )]
 
@@ -430,4 +374,5 @@ visible = false
 [connection signal="beat" from="NTHE" to="NTHE/Gyro/HitBeats" method="_on_NTHE_beat"]
 [connection signal="start" from="NTHE" to="NTHE/Gyro" method="_on_NTHE_start"]
 
+[editable path="NTHE/text/lets_go2"]
 [editable path="3d_view"]

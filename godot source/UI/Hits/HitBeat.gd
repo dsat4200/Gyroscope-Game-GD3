@@ -11,6 +11,7 @@ var _offset_ok := 4
 
 var order_number := 0 setget set_order_number
 
+var beat_time = 0
 var _beat_hit := false
 var _beat_miss = false
 var _beat_delay := 4.0  #beats before perfect
@@ -32,6 +33,8 @@ func setup(data):
 	_speed = data[1]
 	_beat_delay = data[2]
 	target_sphere.setup(data[2])
+	beat_time = data[3]
+	
 	if (_beat_delay > 0):
 		timer.wait_time = data[2]+margin
 		timer.start()
@@ -51,8 +54,6 @@ func click():
 	if (hovering):
 		hit()
 	
-func _get_score() -> int:
-	return 0
 
 func miss():
 	if(_beat_hit == false):
@@ -64,24 +65,34 @@ func hit():
 	if(_beat_miss==false and hovering == true):
 		_beat_hit = true
 		_animation_player.play("hit")
-		Events.emit_signal("score")
+		score(beat_time)
 		
 		#send score to beatspawner. bs then gets the offset, and spawns / plays different animations (miss, good, great, perfect, etc). it also adds these to the score
 		#print("HitBeat sending score!")
+
+func score(time):
+	#print("score! "+ String(time))
+	Events.emit_signal("score", time)
 
 func _on_Timer_timeout():
 	#print("Timeout!")
 	miss()
 
-
-var hovering = false
-func _on_Area2D_area_entered(area):
-	#print("AHHH"+area.name)
+func hover():
 	hovering = true
-	_sprite.frame = 1
+	_sprite.frame = 3
 
-
-func _on_Area2D_area_exited(area):
+func hover_exit():
 	hovering = false
 	_sprite.frame = 0
+
+
+var hovering = false
+#discon
+func _on_Area2D_area_entered(area):
+	#print("AHHH"+area.name)
+	pass
+
+#discon
+func _on_Area2D_area_exited(area):
 	pass # Replace with function body.

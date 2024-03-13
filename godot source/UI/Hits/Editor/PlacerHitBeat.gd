@@ -5,11 +5,12 @@ class_name PlacerHitBeat, "res://UI/Hits/Editor/placer_hit_beat_icon.svg"
 export (PackedScene) var scene
 export (int, 1, 4) var duration := 2 setget set_duration
 
-var _order_number := 1
+var _order_number := 0
 
 
 func _enter_tree() -> void:
-	_order_number = get_index() + 1
+	_order_number = get_index()
+	print(_order_number)
 	$OrderNumber.text = str(_order_number)
 
 func _ready():

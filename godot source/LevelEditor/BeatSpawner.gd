@@ -30,7 +30,7 @@ func spawn_beat(index, position):
 		#print("from beat " +String(beats[position][0]) +" to beat " + String(next_beat)+" is " + String(distance_until_next_beat))
 		#last one is beat_delay. beat delay should be  the amount of time until the beat proper.
 		#var time_until_next_beat = 
-		var beat_data = [index, 1, distance_until_next_beat]#[order_number, _speed, global_position, frame, bps? beatdelay?]
+		var beat_data = [index, 1, distance_until_next_beat, next_beat]#[order_number, _speed, global_position, frame, bps? beatdelay?]
 		new_beat.setup(beat_data)
 
 

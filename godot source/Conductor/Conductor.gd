@@ -36,13 +36,13 @@ signal start
 
 func _ready():
 	next_beat = beats[1]
-	Events.connect("score", self, "_score")
+	Events.connect("score", self, "score")
 #	print("beats: "+String(beats))
 #	print("first beat at: "+String(next_beat_pos))
 #	next_beat_pos = beats[next_beat_index]
 	
-func _score():
-	print("Score! Time: "+String(song_position)+" offset:"+ String(abs(song_position-beats[song_position_in_beats-1])))
+func score(time):
+	print("Score! Time: "+String(song_position)+" offset:"+ String(abs(song_position-time)))
 
 func _process(delta):
 	if Input.is_action_just_pressed("middle_click"):
