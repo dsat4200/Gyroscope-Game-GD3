@@ -32,10 +32,9 @@ signal start
 #add function to show beats it calculated?z
 
 #func _init():
-
+var hit_time
 
 func _ready():
-	next_beat = beats[1]
 	Events.connect("score", self, "score")
 #	print("beats: "+String(beats))
 #	print("first beat at: "+String(next_beat_pos))

@@ -9,11 +9,8 @@ var beats
 # var a = 2
 # var b = "text"y
 func _ready() -> void:
-	Events.connect("score", self, "_score")
-	
-func _score():
-	#print("Score! at position: " + String(current_beat_index)+" " +String(beats[current_beat_index][0]))
 	pass
+
 
 			
 func spawn_beat(index, position):
