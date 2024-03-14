@@ -18,7 +18,6 @@ func _ready():
 	conductor.play_with_beat_offset(0)
 	
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

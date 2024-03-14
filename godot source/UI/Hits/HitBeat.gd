@@ -65,6 +65,8 @@ func hit():
 	if(_beat_miss==false and hovering == true):
 		_beat_hit = true
 		_animation_player.play("hit")
+		#$Area2D.monitorable= false
+		#$Area2D.monitoring = false
 		score(beat_time)
 		
 		#send score to beatspawner. bs then gets the offset, and spawns / plays different animations (miss, good, great, perfect, etc). it also adds these to the score
