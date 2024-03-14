@@ -98,16 +98,16 @@ func scale_rect():
 	
 func _on_RightScrub_mouse_entered():
 	r_hover = true
-	print("r_hover: "+String(r_hover))
+	#print("r_hover: "+String(r_hover))
 func _on_LeftScrub_mouse_entered():
 	l_hover = true
-	print("l_hover: "+String(l_hover))
+	#print("l_hover: "+String(l_hover))
 func _on_RightScrub_mouse_exited():
 	r_hover = false
-	print("r_hover: "+String(r_hover))
+	#print("r_hover: "+String(r_hover))
 func _on_LeftScrub_mouse_exited():
 	l_hover = false
-	print("l_hover: "+String(l_hover))
+	#print("l_hover: "+String(l_hover))
 func _on_ScrubRect_mouse_entered():
 	rect_hover = true
 func _on_ScrubRect_mouse_exited():

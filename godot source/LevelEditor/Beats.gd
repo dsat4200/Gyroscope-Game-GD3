@@ -99,7 +99,7 @@ func find_order_to_place(pos) -> int:#returns the index the new beat object shou
 	return -1
 
 func update_names():
-	print("names update")
+	#print("names update")
 	for N in get_children():
 		N.name = "gloop"
 	for N in get_children():

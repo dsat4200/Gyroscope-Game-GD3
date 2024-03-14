@@ -105,12 +105,12 @@ var hover_nav = false
 
 func _on_ClipScroller_mouse_entered():
 	hover = true
-	print("hover: "+String(hover))
+	#print("hover: "+String(hover))
 
 
 func _on_ClipScroller_mouse_exited():
 	hover = false
-	print("hover: "+String(hover))
+	#print("hover: "+String(hover))
 
 
 func _on_card_mouse_entered():

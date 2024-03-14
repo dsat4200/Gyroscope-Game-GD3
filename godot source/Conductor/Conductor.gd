@@ -36,8 +36,8 @@ var hit_time
 
 func _ready():
 	Events.connect("score", self, "score")
-#	print("beats: "+String(beats))
-#	print("first beat at: "+String(next_beat_pos))
+#	#print("beats: "+String(beats))
+#	#print("first beat at: "+String(next_beat_pos))
 #	next_beat_pos = beats[next_beat_index]
 	
 func score(time):
@@ -45,7 +45,8 @@ func score(time):
 
 func _process(delta):
 	if Input.is_action_just_pressed("middle_click"):
-		print("SongPos: "+String(song_position)+", in beats: "+String(song_position_in_beats)+", next: "+String(next_beat))
+		pass
+		#print("SongPos: "+String(song_position)+", in beats: "+String(song_position_in_beats)+", next: "+String(next_beat))
 		#print("last and next: " + String(last_reported_beat_pos)+ " " + String(next_beat_pos)+ " Array: "+String(beats))
 
 func _physics_process(_delta):

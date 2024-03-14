@@ -72,6 +72,6 @@ func get_big_beat(i:int) -> Node2D: #dangerous stupid bitch of a method
 		return null
 	
 	else:
-		print(big.name+", "+String(i))
+		#print(big.name+", "+String(i))
 		return big
 	

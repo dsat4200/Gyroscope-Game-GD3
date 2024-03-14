@@ -19,13 +19,13 @@ export var pos : PoolRealArray =  []
 	
 func add_pos(x):
 	if(regularly_spaced):
-		print("adding!")
+		#print("adding!")
 		var size = pos.size()
 		if(size == 0):
 			pos.append(x)
 		else:
 			pos[size-1] = pos[size-2]+get_parent().sec_per_beat
-		print("p added at:"+String(pos[size-1]))
+		#print("p added at:"+String(pos[size-1]))
 	
 	
 func _set_order(x): #do this with parent instead
@@ -38,7 +38,7 @@ func _set_order(x): #do this with parent instead
 	
 	
 
-#		print(self.name)
+#		#print(self.name)
 
 
 		#update next name. if no next, dont.

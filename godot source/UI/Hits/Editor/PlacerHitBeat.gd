@@ -10,7 +10,7 @@ var _order_number := 0
 
 func _enter_tree() -> void:
 	_order_number = get_index()
-	print(_order_number)
+	#print(_order_number)
 	$OrderNumber.text = str(_order_number)
 
 func _ready():
