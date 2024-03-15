@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Conductor/Conductor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://3d_view.tscn" type="PackedScene" id=2]
@@ -7,8 +7,6 @@
 [ext_resource path="res://LevelEditor/LevelEditor.gd" type="Script" id=5]
 [ext_resource path="res://LevelEditor/Beats.gd" type="Script" id=6]
 [ext_resource path="res://Sequencer/beat.gd" type="Script" id=7]
-[ext_resource path="res://Songs/NTHE/visuals/3d/fleur/fleur.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Songs/NTHE/visuals/3d/fleur/fleur.gd" type="Script" id=9]
 [ext_resource path="res://LevelEditor/NTHE.gd" type="Script" id=10]
 [ext_resource path="res://LevelEditor/ColorBgSwap.gd" type="Script" id=11]
 [ext_resource path="res://Songs/NTHE/NTHE_mixdown_drums.wav" type="AudioStream" id=12]
@@ -57,7 +55,7 @@ tracks/0/path = NodePath("AudioStreamPlayer")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "clips": [ {
 "end_offset": 0.0,
@@ -66,23 +64,13 @@ tracks/0/keys = {
 } ],
 "times": PoolRealArray( 0 )
 }
-tracks/1/type = "animation"
-tracks/1/path = NodePath("fleur/AnimationPlayer")
+tracks/1/type = "method"
+tracks/1/path = NodePath("Color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"clips": PoolStringArray( "cute_poses", "swing" ),
-"times": PoolRealArray( 3.06, 44.21 )
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath("Color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 2.32, 3.84, 43.24, 44.21 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "values": [ {
@@ -99,37 +87,13 @@ tracks/2/keys = {
 "method": "switch_color"
 } ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("fleur:translation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 3.84, 3.96, 43.83, 44.29, 46.22 ),
-"transitions": PoolRealArray( 0, 1, 0, 1.31951, 0, 0 ),
-"update": 0,
-"values": [ Vector3( 3.15691, -57.9984, -2.019 ), Vector3( 1.90005, -0.328, -2.019 ), Vector3( -0.197534, -0.598052, -1.09994 ), Vector3( 2.10378, -0.3284, -2.01853 ), Vector3( -0.0439866, -0.329368, -1.95712 ), Vector3( 0.330617, -0.656981, -0.940239 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("fleur:rotation_degrees")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 3.84, 3.96, 43.83, 44.29, 46.22 ),
-"transitions": PoolRealArray( 1, 0, 1.31951, 0, 0 ),
-"update": 0,
-"values": [ Vector3( 0, 44.682, 0 ), Vector3( 0, 19.3809, 0 ), Vector3( 0, 0, 0 ), Vector3( 36.6656, -6.0304, -3.60959 ), Vector3( 3.63847, -29.9312, -13.0239 ) ]
-}
-tracks/5/type = "audio"
-tracks/5/path = NodePath("AudioStreamPlayer")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = false
-tracks/5/keys = {
+tracks/2/type = "audio"
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -137,62 +101,38 @@ tracks/5/keys = {
 } ],
 "times": PoolRealArray( -0.04 )
 }
-tracks/6/type = "value"
-tracks/6/path = NodePath("text:translation")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
+tracks/3/type = "value"
+tracks/3/path = NodePath("text:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ) ]
 }
-tracks/7/type = "animation"
-tracks/7/path = NodePath("text/text/AnimationPlayer")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"clips": PoolStringArray( "text_moving" ),
+tracks/4/type = "animation"
+tracks/4/path = NodePath("text/text/AnimationPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": PoolStringArray( "text_action" ),
 "times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=13]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("fleur:translation")
+tracks/0/path = NodePath("text:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 25.7003, -7.00133, -2.01853 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("fleur:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("text:translation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -361,12 +301,8 @@ stream = ExtResource( 3 )
 [node name="DirectionalLight" type="DirectionalLight" parent="NTHE"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.493196, 0.73114, 1.27482 )
 
-[node name="fleur" parent="NTHE" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 25.7003, -7.00133, -2.01853 )
-script = ExtResource( 9 )
-
 [node name="Color" type="Spatial" parent="NTHE"]
-transform = Transform( 21.0365, 0, 0, 0, 21.0365, 0, 0, 0, 21.0365, 0, 0, 0 )
+transform = Transform( 15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0 )
 script = ExtResource( 11 )
 
 [node name="Sphere" type="MeshInstance" parent="NTHE/Color"]
