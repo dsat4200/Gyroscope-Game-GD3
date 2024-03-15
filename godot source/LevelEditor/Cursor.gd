@@ -24,19 +24,31 @@ func bypass_bitch(code):
 	#print("newnews")
 	#print(area)
 	var size = code.size()
+	var areasize = area.size()
+	#print("codesize: "+String(size)+" areasize:"+String(area.size()))
 	if(size==0):
 		#print("area entered")
 		#print(area)
 		hoverate(area)
 	
-	elif(size > area.size() and area.size() > 1):
-		#print("code size: "+String(size)+" area size:"+String(area.size()))
+	elif(size ==2 and areasize ==1):
 		#print("overlap exit")
 		#print(code)
 		code[size-1].get_parent().hover_exit()
 		bypass_bitch([])
 	
-	if(size == area.size()):
+	elif((size==1 or size ==2 or size==3) and areasize==0):
+		#print("normal exit")
+		simple_unhover(code)
+		
+#	elif(size > areasize and areasize > 1):
+#		#print("code size: "+String(size)+" area size:"+String(area.size()))
+#		print("overlap exit")
+#		#print(code)
+#		code[size-1].get_parent().hover_exit()
+#		bypass_bitch([])
+	
+	if(size == areasize):
 		#print("probably scored?")
 		area.pop_back()
 		hoverate(area)
@@ -53,7 +65,11 @@ func hoverate(me):
 			#print("hovering!")
 			#print(j)
 			j.hover()
-		
+			
+func simple_unhover(me):
+	for i in me:
+		i.get_parent().hover_exit()
+	
 var oldnews
 func _on_cursor_area_area_entered(area):
 	#print("entered")
