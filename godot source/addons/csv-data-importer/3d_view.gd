@@ -67,7 +67,7 @@ func _process(delta):
 	var gyro = Input.get_gyroscope()
 
 	# Show our base values
-	ui.pass_data(str(acc),str(grav),str(mag),str(gyro))
+	#ui.pass_data(str(acc),str(grav),str(mag),str(gyro))
 
 	# Check if we have all needed data
 	if grav.length() < 0.1:
@@ -103,6 +103,8 @@ func _process(delta):
 	
 #mouse control
 func _input(event):
+	if Input.is_action_just_pressed("close_window"):
+		get_tree().quit()
 	if Input.is_action_just_pressed("ui_shift"):
 		toggle_focus(false)
 	if Input.is_action_just_released("ui_shift"):

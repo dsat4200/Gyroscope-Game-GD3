@@ -47,7 +47,7 @@ func spawn_next_line():
 		#Position2D Vector2
 		var dist = abs((get_parent().position-next_placer.position).length())
 		#print(global_position)
-		print(dist)
+		#print(dist)
 		if(dist>600): 
 		#var fuck = next_placer.global_position
 		#print(newpos)

@@ -171,4 +171,4 @@ func drift_correction(p_basis, p_grav):
 func _on_NTHE_start():
 	emit_signal("start")
 	started = true
-	zero_camera()
+	#zero_camera()

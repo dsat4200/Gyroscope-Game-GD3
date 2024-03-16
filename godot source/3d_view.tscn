@@ -48,7 +48,6 @@ margin_bottom = 130.0
 text = "="
 
 [node name="re_center" type="Button" parent="ui/menu"]
-visible = false
 margin_left = -326.0
 margin_right = -19.0
 margin_bottom = 128.0
@@ -56,12 +55,18 @@ rect_pivot_offset = Vector2( -1236, -59 )
 text = "Re-Center"
 
 [node name="drag_input" type="Button" parent="ui/menu"]
-visible = false
 margin_left = -652.0
 margin_right = -345.0
 margin_bottom = 128.0
 rect_pivot_offset = Vector2( -1236, -59 )
 text = "drag_input"
+
+[node name="re_load" type="Button" parent="ui/menu"]
+margin_left = -998.0
+margin_right = -691.0
+margin_bottom = 128.0
+rect_pivot_offset = Vector2( -1236, -59 )
+text = "re_load"
 
 [node name="data" type="Node2D" parent="ui"]
 position = Vector2( 10, 10 )

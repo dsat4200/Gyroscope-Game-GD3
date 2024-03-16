@@ -14,7 +14,9 @@ onready var hitbeats = $Gyro/HitBeats
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hitbeats.beats = beats
-	$AudioStreamPlayer.queue_free()
+	$AudioStreamPlayer.stop()
+	#AnimationPlayer
+	$AnimationPlayer.get_animation("NTHE").remove_track(0)
 	pass # Replace with function body.
 
 
@@ -38,3 +40,11 @@ func _on_Conductor_start():
 	emit_signal("start")
 	pass
 	#print("Conductor Start!")
+
+#fix me please
+func _on_LevelEditor_please_reload():
+	get_tree().paused = false
+	$graphic_elements.set_translation(Vector3.ZERO)
+	$graphic_elements/circe/AnimationPlayer.seek(0)
+	$graphic_elements/circe/AnimationPlayer.play()
+	get_tree().reload_current_scene()
