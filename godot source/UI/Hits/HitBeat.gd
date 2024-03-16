@@ -42,14 +42,19 @@ func setup(data):
 	else: print("ERROR. TIME CANNOT BE ZERO")
 	
 func spawn_next_line():
-	var next_placer = get_parent().get_parent().get_child(order_number-1)
+	var next_placer = get_parent().get_parent().get_child(order_number)
 	if(next_placer!=null):
 		#Position2D Vector2
-		#print(abs((position-next_placer.position).length()))
-		if(abs((position-next_placer.position).length())>600):
-			var newpos = .65*(-global_position+next_placer.global_position)
-			$Line2D.points[0] = newpos
-			#$Line2D.global_position = next_placer.global_position
+		var dist = abs((get_parent().position-next_placer.position).length())
+		#print(global_position)
+		print(dist)
+		if(dist>600): 
+		#var fuck = next_placer.global_position
+		#print(newpos)
+			$Line2D.points[1] = .65*(-global_position+next_placer.global_position)
+		#$Line2D.global_position = Vector2.ZERO
+		#print($Line2D.global_position)
+		
 
 func set_order_number(number: int) -> void:
 	order_number = number

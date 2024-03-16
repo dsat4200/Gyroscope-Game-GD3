@@ -13,10 +13,11 @@ var invert_y = 1
 
 #control variables. make these into a class later
 var LOOKAROUND_SPEED = 6
-var GYRO_LOOKAROUND_SPEED = 24
+var GYRO_LOOKAROUND_SPEED = 34
 var drag_input_enabled = true
 
 var focused = false
+var not_android = true
 
 func toggle_focus(b):
 	focused = b
@@ -39,6 +40,7 @@ func rotate_ui(basis):
 
 func _process(delta):
 	# Get our data
+	if(OS.get_name()=="Android"):not_android=false
 	var acc = Input.get_accelerometer()
 	var grav = Input.get_gravity()
 	var mag = Input.get_magnetometer()
@@ -78,7 +80,7 @@ func _process(delta):
 func _input(event):
 	#print(started)
 	if event is InputEventMouseMotion:
-		if(started):
+		if(started and not_android==true):
 			var pos = [event.relative.x * LOOKAROUND_SPEED, event.relative.y * LOOKAROUND_SPEED] 
 			ui.rect_position.x-=pos[0]
 			ui.rect_position.y-=pos[1]			

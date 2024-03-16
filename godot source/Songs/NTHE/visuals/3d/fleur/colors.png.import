@@ -3,16 +3,17 @@
 importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/colors.png-2eca3ed262458933a3a9790ec895d642.s3tc.stex"
+path.etc2="res://.import/colors.png-2eca3ed262458933a3a9790ec895d642.etc2.stex"
 path.etc="res://.import/colors.png-2eca3ed262458933a3a9790ec895d642.etc.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc" ],
+"imported_formats": [ "s3tc", "etc2", "etc" ],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Songs/NTHE/visuals/3d/fleur/colors.png"
-dest_files=[ "res://.import/colors.png-2eca3ed262458933a3a9790ec895d642.s3tc.stex", "res://.import/colors.png-2eca3ed262458933a3a9790ec895d642.etc.stex" ]
+dest_files=[ "res://.import/colors.png-2eca3ed262458933a3a9790ec895d642.s3tc.stex", "res://.import/colors.png-2eca3ed262458933a3a9790ec895d642.etc2.stex", "res://.import/colors.png-2eca3ed262458933a3a9790ec895d642.etc.stex" ]
 
 [params]
 

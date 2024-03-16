@@ -30,6 +30,7 @@ var LOOKAROUND_SPEED = .0048
 var drag_input_enabled = true
 
 var focused = false
+var not_mobile = true
 
 func toggle_focus(b):
 	focused = b
@@ -52,6 +53,7 @@ func rotate_camera(basis):
 
 func _ready():
 	#ui.camera = camera
+	if(OS.get_name() =="Android"): not_mobile = false
 	ui.drag_input_enabled = drag_input_enabled
 	origin.camera = camera
 	toggle_focus(true)
@@ -105,7 +107,7 @@ func _input(event):
 		toggle_focus(false)
 	if Input.is_action_just_released("ui_shift"):
 		toggle_focus(true)
-	if(started):
+	if(started and not_mobile):
 		if event is InputEventMouseMotion:
 			var rot_x = event.relative.x * LOOKAROUND_SPEED
 			var rot_y = event.relative.y * LOOKAROUND_SPEED

@@ -3,16 +3,17 @@
 importer="texture"
 type="StreamTexture"
 path.s3tc="res://.import/spritesheet.png-11a8ffcab4e6873941aa46b3ab4b59bc.s3tc.stex"
+path.etc2="res://.import/spritesheet.png-11a8ffcab4e6873941aa46b3ab4b59bc.etc2.stex"
 path.etc="res://.import/spritesheet.png-11a8ffcab4e6873941aa46b3ab4b59bc.etc.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc" ],
+"imported_formats": [ "s3tc", "etc2", "etc" ],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Songs/NTHE/visuals/3d/graphics/spritesheet.png"
-dest_files=[ "res://.import/spritesheet.png-11a8ffcab4e6873941aa46b3ab4b59bc.s3tc.stex", "res://.import/spritesheet.png-11a8ffcab4e6873941aa46b3ab4b59bc.etc.stex" ]
+dest_files=[ "res://.import/spritesheet.png-11a8ffcab4e6873941aa46b3ab4b59bc.s3tc.stex", "res://.import/spritesheet.png-11a8ffcab4e6873941aa46b3ab4b59bc.etc2.stex", "res://.import/spritesheet.png-11a8ffcab4e6873941aa46b3ab4b59bc.etc.stex" ]
 
 [params]
 
@@ -25,7 +26,7 @@ flags/repeat=true
 flags/filter=true
 flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=2
+flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false

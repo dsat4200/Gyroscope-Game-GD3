@@ -125,7 +125,17 @@ middle_click={
 [rendering]
 
 quality/driver/driver_name="GLES2"
+quality/intended_usage/framebuffer_allocation.mobile=2
 vram_compression/import_etc=true
-vram_compression/import_etc2=false
+misc/lossless_compression/force_png=true
+quality/shadows/filter_mode=0
+quality/reflections/high_quality_ggx=false
+quality/depth_prepass/enable=false
 quality/skinning/software_skinning_fallback=false
+misc/occlusion_culling/max_active_spheres=16
+misc/occlusion_culling/max_active_polygons=16
+gles3/shaders/max_simultaneous_compiles=4
+gles3/shaders/max_simultaneous_compiles.mobile=3
+gles3/shaders/shader_cache_size_mb.mobile=256
 environment/default_environment="res://default_env.tres"
+quality/subsurface_scattering/quality=0
