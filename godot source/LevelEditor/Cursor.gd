@@ -23,12 +23,12 @@ func bypass_bitch(code):
 	#print(oldnews)
 	#print("newnews")
 	#print(area)
-	print("code and area:")
-	print(code)
-	print(area)
+	#print("code and area:")
+	#print(code)
+	#print(area)
 	var size = code.size()
 	var areasize = area.size()
-	print("codesize: "+String(size)+" areasize:"+String(area.size()))
+	#print("codesize: "+String(size)+" areasize:"+String(area.size()))
 	if(size==0):
 		#print("area entered")
 		#print(area)
@@ -45,7 +45,11 @@ func bypass_bitch(code):
 	
 	elif((size==1 or size ==2 or size==3) and areasize==0):
 		#print("normal exit")
-		simple_unhover(code)
+		var wr = weakref(code[size-1])
+		if(!wr.get_ref()):
+			pass
+		else:
+			simple_unhover(code)
 		
 #	elif(size > areasize and areasize > 1):
 #		#print("code size: "+String(size)+" area size:"+String(area.size()))

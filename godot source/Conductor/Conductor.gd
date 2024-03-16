@@ -41,8 +41,8 @@ func _ready():
 #	next_beat_pos = beats[next_beat_index]
 	
 func score(time):
-	print("Score! Time: "+String(song_position)+" offset:"+ String(abs(song_position-time)))
-
+	#print("Score! Time: "+String(song_position)+" offset:"+ String(abs(song_position-time)))
+	pass
 func _process(delta):
 	if Input.is_action_just_pressed("middle_click"):
 		pass

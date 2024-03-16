@@ -27,13 +27,10 @@ func _ready():
 
 
 func _on_Conductor_beat(position):
-	emit_signal("beat", position)
-	resync_beat(position)
-
-func resync_beat(position):
-	#print("resyncing to: "+String(beats[position][0]))
 	anim_player.play("NTHE")
 	anim_player.seek(beats[position][0])
+	emit_signal("beat", position)
+	
 
 
 func _on_Conductor_start():

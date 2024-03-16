@@ -23,17 +23,16 @@ func init_buttons():
 	menu.get_node("drag_input").connect("pressed", self, "_drag_input_pressed")
 
 	
-func toggle_menu() -> bool:
+func toggle_menu(focused):
 	if !menu_open:
 		menu.text = "X"
 	else:
 		menu.text = "="
 	
-	menu_open = not menu_open
-	get_tree().paused = menu_open
+	get_tree().paused = not focused
 	menu.get_node("re_center").visible = menu_open
 	menu.get_node("drag_input").visible = menu_open
-	return menu_open
+	menu_open = not focused
 
 func pass_data(acc, grav, mag, gyro):
 	get_node("data/Accelerometer").text = "A: " + acc + ", G: " + grav
@@ -41,7 +40,7 @@ func pass_data(acc, grav, mag, gyro):
 	get_node("data/Gyroscope").text = "G: " + gyro
 
 func _menu_pressed():
-	toggle_menu()
+	toggle_menu(menu_open)
 	
 func _re_center_pressed():
 	get_tree().get_root().get_node("Main").zero_camera()

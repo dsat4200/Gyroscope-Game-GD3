@@ -34,9 +34,11 @@ var focused = false
 func toggle_focus(b):
 	focused = b
 	if(focused):
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)#captured
+		#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)#captured
+		pass
 	else:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		pass
 
 func zero_camera():
 	origin.rotation_degrees = Vector3(0,0,0)
@@ -53,6 +55,7 @@ func _ready():
 	ui.drag_input_enabled = drag_input_enabled
 	origin.camera = camera
 	toggle_focus(true)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 func _process(delta):
 	# Get our data
@@ -109,11 +112,12 @@ func _input(event):
 			origin.rotate_object_local(Vector3(0, 1, 0), -rot_x) # first rotate in Y
 			camera.rotate_object_local(Vector3(1, 0, 0), -invert_y * rot_y) # then rotate in X
 	if Input.is_action_just_pressed("ui_menu"):
-		if($ui.toggle_menu()):
+		if(focused):
 			toggle_focus(false)
 		else:
 			toggle_focus(true)
-		
+		$ui.toggle_menu(focused)
+		#print(focused)
 		
 		
 

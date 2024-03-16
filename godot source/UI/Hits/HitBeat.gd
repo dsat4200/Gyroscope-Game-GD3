@@ -34,12 +34,23 @@ func setup(data):
 	_beat_delay = data[2]
 	target_sphere.setup(data[2])
 	beat_time = data[3]
-	
+	spawn_next_line()
+	#find partner, print
 	if (_beat_delay > 0):
 		timer.wait_time = data[2]+margin
 		timer.start()
 	else: print("ERROR. TIME CANNOT BE ZERO")
 	
+func spawn_next_line():
+	var next_placer = get_parent().get_parent().get_child(order_number-1)
+	if(next_placer!=null):
+		#Position2D Vector2
+		#print(abs((position-next_placer.position).length()))
+		if(abs((position-next_placer.position).length())>600):
+			var newpos = .65*(-global_position+next_placer.global_position)
+			$Line2D.points[0] = newpos
+			#$Line2D.global_position = next_placer.global_position
+
 func set_order_number(number: int) -> void:
 	order_number = number
 	_label.text = str(order_number)
