@@ -14,6 +14,7 @@ onready var hitbeats = $Gyro/HitBeats
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hitbeats.beats = beats
+	$AudioStreamPlayer.queue_free()
 	pass # Replace with function body.
 
 
