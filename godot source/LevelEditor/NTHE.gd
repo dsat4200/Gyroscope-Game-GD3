@@ -20,15 +20,6 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
-
-	
-
-
 func _on_Conductor_beat(position):
 	anim_player.play("NTHE")
 	anim_player.seek(beats[position][0])
@@ -45,6 +36,6 @@ func _on_Conductor_start():
 func _on_LevelEditor_please_reload():
 	get_tree().paused = false
 	$graphic_elements.set_translation(Vector3.ZERO)
-	$graphic_elements/circe/AnimationPlayer.seek(0)
-	$graphic_elements/circe/AnimationPlayer.play()
+	#$graphic_elements/circe/AnimationPlayer.seek(0)
+	#$graphic_elements/circe/AnimationPlayer.play()
 	get_tree().reload_current_scene()

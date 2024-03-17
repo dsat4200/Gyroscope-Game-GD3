@@ -16,7 +16,7 @@ func _ready():
 	init_buttons()
 	pass # Replace with function body.
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("reload"):
 		_re_load_pressed()
 
@@ -38,11 +38,6 @@ func toggle_menu(focused):
 	menu.get_node("drag_input").visible = menu_open
 	menu.get_node("re_load").visible = menu_open
 
-func pass_data(acc, grav, mag, gyro):
-	pass
-	#get_node("data/Accelerometer").text = "A: " + acc + ", G: " + grav
-	#get_node("data/Magnetometer").text = "M: " + mag
-	#get_node("data/Gyroscope").text = "G: " + gyro
 
 func _menu_pressed():
 	toggle_menu(menu_open)

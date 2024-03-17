@@ -4,11 +4,14 @@ extends Node
 signal start
 
 onready var ui = $HitBeats
+onready var move = $Move
 
 var started = false
 
 var gyro_s = -.02
 var invert_y = 1
+
+export(bool) var move_elements
 
 
 #control variables. make these into a class later
@@ -29,13 +32,16 @@ func toggle_focus(b):
 func zero_camera():
 	ui.rect_position.x = 0
 	ui.rect_position.y = 0
+	move.rect_position.x = 0
+	move.rect_position.y = 0
 
-func rotate_ui(basis):
+func rotate_ui(_basis):
 	#base.transform.basis = basis
 	var gyroscope = Input.get_gyroscope()
 	if(gyroscope.length() > .01 && drag_input_enabled and started):
 		ui.rect_position.y+=gyroscope.x * GYRO_LOOKAROUND_SPEED
 		ui.rect_position.x+=gyroscope.y * GYRO_LOOKAROUND_SPEED
+		if(move_elements):move.move([gyroscope.x*GYRO_LOOKAROUND_SPEED, gyroscope.y*GYRO_LOOKAROUND_SPEED])
 		pass
 
 func _process(delta):
@@ -61,7 +67,7 @@ func _process(delta):
 		mag = Vector3(1.0, 0.0, 0.0)
 
 	# Calculate our north vector and show that
-	var north = calc_north(grav,mag)
+	#var north = calc_north(grav,mag)
 
 	# Combine our magnetometer and gravity vector to position our box. This will be fairly accurate
 	# but our magnetometer can be easily influenced by magnets. Cheaper phones often don't have gyros
@@ -84,6 +90,11 @@ func _input(event):
 			var pos = [event.relative.x * LOOKAROUND_SPEED, event.relative.y * LOOKAROUND_SPEED] 
 			ui.rect_position.x-=pos[0]
 			ui.rect_position.y-=pos[1]			
+			#print("move elements"+String(move_elements))
+			if(move_elements==true):
+				#print("why the fuck is it true "+String(move_elements))
+				
+				move.move(pos)
 
 
 # This function calculates a rotation matrix based on a direction vector. As our arrows are cylindrical we don't

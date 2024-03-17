@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.godot-csv-importer"
+type="Resource"
+path="res://.import/Template_Game.csv-f1eae5ea388b059bb6749d2ec1a6cb87.res"
+
+[deps]
+
+source_file="res://Songs/Template/Template_Game.csv"
+dest_files=[ "res://.import/Template_Game.csv-f1eae5ea388b059bb6749d2ec1a6cb87.res" ]
+
+[params]
+
+delimiter=0
+headers=false
+detect_numbers=true
+force_float=true

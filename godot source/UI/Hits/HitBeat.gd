@@ -60,10 +60,9 @@ func set_order_number(number: int) -> void:
 	order_number = number
 	_label.text = str(order_number)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if _beat_hit:
 		return
-		hit()
 		
 func click():
 	#print("hovering: " + String(hovering))
@@ -107,10 +106,10 @@ func hover_exit():
 
 var hovering = false
 #discon
-func _on_Area2D_area_entered(area):
+func _on_Area2D_area_entered(_area):
 	#print("AHHH"+area.name)
 	pass
 
 #discon
-func _on_Area2D_area_exited(area):
+func _on_Area2D_area_exited(_area):
 	pass # Replace with function body.

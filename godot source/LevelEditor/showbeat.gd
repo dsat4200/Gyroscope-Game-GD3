@@ -1,6 +1,6 @@
 extends Control
 
-onready var label = $Label
+onready var label = $BeatPosition
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"

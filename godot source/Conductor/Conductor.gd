@@ -1,11 +1,9 @@
 extends AudioStreamPlayer
 
 export var bpm := 190
-export var measures := 4
+var measures := 4
 
-# Tracking the beat and song position
-export(NodePath) var beats_path
-onready var beats = get_node(beats_path).get_pure_beats()
+onready var beats = get_pure_beats()
 
 var song_position = 0.0
 
@@ -18,16 +16,19 @@ onready var sec_per_beat = 60.0 / bpm
 var beats_before_start = 0
 var measure = 1
 
-
 # Determining how close to the beat an event is
 var closest = 0
 var time_off_beat = 0.0
 
 
-
 signal beat(position)
 signal measure(position)
 signal start
+
+#beat stuff
+export(Resource) var csv_path
+
+onready var beat_file 
 
 #add function to show beats it calculated?z
 
@@ -39,11 +40,25 @@ func _ready():
 #	#print("beats: "+String(beats))
 #	#print("first beat at: "+String(next_beat_pos))
 #	next_beat_pos = beats[next_beat_index]
+
+func get_pure_beats() -> PoolRealArray:
+	var markers = csv_path.records
+	var data : PoolRealArray = []
+	for N in markers:
+		#if N.get_index() != 0:
+		data.append(N[0])
+	return data
+
+func get_beat_cues() -> Array:
+	var cues = csv_path.records
+	#print(cues)
+	return cues
 	
+
 func score(time):
-	#print("Score! Time: "+String(song_position)+" offset:"+ String(abs(song_position-time)))
+	print("Score! Time: "+String(song_position)+" offset:"+ String(abs(song_position-time)))
 	pass
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("middle_click"):
 		pass
 		#print("SongPos: "+String(song_position)+", in beats: "+String(song_position_in_beats)+", next: "+String(next_beat))
@@ -54,6 +69,7 @@ func _physics_process(_delta):
 		song_position = get_playback_position() + AudioServer.get_time_since_last_mix()
 		song_position -=AudioServer.get_output_latency()
 		if(song_position >= next_beat):
+			#print("beat! "+ String(next_beat))
 			_report_beat()
 			song_position_in_beats+=1
 			next_beat = beats[song_position_in_beats]

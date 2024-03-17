@@ -15,7 +15,7 @@ var hover
 func _ready():
 	pass # Replace with function body.
 	
-func _process(delta):
+func _process(_delta):
 	if ray.is_colliding():
 		var new_hover = ray.get_collider().get_parent()
 		if not collided or collided.name != new_hover.name:

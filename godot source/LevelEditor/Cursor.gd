@@ -1,5 +1,4 @@
 extends Control
-signal click
 func _ready():
 	#print(rect_position)
 	rect_position.x = get_viewport_rect().size.x / 2
@@ -9,23 +8,14 @@ func _ready():
 
 var monitoring = false
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("ui_tap"):
 		Events.emit_signal("click")
 
 
 func bypass_bitch(code):
-	#hoverate($cursor_area.get_overlapping_areas())
-	#print("code size"+String(code.size()))
 	var area = $cursor_area.get_overlapping_areas()
 	
-	#print("oldnews:")
-	#print(oldnews)
-	#print("newnews")
-	#print(area)
-	#print("code and area:")
-	#print(code)
-	#print(area)
 	var size = code.size()
 	var areasize = area.size()
 	#print("codesize: "+String(size)+" areasize:"+String(area.size()))
@@ -81,13 +71,13 @@ func simple_unhover(me):
 		i.get_parent().hover_exit()
 	
 var oldnews
-func _on_cursor_area_area_entered(area):
+func _on_cursor_area_area_entered(_area):
 	#print("entered")
 	oldnews = $cursor_area.get_overlapping_areas()
 	bypass_bitch([])
 
 
 
-func _on_cursor_area_area_exited(area):
+func _on_cursor_area_area_exited(_area):
 	#print("exited")
 	bypass_bitch(oldnews)

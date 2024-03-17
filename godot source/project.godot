@@ -38,11 +38,6 @@ _global_script_classes=[ {
 "class": "beat",
 "language": "GDScript",
 "path": "res://Sequencer/beat.gd"
-}, {
-"base": "Node",
-"class": "beats",
-"language": "GDScript",
-"path": "res://LevelEditor/Beats.gd"
 } ]
 _global_script_class_icons={
 "DragDetector": "",
@@ -50,8 +45,7 @@ _global_script_class_icons={
 "PlacerRest": "res://UI/Hits/Editor/placer_rest_icon.svg",
 "PlacerRoller": "res://UI/Hits/Editor/placer_hit_roller_icon.svg",
 "TrackTile": "",
-"beat": "",
-"beats": ""
+"beat": ""
 }
 
 [application]
@@ -59,7 +53,7 @@ _global_script_class_icons={
 config/name="Gyroscope Rhythm Game"
 config/description="A demo showing the use of various sensors: an accelerometer, a gyroscope, and a magnetometer.
 These sensors are typically found on mobile devices, so don't expect this to work on a desktop."
-run/main_scene="res://LevelEditor/LevelEditor.tscn"
+run/main_scene="res://Songs/NTHE/LevelEditor.tscn"
 config/icon="res://icon.png"
 
 [autoload]
