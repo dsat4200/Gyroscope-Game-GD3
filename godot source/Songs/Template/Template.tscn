@@ -242,6 +242,102 @@ position = Vector2( 1216, 300 )
 [node name="PlacerHitBeat42" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
 position = Vector2( 1216, 540 )
 
+[node name="PlacerHitBeat43" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 1216, 780 )
+
+[node name="PlacerHitBeat44" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 960, 780 )
+
+[node name="PlacerHitBeat45" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 704, 780 )
+
+[node name="PlacerHitBeat46" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 704, 540 )
+
+[node name="PlacerHitBeat47" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 704, 300 )
+
+[node name="PlacerHitBeat48" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 960, 300 )
+
+[node name="PlacerHitBeat49" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 1216, 300 )
+
+[node name="PlacerHitBeat50" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 1216, 540 )
+
+[node name="PlacerHitBeat51" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 1216, 780 )
+
+[node name="PlacerHitBeat52" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 960, 780 )
+
+[node name="PlacerHitBeat53" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 704, 780 )
+
+[node name="PlacerHitBeat54" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 704, 540 )
+
+[node name="PlacerHitBeat55" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 704, 300 )
+
+[node name="PlacerHitBeat56" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 960, 300 )
+
+[node name="PlacerHitBeat57" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 1216, 300 )
+
+[node name="PlacerHitBeat58" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 1216, 540 )
+
+[node name="PlacerHitBeat59" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 1216, 780 )
+
+[node name="PlacerHitBeat60" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 960, 780 )
+
+[node name="PlacerHitBeat61" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 704, 780 )
+
+[node name="PlacerHitBeat62" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 704, 540 )
+
+[node name="PlacerHitBeat63" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 704, 300 )
+
+[node name="PlacerHitBeat64" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 960, 300 )
+
+[node name="PlacerHitBeat65" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 1216, 300 )
+
+[node name="PlacerHitBeat66" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 1216, 540 )
+
+[node name="PlacerHitBeat67" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 1216, 780 )
+
+[node name="PlacerHitBeat68" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 960, 780 )
+
+[node name="PlacerHitBeat69" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 704, 780 )
+
+[node name="PlacerHitBeat70" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 704, 540 )
+
+[node name="PlacerHitBeat71" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 704, 300 )
+
+[node name="PlacerHitBeat72" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 960, 300 )
+
+[node name="PlacerHitBeat73" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 1216, 300 )
+
+[node name="PlacerHitBeat74" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 1216, 540 )
+
 [node name="Boxes" type="Spatial" parent="Song/Gyro"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -40.3652, 0 )
 
