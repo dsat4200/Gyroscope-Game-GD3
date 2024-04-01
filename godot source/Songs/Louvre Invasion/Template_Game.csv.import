@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.godot-csv-importer"
+type="Resource"
+path="res://.import/Template_Game.csv-5791ef09b61a29ee2882ec3ab0201245.res"
+
+[deps]
+
+source_file="res://Songs/Louvre Invasion/Template_Game.csv"
+dest_files=[ "res://.import/Template_Game.csv-5791ef09b61a29ee2882ec3ab0201245.res" ]
+
+[params]
+
+delimiter=0
+headers=false
+detect_numbers=true
+force_float=true

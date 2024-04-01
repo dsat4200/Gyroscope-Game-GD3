@@ -24,4 +24,3 @@ frame = 1
 
 [node name="OrderNumber" parent="." instance=ExtResource( 1 )]
 custom_fonts/font = SubResource( 2 )
-text = "0"

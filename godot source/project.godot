@@ -53,7 +53,7 @@ _global_script_class_icons={
 config/name="Gyroscope Rhythm Game"
 config/description="A demo showing the use of various sensors: an accelerometer, a gyroscope, and a magnetometer.
 These sensors are typically found on mobile devices, so don't expect this to work on a desktop."
-run/main_scene="res://Songs/Template/Template.tscn"
+run/main_scene="res://Songs/Louvre Invasion/LouvreInvasion.tscn"
 config/icon="res://icon.png"
 
 [autoload]

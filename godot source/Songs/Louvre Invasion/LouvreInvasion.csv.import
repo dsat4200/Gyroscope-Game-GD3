@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.godot-csv-importer"
+type="Resource"
+path="res://.import/LouvreInvasion.csv-ebb199bf1ee752bc55d59206d9187ee8.res"
+
+[deps]
+
+source_file="res://Songs/Louvre Invasion/LouvreInvasion.csv"
+dest_files=[ "res://.import/LouvreInvasion.csv-ebb199bf1ee752bc55d59206d9187ee8.res" ]
+
+[params]
+
+delimiter=0
+headers=false
+detect_numbers=true
+force_float=true
