@@ -70,6 +70,7 @@ script = ExtResource( 17 )
 
 [node name="Conductor" parent="." instance=ExtResource( 5 )]
 stream = ExtResource( 2 )
+volume_db = -30.657
 bpm = 98
 csv_path = ExtResource( 3 )
 

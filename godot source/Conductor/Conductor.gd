@@ -25,33 +25,28 @@ signal beat(position)
 signal measure(position)
 signal start
 
-#beat stuff
+
 export(Resource) var csv_path
 
 onready var beat_file 
 
-#add function to show beats it calculated?z
 
-#func _init():
 var hit_time
 
 func _ready():
 	Events.connect("score", self, "score")
-#	#print("beats: "+String(beats))
-#	#print("first beat at: "+String(next_beat_pos))
-#	next_beat_pos = beats[next_beat_index]
 
 func get_pure_beats() -> PoolRealArray:
 	var markers = csv_path.records
 	var data : PoolRealArray = []
 	for N in markers:
-		#if N.get_index() != 0:
+
 		data.append(N[0])
 	return data
 
 func get_beat_cues() -> Array:
 	var cues = csv_path.records
-	#print(cues)
+
 	return cues
 	
 
@@ -61,38 +56,18 @@ func score(time):
 func _process(_delta):
 	if Input.is_action_just_pressed("middle_click"):
 		pass
-		#print("SongPos: "+String(song_position)+", in beats: "+String(song_position_in_beats)+", next: "+String(next_beat))
-		#print("last and next: " + String(last_reported_beat_pos)+ " " + String(next_beat_pos)+ " Array: "+String(beats))
 
 func _physics_process(_delta):
 	if playing:
 		song_position = get_playback_position() + AudioServer.get_time_since_last_mix()
 		song_position -=AudioServer.get_output_latency()
-		if(song_position >= next_beat):
-			#print("beat! "+ String(next_beat))
-			_report_beat()
-			song_position_in_beats+=1
-			next_beat = beats[song_position_in_beats]
-			#print(String(song_position_in_beats-1)+"-"+String(song_position_in_beats)+". Next:"+ String(next_beat))
-			#print("Current time : beat time : "+String(song_position)+" "+ String(beats[song_position_in_beats-1]))
-		
-			#print("song_pos: "+String(song_position)+". in beats: "+String(song_position_in_beats-1)+" next_pos at index"+String(song_position_in_beats)+": "+String(beats[song_position_in_beats]))
-		#print("song_pos: "+String(song_position)+". in beats: "+String(song_position_in_beats)+" next_pos at index"+String(song_position_in_beats+1))
-			
-
-
-func _report_beat():
-	#print("last beat:"+String(last_reported_beat)+", pos: "+String(song_position_in_beats))
-		if last_reported_beat < song_position_in_beats and song_position > 0:
-			if measure > measures:
-				measure = 1
+		#print(String(song_position))
+		if(song_position >= beats[0]):
+			#print("beat! "+String(song_position_in_beats)+" "+ String(song_position))
 			emit_signal("beat", song_position_in_beats)
-			emit_signal("measure", measure)
-			measure += 1
-			#last_reported_beat = beats[song_position_in_beats]
-			#next_beat = beats[song_position_in_beats+1]
-			#print("song_pos: "+String(song_position)+". in beats: "+String(song_position_in_beats-1)+" next_pos at index"+String(song_position_in_beats)+": "+String(next_beat))
-			
+			song_position_in_beats+=1
+			beats.remove(0)
+
 
 func play_with_beat_offset(num):
 	beats_before_start = num
@@ -140,7 +115,7 @@ func _on_StartTimer_timeout():
 		emit_signal("start")
 		#create start signal for things to link to
 		$StartTimer.stop()
-	_report_beat()
+	#_report_beat()
 
 
 func _on_Beats_beats_updated(in_beats):
