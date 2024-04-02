@@ -67,6 +67,7 @@ resource_name = "Anim"
 
 [node name="LevelEditor" type="Spatial"]
 script = ExtResource( 17 )
+HitBeatsPath = NodePath("Song/Gyro/HitBeats")
 
 [node name="Conductor" parent="." instance=ExtResource( 3 )]
 stream = ExtResource( 15 )
@@ -458,6 +459,7 @@ visible = false
 [connection signal="start" from="Conductor" to="3d_view" method="_on_Conductor_start"]
 [connection signal="beat" from="Song" to="Song/Gyro/HitBeats" method="_on_NTHE_beat"]
 [connection signal="start" from="Song" to="Song/Gyro" method="_on_NTHE_start"]
+[connection signal="start" from="Song/Gyro" to="Song/Gyro/HitBeats" method="_on_Gyro_start"]
 [connection signal="area_entered" from="Song/Gyro/Cursor/cursor_area" to="Song/Gyro/Cursor" method="_on_cursor_area_area_entered"]
 [connection signal="area_exited" from="Song/Gyro/Cursor/cursor_area" to="Song/Gyro/Cursor" method="_on_cursor_area_area_exited"]
 

@@ -1,7 +1,12 @@
 extends Spatial
 
 onready var conductor = $Conductor
+
+export(NodePath) var HitBeatsPath
+onready var HitBeats = get_node(HitBeatsPath)
+
 signal please_reload
+export var starting_beat:=0
 
 func _init():
 	OS.set_current_screen(1)
@@ -9,7 +14,10 @@ func _init():
 func _ready():
 	Events.connect("reload", self, "reload")
 	#print("1")
+	conductor.starting_beat = starting_beat
+	HitBeats.starting_beat = starting_beat
 	conductor.play_with_beat_offset(0)
+	
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

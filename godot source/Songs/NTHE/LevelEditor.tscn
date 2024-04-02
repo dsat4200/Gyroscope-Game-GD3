@@ -193,6 +193,7 @@ albedo_color = Color( 0.25098, 0.25098, 0.25098, 1 )
 
 [node name="LevelEditor" type="Spatial"]
 script = ExtResource( 5 )
+HitBeatsPath = NodePath("NTHE/Gyro/HitBeats")
 
 [node name="Conductor" parent="." instance=ExtResource( 1 )]
 stream = ExtResource( 15 )
@@ -429,6 +430,7 @@ visible = false
 [connection signal="start" from="Conductor" to="3d_view" method="_on_Conductor_start"]
 [connection signal="beat" from="NTHE" to="NTHE/Gyro/HitBeats" method="_on_NTHE_beat"]
 [connection signal="start" from="NTHE" to="NTHE/Gyro" method="_on_NTHE_start"]
+[connection signal="start" from="NTHE/Gyro" to="NTHE/Gyro/HitBeats" method="_on_Gyro_start"]
 [connection signal="area_entered" from="NTHE/Gyro/Cursor/cursor_area" to="NTHE/Gyro/Cursor" method="_on_cursor_area_area_entered"]
 [connection signal="area_exited" from="NTHE/Gyro/Cursor/cursor_area" to="NTHE/Gyro/Cursor" method="_on_cursor_area_area_exited"]
 

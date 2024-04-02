@@ -28,6 +28,7 @@ func _on_Conductor_beat(position):
 	
 
 func _on_Conductor_start():
+	print("start")
 	emit_signal("start")
 	pass
 	#print("Conductor Start!")

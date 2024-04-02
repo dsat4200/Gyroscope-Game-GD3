@@ -67,10 +67,11 @@ resource_name = "Anim"
 
 [node name="LevelEditor" type="Spatial"]
 script = ExtResource( 17 )
+HitBeatsPath = NodePath("Song/Gyro/HitBeats")
+starting_beat = 12
 
 [node name="Conductor" parent="." instance=ExtResource( 5 )]
 stream = ExtResource( 2 )
-volume_db = -30.657
 bpm = 98
 csv_path = ExtResource( 3 )
 
@@ -169,7 +170,7 @@ position = Vector2( 960, 300 )
 position = Vector2( 1216, 300 )
 
 [node name="PlacerHitBeat18" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 1216, 540 )
+position = Vector2( 0.00012207, 1080 )
 
 [node name="PlacerHitBeat19" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
 position = Vector2( 1216, 780 )
@@ -423,6 +424,7 @@ visible = false
 [connection signal="start" from="Conductor" to="3d_view" method="_on_Conductor_start"]
 [connection signal="beat" from="Song" to="Song/Gyro/HitBeats" method="_on_NTHE_beat"]
 [connection signal="start" from="Song" to="Song/Gyro" method="_on_NTHE_start"]
+[connection signal="start" from="Song" to="Song/Gyro/HitBeats" method="_on_Song_start"]
 [connection signal="area_entered" from="Song/Gyro/Cursor/cursor_area" to="Song/Gyro/Cursor" method="_on_cursor_area_area_entered"]
 [connection signal="area_exited" from="Song/Gyro/Cursor/cursor_area" to="Song/Gyro/Cursor" method="_on_cursor_area_area_exited"]
 

@@ -6,6 +6,7 @@ signal start
 signal beat(position)
 onready var hitbeats = $Gyro/HitBeats
 
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -22,7 +23,7 @@ func _ready():
 
 func _on_Conductor_beat(position):
 	anim_player.play("NTHE")
-	anim_player.seek(beats[position][0])
+	anim_player.seek(beats[position-1][0])
 	emit_signal("beat", position)
 	
 
