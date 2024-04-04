@@ -110,6 +110,38 @@ position = Vector2( 960, 540 )
 scale = Vector2( 2.669, 2.678 )
 texture = ExtResource( 14 )
 
+[node name="Boxes" type="Spatial" parent="Song/Gyro"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -40.3652, 0 )
+
+[node name="MagAndGrav" type="MeshInstance" parent="Song/Gyro/Boxes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -4, -18.1988 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="GyroAndGrav" type="MeshInstance" parent="Song/Gyro/Boxes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -4, -18.1988 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="Cursor" type="Control" parent="Song/Gyro"]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+script = ExtResource( 8 )
+
+[node name="cursor_area" type="Area2D" parent="Song/Gyro/Cursor"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="TargetSphere" type="MeshInstance2D" parent="Song/Gyro/Cursor/cursor_area"]
+modulate = Color( 0.603922, 0.603922, 0.603922, 1 )
+show_behind_parent = true
+scale = Vector2( 0.11, 0.11 )
+mesh = SubResource( 17 )
+
+[node name="cursor_hitbox" type="CollisionShape2D" parent="Song/Gyro/Cursor/cursor_area"]
+shape = SubResource( 15 )
+
 [node name="HitBeats" type="Control" parent="Song/Gyro"]
 pause_mode = 1
 margin_right = 40.0
@@ -375,38 +407,6 @@ position = Vector2( 1483, 484 )
 visible = false
 position = Vector2( 1547, 952 )
 
-[node name="Boxes" type="Spatial" parent="Song/Gyro"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -40.3652, 0 )
-
-[node name="MagAndGrav" type="MeshInstance" parent="Song/Gyro/Boxes"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -4, -18.1988 )
-mesh = SubResource( 7 )
-material/0 = SubResource( 8 )
-
-[node name="GyroAndGrav" type="MeshInstance" parent="Song/Gyro/Boxes"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -4, -18.1988 )
-mesh = SubResource( 7 )
-material/0 = SubResource( 8 )
-
-[node name="Cursor" type="Control" parent="Song/Gyro"]
-margin_right = 40.0
-margin_bottom = 40.0
-mouse_filter = 2
-script = ExtResource( 8 )
-
-[node name="cursor_area" type="Area2D" parent="Song/Gyro/Cursor"]
-collision_layer = 2
-collision_mask = 2
-
-[node name="TargetSphere" type="MeshInstance2D" parent="Song/Gyro/Cursor/cursor_area"]
-modulate = Color( 0.603922, 0.603922, 0.603922, 1 )
-show_behind_parent = true
-scale = Vector2( 0.11, 0.11 )
-mesh = SubResource( 17 )
-
-[node name="cursor_hitbox" type="CollisionShape2D" parent="Song/Gyro/Cursor/cursor_area"]
-shape = SubResource( 15 )
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Song"]
 stream = ExtResource( 16 )
 
@@ -459,7 +459,6 @@ visible = false
 [connection signal="start" from="Conductor" to="3d_view" method="_on_Conductor_start"]
 [connection signal="beat" from="Song" to="Song/Gyro/HitBeats" method="_on_NTHE_beat"]
 [connection signal="start" from="Song" to="Song/Gyro" method="_on_NTHE_start"]
-[connection signal="start" from="Song/Gyro" to="Song/Gyro/HitBeats" method="_on_Gyro_start"]
 [connection signal="area_entered" from="Song/Gyro/Cursor/cursor_area" to="Song/Gyro/Cursor" method="_on_cursor_area_area_entered"]
 [connection signal="area_exited" from="Song/Gyro/Cursor/cursor_area" to="Song/Gyro/Cursor" method="_on_cursor_area_area_exited"]
 

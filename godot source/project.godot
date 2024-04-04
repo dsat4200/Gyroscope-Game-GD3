@@ -77,6 +77,10 @@ enabled=PoolStringArray( "res://addons/csv-data-importer/plugin.cfg" )
 
 singletons=[  ]
 
+[global]
+
+window=false
+
 [input]
 
 ui_accept={
