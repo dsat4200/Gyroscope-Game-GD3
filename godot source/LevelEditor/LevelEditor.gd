@@ -25,6 +25,7 @@ func _ready():
 #	pass
 func reload():
 	print("reload please!")
+	$Song/Gyro/info.load_position_data()
 	emit_signal("please_reload")
 
 func _on_Conductor_start():

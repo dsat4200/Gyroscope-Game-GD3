@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.godot-csv-importer"
+type="Resource"
+path="res://.import/beatpositions.csv-530a1cafc4180d91c7f5d0516343b52d.res"
+
+[deps]
+
+source_file="res://Songs/Template/beatpositions.csv"
+dest_files=[ "res://.import/beatpositions.csv-530a1cafc4180d91c7f5d0516343b52d.res" ]
+
+[params]
+
+delimiter=0
+headers=false
+detect_numbers=true
+force_float=true

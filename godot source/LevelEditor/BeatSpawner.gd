@@ -5,24 +5,32 @@ var beats
 
 var spawned : PoolRealArray
 var starting_beat = 0
-
+onready var cursor = get_parent().find_node("Cursor")
 var current_beat = 0
 
+var edit_mode = false
+signal edit_mode(val)
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"y
 func _ready() -> void:
 	pass
-
+func _input(event):
+	if event.is_action_pressed("middle_click"):
+		edit_mode = !edit_mode
+		emit_signal("edit_mode", edit_mode)
 
 			
 func spawn_beat(spawn,position):
-	print(current_beat)
+	#print(current_beat)
 	if(current_beat < get_child_count()):
 		var new_beat:Node
 		if(spawn):
-			new_beat = get_child(current_beat).scene.instance()
+			var corresponding_beat = get_child(current_beat)
+			if(edit_mode == true):
+				corresponding_beat.global_position = cursor.rect_global_position
+			new_beat = corresponding_beat.scene.instance()
 			get_child(current_beat).add_child(new_beat)
 			
 		for i in beats.size():

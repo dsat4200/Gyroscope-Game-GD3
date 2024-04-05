@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://3d_view.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Songs/Template/Template.wav" type="AudioStream" id=2]
@@ -7,10 +7,13 @@
 [ext_resource path="res://Conductor/Conductor.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Songs/Template/Move.gd" type="Script" id=6]
 [ext_resource path="res://UI/Hits/Editor/PlacerHitBeat.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Songs/Template/mode.gd" type="Script" id=8]
 [ext_resource path="res://UI/Hits/Fonts/Montserrat-Bold.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://UI/default_theme.tres" type="Theme" id=10]
 [ext_resource path="res://LevelEditor/Gyro.gd" type="Script" id=11]
 [ext_resource path="res://LevelEditor/Template.gd" type="Script" id=12]
 [ext_resource path="res://LevelEditor/BeatSpawner.gd" type="Script" id=13]
+[ext_resource path="res://Songs/Template/info.gd" type="Script" id=14]
 [ext_resource path="res://LevelEditor/ColorBgSwap.gd" type="Script" id=16]
 [ext_resource path="res://LevelEditor/LevelEditor.gd" type="Script" id=17]
 [ext_resource path="res://LevelEditor/Cursor.gd" type="Script" id=18]
@@ -111,7 +114,24 @@ position = Vector2( 960, 540 )
 scale = Vector2( 2.669, 2.678 )
 texture = ExtResource( 4 )
 
-[node name="HitBeats" type="Control" parent="Song/Gyro"]
+[node name="info" type="Control" parent="Song/Gyro"]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+script = ExtResource( 14 )
+file_name = "Template"
+
+[node name="mode" type="Label" parent="Song/Gyro/info"]
+margin_left = 64.0
+margin_top = 900.0
+margin_right = 404.0
+margin_bottom = 958.0
+rect_scale = Vector2( 2, 2 )
+theme = ExtResource( 10 )
+text = "Mode: "
+script = ExtResource( 8 )
+
+[node name="HitBeats" type="Control" parent="Song/Gyro" groups=["Persist"]]
 pause_mode = 1
 margin_right = 40.0
 margin_bottom = 40.0
@@ -122,85 +142,85 @@ script = ExtResource( 13 )
 position = Vector2( 960, 540 )
 
 [node name="PlacerHitBeat2" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 1216, 540 )
+position = Vector2( 960, 540 )
 
 [node name="PlacerHitBeat3" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 1216, 780 )
+position = Vector2( 472, 322 )
 
 [node name="PlacerHitBeat4" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 960, 780 )
+position = Vector2( 307, 652 )
 
 [node name="PlacerHitBeat5" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 704, 780 )
+position = Vector2( 397, 975 )
 
 [node name="PlacerHitBeat6" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 704, 540 )
+position = Vector2( 607, 1177 )
 
 [node name="PlacerHitBeat7" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 704, 300 )
+position = Vector2( 960, 1207 )
 
 [node name="PlacerHitBeat8" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 960, 300 )
+position = Vector2( 1327, 1155 )
 
 [node name="PlacerHitBeat9" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 1216, 300 )
+position = Vector2( 1485, 997 )
 
 [node name="PlacerHitBeat10" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 1216, 540 )
+position = Vector2( 1545, 727 )
 
 [node name="PlacerHitBeat11" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 1216, 780 )
+position = Vector2( 1522, 367 )
 
 [node name="PlacerHitBeat12" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 960, 780 )
+position = Vector2( 1357, 105 )
 
 [node name="PlacerHitBeat13" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 704, 780 )
+position = Vector2( 1042, -15 )
 
 [node name="PlacerHitBeat14" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 704, 540 )
+position = Vector2( 652, 37 )
 
 [node name="PlacerHitBeat15" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 704, 300 )
+position = Vector2( 1417, 960 )
 
 [node name="PlacerHitBeat16" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 960, 300 )
+position = Vector2( 1702, 1132 )
 
 [node name="PlacerHitBeat17" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 1216, 300 )
+position = Vector2( 1800, 982 )
 
 [node name="PlacerHitBeat18" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 0.00012207, 1080 )
+position = Vector2( 1972, 1095 )
 
 [node name="PlacerHitBeat19" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 1216, 780 )
+position = Vector2( 1950, 1080 )
 
 [node name="PlacerHitBeat20" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 960, 780 )
+position = Vector2( 1815, 847 )
 
 [node name="PlacerHitBeat21" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 704, 780 )
+position = Vector2( 1500, 1087 )
 
 [node name="PlacerHitBeat22" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 704, 540 )
+position = Vector2( 1042, 967 )
 
 [node name="PlacerHitBeat23" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 704, 300 )
+position = Vector2( 817, 1102 )
 
 [node name="PlacerHitBeat24" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 960, 300 )
+position = Vector2( 465, 922 )
 
 [node name="PlacerHitBeat25" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 1216, 300 )
+position = Vector2( 127, 1110 )
 
 [node name="PlacerHitBeat26" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 1216, 540 )
+position = Vector2( 1856, 240 )
 
 [node name="PlacerHitBeat27" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 1216, 780 )
+position = Vector2( 511, 659 )
 
 [node name="PlacerHitBeat28" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 960, 780 )
+position = Vector2( 768, 299 )
 
 [node name="PlacerHitBeat29" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
 position = Vector2( 704, 780 )
@@ -335,10 +355,58 @@ position = Vector2( 704, 300 )
 position = Vector2( 960, 300 )
 
 [node name="PlacerHitBeat73" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 1216, 300 )
+position = Vector2( 832, 120 )
 
 [node name="PlacerHitBeat74" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
-position = Vector2( 1216, 540 )
+position = Vector2( 1792, 480 )
+
+[node name="PlacerHitBeat75" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 1216, 780 )
+
+[node name="PlacerHitBeat76" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 960, 780 )
+
+[node name="PlacerHitBeat77" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 704, 780 )
+
+[node name="PlacerHitBeat78" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 704, 540 )
+
+[node name="PlacerHitBeat79" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 704, 300 )
+
+[node name="PlacerHitBeat80" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 640, 60 )
+
+[node name="PlacerHitBeat81" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 1536, 180 )
+
+[node name="PlacerHitBeat82" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 1600, 600 )
+
+[node name="PlacerHitBeat83" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 1216, 780 )
+
+[node name="PlacerHitBeat84" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 960, 780 )
+
+[node name="PlacerHitBeat85" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 704, 780 )
+
+[node name="PlacerHitBeat86" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 704, 540 )
+
+[node name="PlacerHitBeat87" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 704, 300 )
+
+[node name="PlacerHitBeat88" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 1344, 60 )
+
+[node name="PlacerHitBeat89" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 1024, 0 )
+
+[node name="PlacerHitBeat90" parent="Song/Gyro/HitBeats" instance=ExtResource( 7 )]
+position = Vector2( 1728, 240 )
 
 [node name="Boxes" type="Spatial" parent="Song/Gyro"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -40.3652, 0 )
@@ -407,8 +475,11 @@ visible = false
 [node name="re_load" parent="3d_view/ui/menu" index="2"]
 visible = false
 
-[node name="data" parent="3d_view/ui" index="1"]
-visible = false
+[node name="Accelerometer" parent="3d_view/ui/data" index="0"]
+margin_left = -148.0
+margin_top = 1060.0
+margin_right = 192.0
+margin_bottom = 1112.0
 
 [node name="camera" parent="3d_view/origin" index="0"]
 fov = 60.0
@@ -417,6 +488,7 @@ fov = 60.0
 visible = false
 
 [connection signal="please_reload" from="." to="Song" method="_on_LevelEditor_please_reload"]
+[connection signal="please_reload" from="." to="Song/Gyro/info" method="_on_LevelEditor_please_reload"]
 [connection signal="beat" from="Conductor" to="Debug_Info" method="_on_Conductor_beat"]
 [connection signal="beat" from="Conductor" to="Song" method="_on_Conductor_beat"]
 [connection signal="start" from="Conductor" to="." method="_on_Conductor_start"]
@@ -425,6 +497,7 @@ visible = false
 [connection signal="beat" from="Song" to="Song/Gyro/HitBeats" method="_on_NTHE_beat"]
 [connection signal="start" from="Song" to="Song/Gyro" method="_on_NTHE_start"]
 [connection signal="start" from="Song" to="Song/Gyro/HitBeats" method="_on_Song_start"]
+[connection signal="edit_mode" from="Song/Gyro/HitBeats" to="Song/Gyro/info/mode" method="_on_HitBeats_edit_mode"]
 [connection signal="area_entered" from="Song/Gyro/Cursor/cursor_area" to="Song/Gyro/Cursor" method="_on_cursor_area_area_entered"]
 [connection signal="area_exited" from="Song/Gyro/Cursor/cursor_area" to="Song/Gyro/Cursor" method="_on_cursor_area_area_exited"]
 
