@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Conductor/Conductor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://3d_view.tscn" type="PackedScene" id=2]
@@ -128,49 +128,49 @@ tracks/5/keys = {
 "clips": PoolStringArray( "fleur_action" ),
 "times": PoolRealArray( 0 )
 }
-tracks/6/type = "animation"
-tracks/6/path = NodePath("graphic_elements/circe/AnimationPlayer")
+tracks/6/type = "value"
+tracks/6/path = NodePath("graphic_elements/fleur:expression")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"clips": PoolStringArray( "circe_action" ),
-"times": PoolRealArray( 0 )
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("graphic_elements/fleur:expression")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
 "times": PoolRealArray( 0.52, 8.04, 11.4, 11.8, 19.8 ),
 "transitions": PoolRealArray( 0, 0, 0, 1, 1 ),
 "update": 1,
 "values": [ "default", "mid_blink", "default", "dizzy", "default" ]
 }
-tracks/8/type = "value"
-tracks/8/path = NodePath("bg:color")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
+tracks/7/type = "value"
+tracks/7/path = NodePath("bg:color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
 "times": PoolRealArray( 0, 3.8, 4.08, 5.08, 5.36, 6.32, 6.6, 7.56, 8.84, 9.12, 10.12, 10.4, 11.4, 12.64, 13.88, 15.04, 18.92 ),
 "transitions": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2.63902, 0, 0, 0, 1 ),
 "update": 0,
 "values": [ Color( 0.25098, 0.25098, 0.25098, 1 ), Color( 0.419608, 0.321569, 0.321569, 1 ), Color( 0.25098, 0.25098, 0.25098, 1 ), Color( 0.419608, 0.321569, 0.321569, 1 ), Color( 0.25098, 0.25098, 0.25098, 1 ), Color( 0.419608, 0.321569, 0.321569, 1 ), Color( 0.25098, 0.25098, 0.25098, 1 ), Color( 0.333333, 0.254902, 0.341176, 1 ), Color( 0.419608, 0.321569, 0.321569, 1 ), Color( 0.25098, 0.25098, 0.25098, 1 ), Color( 0.419608, 0.321569, 0.321569, 1 ), Color( 0.25098, 0.25098, 0.25098, 1 ), Color( 0.333333, 0.254902, 0.341176, 1 ), Color( 0.333333, 0.254902, 0.341176, 1 ), Color( 0.25098, 0.25098, 0.25098, 1 ), Color( 0.403922, 0.545098, 0.376471, 1 ), Color( 0.301961, 0.301961, 0.301961, 1 ) ]
 }
+tracks/8/type = "animation"
+tracks/8/path = NodePath("graphic_elements/bass/AnimationPlayer")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"clips": PoolStringArray( "bass_action" ),
+"times": PoolRealArray( -0.04 )
+}
 tracks/9/type = "animation"
-tracks/9/path = NodePath("graphic_elements/bass/AnimationPlayer")
+tracks/9/path = NodePath("graphic_elements/circe/AnimationPlayer")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"clips": PoolStringArray( "bass_action" ),
-"times": PoolRealArray( -0.04 )
+"clips": PoolStringArray( "circe_action" ),
+"times": PoolRealArray( 0 )
 }
 tracks/10/type = "animation"
 tracks/10/path = NodePath("graphic_elements/seinfeld/AnimationPlayer")
@@ -181,6 +181,54 @@ tracks/10/enabled = true
 tracks/10/keys = {
 "clips": PoolStringArray( "seinfeld_action" ),
 "times": PoolRealArray( 0 )
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("bg:transform")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 41.72 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Transform( 15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("bg:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 41.28, 41.68, 41.72 ),
+"transitions": PoolRealArray( 0, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 15, 15, 15 ), Vector3( 15, 15, 15 ), Vector3( 30, 30, 30 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("graphic_elements/graphics:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 25.28, 29.36, 35.76 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, false, false ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("graphic_elements/text:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 25.28, 29.52, 35.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, false, false ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -196,6 +244,54 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector3( 0, -70.8692, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("bg:transform")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Transform( 15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("bg:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 15, 15, 15 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("graphic_elements/graphics:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("graphic_elements/text:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
 }
 
 [sub_resource type="ArrayMesh" id=1]
@@ -216,10 +312,25 @@ surfaces/0 = {
 flags_unshaded = true
 albedo_color = Color( 0.301961, 0.301961, 0.301961, 1 )
 
+[sub_resource type="Animation" id=18]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../graphics:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
 [node name="LevelEditor" type="Spatial"]
 script = ExtResource( 5 )
 HitBeatsPath = NodePath("NTHE/Gyro/HitBeats")
-starting_beat = 30
+starting_beat = 100
 
 [node name="Conductor" parent="." instance=ExtResource( 1 )]
 stream = ExtResource( 15 )
@@ -266,111 +377,84 @@ position = Vector2( 960, 900 )
 position = Vector2( 960, 300 )
 
 [node name="PlacerHitBeat4" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-visible = false
 position = Vector2( 960, 540 )
 
 [node name="PlacerHitBeat5" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-visible = false
 position = Vector2( 640, 540 )
 
 [node name="PlacerHitBeat6" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-visible = false
 position = Vector2( 1152, 540 )
 
 [node name="PlacerHitBeat7" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-visible = false
 position = Vector2( 640, 540 )
 
 [node name="PlacerHitBeat8" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-visible = false
 position = Vector2( 1152, 540 )
 
 [node name="PlacerHitBeat9" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-visible = false
 position = Vector2( 640, 540 )
 
 [node name="PlacerHitBeat10" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-visible = false
 position = Vector2( 1152, 540 )
 
 [node name="PlacerHitBeat11" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-visible = false
 position = Vector2( 960, 840 )
 
 [node name="PlacerHitBeat12" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-visible = false
 position = Vector2( 960, 240 )
 
 [node name="PlacerHitBeat13" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-visible = false
 position = Vector2( 640, 540 )
 
 [node name="PlacerHitBeat14" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-visible = false
 position = Vector2( 960, 540 )
 
 [node name="PlacerHitBeat15" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-visible = false
 position = Vector2( 640, 540 )
 
 [node name="PlacerHitBeat16" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-visible = false
 position = Vector2( 1152, 540 )
 
 [node name="PlacerHitBeat17" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-visible = false
 position = Vector2( 960, 420 )
 
 [node name="PlacerHitBeat18" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-visible = false
 position = Vector2( 960, 300 )
 
 [node name="PlacerHitBeat19" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-visible = false
 position = Vector2( 1024, 720 )
 
 [node name="PlacerHitBeat20" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-visible = false
 position = Vector2( 1664, 840 )
 
 [node name="PlacerHitBeat21" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-visible = false
 position = Vector2( 1088, 540 )
 
 [node name="PlacerHitBeat22" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-visible = false
 position = Vector2( 832, 540 )
 
 [node name="PlacerHitBeat23" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-visible = false
 position = Vector2( 1344, 540 )
 
 [node name="PlacerHitBeat24" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-visible = false
 position = Vector2( 640, 540 )
 
 [node name="PlacerHitBeat25" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-visible = false
 position = Vector2( 1152, 540 )
 
 [node name="PlacerHitBeat26" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-visible = false
 position = Vector2( 640, 540 )
 
 [node name="PlacerHitBeat27" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-visible = false
 position = Vector2( 1152, 540 )
 
 [node name="PlacerHitBeat28" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-visible = false
 position = Vector2( 640, 540 )
 
 [node name="PlacerHitBeat29" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-visible = false
 position = Vector2( 1152, 540 )
 
 [node name="PlacerHitBeat30" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-visible = false
 position = Vector2( 960, 540 )
 
 [node name="PlacerHitBeat31" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
@@ -422,25 +506,25 @@ position = Vector2( 1152, 540 )
 position = Vector2( 1536, 540 )
 
 [node name="PlacerHitBeat47" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 384, 540 )
+position = Vector2( 960, -120 )
 
 [node name="PlacerHitBeat48" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 768, 540 )
+position = Vector2( 960, 60.0001 )
 
 [node name="PlacerHitBeat49" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1152, 540 )
+position = Vector2( 960, 540 )
 
 [node name="PlacerHitBeat50" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1536, 540 )
+position = Vector2( 832, 900 )
 
 [node name="PlacerHitBeat51" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 384, 540 )
+position = Vector2( 1920, 900 )
 
 [node name="PlacerHitBeat52" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 768, 540 )
+position = Vector2( 960, 540 )
 
 [node name="PlacerHitBeat53" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1152, 540 )
+position = Vector2( 960, 300 )
 
 [node name="PlacerHitBeat54" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
 position = Vector2( 1536, 540 )
@@ -664,11 +748,14 @@ script = ExtResource( 23 )
 
 [node name="graphics" parent="NTHE/graphic_elements" instance=ExtResource( 8 )]
 
-[node name="circe" parent="NTHE/graphic_elements" instance=ExtResource( 9 )]
-
 [node name="bass" parent="NTHE/graphic_elements" instance=ExtResource( 26 )]
 
+[node name="AnimationPlayer" parent="NTHE/graphic_elements/bass" index="1"]
+anims/RESET = SubResource( 18 )
+
 [node name="seinfeld" parent="NTHE/graphic_elements" instance=ExtResource( 27 )]
+
+[node name="circe" parent="NTHE/graphic_elements" instance=ExtResource( 9 )]
 
 [node name="3d_view" parent="." instance=ExtResource( 2 )]
 pause_mode = 2
@@ -710,7 +797,7 @@ visible = false
 [editable path="NTHE/graphic_elements/text"]
 [editable path="NTHE/graphic_elements/fleur"]
 [editable path="NTHE/graphic_elements/graphics"]
-[editable path="NTHE/graphic_elements/circe"]
 [editable path="NTHE/graphic_elements/bass"]
 [editable path="NTHE/graphic_elements/seinfeld"]
+[editable path="NTHE/graphic_elements/circe"]
 [editable path="3d_view"]

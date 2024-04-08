@@ -23,7 +23,7 @@ func _input(event):
 
 			
 func spawn_beat(spawn,position):
-	#print(current_beat)
+	print(current_beat)
 	if(current_beat < get_child_count()):
 		var new_beat:Node
 		if(spawn):
@@ -64,7 +64,7 @@ func _on_NTHE_beat(position):
 			spawned.remove(spawned.find(beats[position][0]))
 
 func seek_to_beat(beat):
-	print(current_beat)
+	#print(current_beat)
 	for i in beat-1:
 		var position = i
 		#print(position)
