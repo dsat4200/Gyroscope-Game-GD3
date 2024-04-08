@@ -68,7 +68,8 @@ func hoverate(me):
 			
 func simple_unhover(me):
 	for i in me:
-		i.get_parent().hover_exit()
+		if i==$_NULL:
+			i.get_parent().hover_exit()
 	
 var oldnews
 func _on_cursor_area_area_entered(_area):

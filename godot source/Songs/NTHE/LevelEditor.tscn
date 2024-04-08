@@ -213,10 +213,10 @@ tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 0, 25.28, 29.36, 35.76 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 1.32, 25.28, 29.36, 35.36, 40.48 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ true, false, false, false ]
+"values": [ true, false, false, false, false ]
 }
 tracks/14/type = "value"
 tracks/14/path = NodePath("graphic_elements/text:visible")
@@ -225,10 +225,10 @@ tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"times": PoolRealArray( 0, 25.28, 29.52, 35.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 1.32, 25.28, 29.52, 35.6, 40.72 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ true, false, false, false ]
+"values": [ true, false, false, false, false ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -330,7 +330,6 @@ tracks/0/keys = {
 [node name="LevelEditor" type="Spatial"]
 script = ExtResource( 5 )
 HitBeatsPath = NodePath("NTHE/Gyro/HitBeats")
-starting_beat = 100
 
 [node name="Conductor" parent="." instance=ExtResource( 1 )]
 stream = ExtResource( 15 )
@@ -521,91 +520,91 @@ position = Vector2( 832, 900 )
 position = Vector2( 1920, 900 )
 
 [node name="PlacerHitBeat52" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 960, 540 )
+position = Vector2( 896, 720 )
 
 [node name="PlacerHitBeat53" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 960, 300 )
+position = Vector2( 1472, 540 )
 
 [node name="PlacerHitBeat54" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1536, 540 )
+position = Vector2( 960, 660 )
 
 [node name="PlacerHitBeat55" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 384, 540 )
+position = Vector2( 512, 360 )
 
 [node name="PlacerHitBeat56" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 768, 540 )
+position = Vector2( 512, 780 )
 
 [node name="PlacerHitBeat57" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1152, 540 )
+position = Vector2( 704, 540 )
 
 [node name="PlacerHitBeat58" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1536, 540 )
+position = Vector2( 1024, 780 )
 
 [node name="PlacerHitBeat59" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 384, 540 )
+position = Vector2( 1152, 840 )
 
 [node name="PlacerHitBeat60" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 768, 540 )
+position = Vector2( 1536, 900 )
 
 [node name="PlacerHitBeat61" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1152, 540 )
+position = Vector2( 1024, 780 )
 
 [node name="PlacerHitBeat62" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1536, 540 )
+position = Vector2( 832, 720 )
 
 [node name="PlacerHitBeat63" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 384, 540 )
+position = Vector2( 960, 900 )
 
 [node name="PlacerHitBeat64" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 768, 540 )
+position = Vector2( 704, 780 )
 
 [node name="PlacerHitBeat65" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 768, 720 )
+position = Vector2( 832, 900 )
 
 [node name="PlacerHitBeat66" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1024, 720 )
+position = Vector2( 960, 540 )
 
 [node name="PlacerHitBeat67" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1280, 720 )
+position = Vector2( 1280, 780 )
 
 [node name="PlacerHitBeat68" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1536, 540 )
+position = Vector2( 1152, 600 )
 
 [node name="PlacerHitBeat69" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 384, 540 )
+position = Vector2( 1024, 300 )
 
 [node name="PlacerHitBeat70" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 768, 540 )
+position = Vector2( 832, 540 )
 
 [node name="PlacerHitBeat71" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1152, 540 )
+position = Vector2( 1216, 540 )
 
 [node name="PlacerHitBeat72" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1536, 540 )
+position = Vector2( 1600, 540 )
 
 [node name="PlacerHitBeat73" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1152, 540 )
+position = Vector2( 1984, 540 )
 
 [node name="PlacerHitBeat74" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1536, 540 )
+position = Vector2( 2880, 540 )
 
 [node name="PlacerHitBeat75" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 384, 540 )
+position = Vector2( 3712, 540 )
 
 [node name="PlacerHitBeat76" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 768, 540 )
+position = Vector2( 4608, 540 )
 
 [node name="PlacerHitBeat77" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1152, 540 )
+position = Vector2( 3712, 540 )
 
 [node name="PlacerHitBeat78" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1536, 540 )
+position = Vector2( 2880, 540 )
 
 [node name="PlacerHitBeat79" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 384, 540 )
+position = Vector2( 1984, 540 )
 
 [node name="PlacerHitBeat80" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 768, 540 )
+position = Vector2( 1600, 540 )
 
 [node name="PlacerHitBeat81" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
 position = Vector2( 1152, 540 )
