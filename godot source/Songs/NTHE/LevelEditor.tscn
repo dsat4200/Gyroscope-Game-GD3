@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Conductor/Conductor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://3d_view.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Songs/Template/Move.gd" type="Script" id=4]
 [ext_resource path="res://LevelEditor/LevelEditor.gd" type="Script" id=5]
 [ext_resource path="res://Songs/NTHE/Markers2.csv" type="Resource" id=6]
+[ext_resource path="res://Songs/Template/mode.gd" type="Script" id=7]
 [ext_resource path="res://Songs/NTHE/visuals/3d/graphics/graphics.gltf" type="PackedScene" id=8]
 [ext_resource path="res://Songs/NTHE/visuals/3d/circe/circe.gltf" type="PackedScene" id=9]
 [ext_resource path="res://LevelEditor/NTHE.gd" type="Script" id=10]
@@ -22,6 +23,10 @@
 [ext_resource path="res://LevelEditor/Cursor.gd" type="Script" id=21]
 [ext_resource path="res://Songs/NTHE/visuals/3d/fleur/fleur.gltf" type="PackedScene" id=22]
 [ext_resource path="res://Songs/NTHE/visuals/3d/fleur/fleur.gd" type="Script" id=23]
+[ext_resource path="res://Songs/Template/info.gd" type="Script" id=24]
+[ext_resource path="res://UI/default_theme.tres" type="Theme" id=25]
+[ext_resource path="res://Songs/NTHE/visuals/3d/bass/bass.gltf" type="PackedScene" id=26]
+[ext_resource path="res://Songs/NTHE/visuals/3d/seinfeld/seinfeld.gltf" type="PackedScene" id=27]
 
 [sub_resource type="DynamicFont" id=12]
 size = 200
@@ -157,6 +162,26 @@ tracks/8/keys = {
 "update": 0,
 "values": [ Color( 0.25098, 0.25098, 0.25098, 1 ), Color( 0.419608, 0.321569, 0.321569, 1 ), Color( 0.25098, 0.25098, 0.25098, 1 ), Color( 0.419608, 0.321569, 0.321569, 1 ), Color( 0.25098, 0.25098, 0.25098, 1 ), Color( 0.419608, 0.321569, 0.321569, 1 ), Color( 0.25098, 0.25098, 0.25098, 1 ), Color( 0.333333, 0.254902, 0.341176, 1 ), Color( 0.419608, 0.321569, 0.321569, 1 ), Color( 0.25098, 0.25098, 0.25098, 1 ), Color( 0.419608, 0.321569, 0.321569, 1 ), Color( 0.25098, 0.25098, 0.25098, 1 ), Color( 0.333333, 0.254902, 0.341176, 1 ), Color( 0.333333, 0.254902, 0.341176, 1 ), Color( 0.25098, 0.25098, 0.25098, 1 ), Color( 0.403922, 0.545098, 0.376471, 1 ), Color( 0.301961, 0.301961, 0.301961, 1 ) ]
 }
+tracks/9/type = "animation"
+tracks/9/path = NodePath("graphic_elements/bass/AnimationPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"clips": PoolStringArray( "bass_action" ),
+"times": PoolRealArray( -0.04 )
+}
+tracks/10/type = "animation"
+tracks/10/path = NodePath("graphic_elements/seinfeld/AnimationPlayer")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"clips": PoolStringArray( "seinfeld_action" ),
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="Animation" id=13]
 length = 0.001
@@ -189,11 +214,12 @@ surfaces/0 = {
 
 [sub_resource type="SpatialMaterial" id=14]
 flags_unshaded = true
-albedo_color = Color( 0.25098, 0.25098, 0.25098, 1 )
+albedo_color = Color( 0.301961, 0.301961, 0.301961, 1 )
 
 [node name="LevelEditor" type="Spatial"]
 script = ExtResource( 5 )
 HitBeatsPath = NodePath("NTHE/Gyro/HitBeats")
+starting_beat = 30
 
 [node name="Conductor" parent="." instance=ExtResource( 1 )]
 stream = ExtResource( 15 )
@@ -240,91 +266,316 @@ position = Vector2( 960, 900 )
 position = Vector2( 960, 300 )
 
 [node name="PlacerHitBeat4" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+visible = false
 position = Vector2( 960, 540 )
 
 [node name="PlacerHitBeat5" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+visible = false
 position = Vector2( 640, 540 )
 
 [node name="PlacerHitBeat6" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+visible = false
 position = Vector2( 1152, 540 )
 
 [node name="PlacerHitBeat7" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+visible = false
 position = Vector2( 640, 540 )
 
 [node name="PlacerHitBeat8" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+visible = false
 position = Vector2( 1152, 540 )
 
 [node name="PlacerHitBeat9" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+visible = false
 position = Vector2( 640, 540 )
 
 [node name="PlacerHitBeat10" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+visible = false
 position = Vector2( 1152, 540 )
 
 [node name="PlacerHitBeat11" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+visible = false
 position = Vector2( 960, 840 )
 
 [node name="PlacerHitBeat12" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+visible = false
 position = Vector2( 960, 240 )
 
 [node name="PlacerHitBeat13" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+visible = false
 position = Vector2( 640, 540 )
 
 [node name="PlacerHitBeat14" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+visible = false
 position = Vector2( 960, 540 )
 
 [node name="PlacerHitBeat15" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+visible = false
 position = Vector2( 640, 540 )
 
 [node name="PlacerHitBeat16" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+visible = false
 position = Vector2( 1152, 540 )
 
 [node name="PlacerHitBeat17" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+visible = false
 position = Vector2( 960, 420 )
 
 [node name="PlacerHitBeat18" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+visible = false
 position = Vector2( 960, 300 )
 
 [node name="PlacerHitBeat19" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+visible = false
 position = Vector2( 1024, 720 )
 
 [node name="PlacerHitBeat20" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+visible = false
 position = Vector2( 1664, 840 )
 
 [node name="PlacerHitBeat21" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1024, 540 )
+visible = false
+position = Vector2( 1088, 540 )
 
 [node name="PlacerHitBeat22" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 768, 540 )
+visible = false
+position = Vector2( 832, 540 )
 
 [node name="PlacerHitBeat23" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1024, 540 )
+visible = false
+position = Vector2( 1344, 540 )
 
 [node name="PlacerHitBeat24" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1216, 540 )
+visible = false
+position = Vector2( 640, 540 )
 
 [node name="PlacerHitBeat25" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1408, 540 )
+visible = false
+position = Vector2( 1152, 540 )
 
 [node name="PlacerHitBeat26" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1600, 540 )
+visible = false
+position = Vector2( 640, 540 )
 
 [node name="PlacerHitBeat27" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1792, 540 )
+visible = false
+position = Vector2( 1152, 540 )
 
 [node name="PlacerHitBeat28" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1344, 300 )
+visible = false
+position = Vector2( 640, 540 )
 
 [node name="PlacerHitBeat29" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 960, 180 )
+visible = false
+position = Vector2( 1152, 540 )
 
 [node name="PlacerHitBeat30" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+visible = false
 position = Vector2( 960, 540 )
 
 [node name="PlacerHitBeat31" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 576, 540 )
+position = Vector2( 384, 540 )
 
 [node name="PlacerHitBeat32" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
-position = Vector2( 1344, 540 )
+position = Vector2( 768, 540 )
+
+[node name="PlacerHitBeat33" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1152, 540 )
+
+[node name="PlacerHitBeat34" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1536, 540 )
+
+[node name="PlacerHitBeat35" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 384, 540 )
+
+[node name="PlacerHitBeat36" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 768, 540 )
+
+[node name="PlacerHitBeat37" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1152, 540 )
+
+[node name="PlacerHitBeat38" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1536, 540 )
+
+[node name="PlacerHitBeat39" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 384, 540 )
+
+[node name="PlacerHitBeat40" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 768, 540 )
+
+[node name="PlacerHitBeat41" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1152, 540 )
+
+[node name="PlacerHitBeat42" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1536, 540 )
+
+[node name="PlacerHitBeat43" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 384, 540 )
+
+[node name="PlacerHitBeat44" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 768, 540 )
+
+[node name="PlacerHitBeat45" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1152, 540 )
+
+[node name="PlacerHitBeat46" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1536, 540 )
+
+[node name="PlacerHitBeat47" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 384, 540 )
+
+[node name="PlacerHitBeat48" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 768, 540 )
+
+[node name="PlacerHitBeat49" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1152, 540 )
+
+[node name="PlacerHitBeat50" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1536, 540 )
+
+[node name="PlacerHitBeat51" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 384, 540 )
+
+[node name="PlacerHitBeat52" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 768, 540 )
+
+[node name="PlacerHitBeat53" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1152, 540 )
+
+[node name="PlacerHitBeat54" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1536, 540 )
+
+[node name="PlacerHitBeat55" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 384, 540 )
+
+[node name="PlacerHitBeat56" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 768, 540 )
+
+[node name="PlacerHitBeat57" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1152, 540 )
+
+[node name="PlacerHitBeat58" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1536, 540 )
+
+[node name="PlacerHitBeat59" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 384, 540 )
+
+[node name="PlacerHitBeat60" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 768, 540 )
+
+[node name="PlacerHitBeat61" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1152, 540 )
+
+[node name="PlacerHitBeat62" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1536, 540 )
+
+[node name="PlacerHitBeat63" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 384, 540 )
+
+[node name="PlacerHitBeat64" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 768, 540 )
+
+[node name="PlacerHitBeat65" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 768, 720 )
+
+[node name="PlacerHitBeat66" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1024, 720 )
+
+[node name="PlacerHitBeat67" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1280, 720 )
+
+[node name="PlacerHitBeat68" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1536, 540 )
+
+[node name="PlacerHitBeat69" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 384, 540 )
+
+[node name="PlacerHitBeat70" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 768, 540 )
+
+[node name="PlacerHitBeat71" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1152, 540 )
+
+[node name="PlacerHitBeat72" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1536, 540 )
+
+[node name="PlacerHitBeat73" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1152, 540 )
+
+[node name="PlacerHitBeat74" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1536, 540 )
+
+[node name="PlacerHitBeat75" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 384, 540 )
+
+[node name="PlacerHitBeat76" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 768, 540 )
+
+[node name="PlacerHitBeat77" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1152, 540 )
+
+[node name="PlacerHitBeat78" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1536, 540 )
+
+[node name="PlacerHitBeat79" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 384, 540 )
+
+[node name="PlacerHitBeat80" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 768, 540 )
+
+[node name="PlacerHitBeat81" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1152, 540 )
+
+[node name="PlacerHitBeat82" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1536, 540 )
+
+[node name="PlacerHitBeat83" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 384, 540 )
+
+[node name="PlacerHitBeat84" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 768, 540 )
+
+[node name="PlacerHitBeat85" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1152, 540 )
+
+[node name="PlacerHitBeat86" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1536, 540 )
+
+[node name="PlacerHitBeat87" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 384, 540 )
+
+[node name="PlacerHitBeat88" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 768, 540 )
+
+[node name="PlacerHitBeat89" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1152, 540 )
+
+[node name="PlacerHitBeat90" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1536, 540 )
+
+[node name="PlacerHitBeat91" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 384, 540 )
+
+[node name="PlacerHitBeat92" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 768, 540 )
+
+[node name="PlacerHitBeat93" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1152, 540 )
+
+[node name="PlacerHitBeat94" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1536, 540 )
+
+[node name="PlacerHitBeat95" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 384, 540 )
+
+[node name="PlacerHitBeat96" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 768, 540 )
+
+[node name="PlacerHitBeat97" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1152, 540 )
+
+[node name="PlacerHitBeat98" parent="NTHE/Gyro/HitBeats" instance=ExtResource( 13 )]
+position = Vector2( 1536, 540 )
 
 [node name="Boxes" type="Spatial" parent="NTHE/Gyro"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -40.3652, 0 )
@@ -365,6 +616,23 @@ script = ExtResource( 4 )
 
 [node name="Grid" type="Node2D" parent="NTHE/Gyro/Move"]
 
+[node name="info" type="Control" parent="NTHE/Gyro"]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+script = ExtResource( 24 )
+file_name = "NTHE"
+
+[node name="mode" type="Label" parent="NTHE/Gyro/info"]
+margin_left = 64.0
+margin_top = 900.0
+margin_right = 404.0
+margin_bottom = 958.0
+rect_scale = Vector2( 2, 2 )
+theme = ExtResource( 25 )
+text = "Mode: "
+script = ExtResource( 7 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="NTHE"]
 method_call_mode = 1
 anims/NTHE = SubResource( 3 )
@@ -379,7 +647,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.493196, 0.73114, 1.27482 )
 [node name="bg" type="Spatial" parent="NTHE"]
 transform = Transform( 15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0 )
 script = ExtResource( 11 )
-color = Color( 0.25098, 0.25098, 0.25098, 1 )
+color = Color( 0.301961, 0.301961, 0.301961, 1 )
 
 [node name="Sphere" type="MeshInstance" parent="NTHE/bg"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.460359 )
@@ -398,10 +666,15 @@ script = ExtResource( 23 )
 
 [node name="circe" parent="NTHE/graphic_elements" instance=ExtResource( 9 )]
 
+[node name="bass" parent="NTHE/graphic_elements" instance=ExtResource( 26 )]
+
+[node name="seinfeld" parent="NTHE/graphic_elements" instance=ExtResource( 27 )]
+
 [node name="3d_view" parent="." instance=ExtResource( 2 )]
 pause_mode = 2
 
 [node name="ui" parent="3d_view" index="0"]
+visible = false
 mouse_filter = 2
 
 [node name="re_center" parent="3d_view/ui/menu" index="0"]
@@ -438,4 +711,6 @@ visible = false
 [editable path="NTHE/graphic_elements/fleur"]
 [editable path="NTHE/graphic_elements/graphics"]
 [editable path="NTHE/graphic_elements/circe"]
+[editable path="NTHE/graphic_elements/bass"]
+[editable path="NTHE/graphic_elements/seinfeld"]
 [editable path="3d_view"]

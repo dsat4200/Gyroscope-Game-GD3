@@ -59,7 +59,7 @@ func _on_NTHE_beat(position):
 		spawn_beat(true,position) # take note of offset
 		#print(get_child(current_beat_index -2).get_children())
 	if("beat" in beats[position][1]):
-			#print("beat!: "+String(position+1)+": " + String(beats[position][0]))
+		print("beat!: "+String(position+1)+": " + String(beats[position][0])+" "+String(beats[position][3]))
 		if(spawned.size()>0):
 			spawned.remove(spawned.find(beats[position][0]))
 

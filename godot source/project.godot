@@ -14,32 +14,32 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/Hits/TrackSelector/DragDetector.gd"
 }, {
-"base": "EditorProperty",
+"base": "Reference",
 "class": "EditorPropertyPlaceholder",
 "language": "GDScript",
 "path": "res://addons/valla-ExportHelper/FuncButton_Placeholder.gd"
 }, {
-"base": "Button",
+"base": "Reference",
 "class": "InspectorCategory",
 "language": "GDScript",
 "path": "res://addons/valla-ExportHelper/FuncButton_Category.gd"
 }, {
-"base": "HBoxContainer",
+"base": "Reference",
 "class": "InspectorFunctionButton",
 "language": "GDScript",
 "path": "res://addons/valla-ExportHelper/FuncButton_Button.gd"
 }, {
-"base": "HSeparator",
+"base": "Reference",
 "class": "InspectorSpacer",
 "language": "GDScript",
 "path": "res://addons/valla-ExportHelper/FuncButton_Spacer.gd"
 }, {
-"base": "EditorProperty",
+"base": "Reference",
 "class": "InspectorTBool",
 "language": "GDScript",
 "path": "res://addons/valla-ExportHelper/FuncButton_TrueBool.gd"
 }, {
-"base": "EditorProperty",
+"base": "Reference",
 "class": "InspectorVecRange",
 "language": "GDScript",
 "path": "res://addons/valla-ExportHelper/FuncButton_VectorRange.gd"
@@ -89,11 +89,7 @@ _global_script_class_icons={
 config/name="Gyroscope Rhythm Game"
 config/description="A demo showing the use of various sensors: an accelerometer, a gyroscope, and a magnetometer.
 These sensors are typically found on mobile devices, so don't expect this to work on a desktop."
-<<<<<<< Updated upstream
-run/main_scene="res://Songs/Template/Template.tscn"
-=======
 run/main_scene="res://Songs/NTHE/LevelEditor.tscn"
->>>>>>> Stashed changes
 config/icon="res://icon.png"
 
 [autoload]

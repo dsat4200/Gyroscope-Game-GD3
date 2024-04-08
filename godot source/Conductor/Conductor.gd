@@ -51,11 +51,11 @@ func get_beat_cues() -> Array:
 	
 
 func score(time):
-	print("Score! Time: "+String(song_position)+" offset:"+ String(abs(song_position-time)))
+	#print("Score! Time: "+String(song_position)+" offset:"+ String(abs(song_position-time)))
 	pass
 func _process(_delta):
-	if Input.is_action_just_pressed("middle_click"):
-		pass
+	if Input.is_action_just_pressed("ui_right_click"):
+		print(song_position)
 
 func _physics_process(_delta):
 	if playing:

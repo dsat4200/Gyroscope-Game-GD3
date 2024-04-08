@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://UI/Hits/Fonts/Montserrat-Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Songs/Louvre Invasion/LouvreInvasion_Game.csv" type="Resource" id=2]
@@ -17,6 +17,9 @@
 [ext_resource path="res://Songs/Louvre Invasion/Rhythm_Thief_OST_DISC1__13_Louvre_Museum_Invasion.wav" type="AudioStream" id=15]
 [ext_resource path="res://Songs/NTHE/NTHE_mixdown_2.wav" type="AudioStream" id=16]
 [ext_resource path="res://LevelEditor/LevelEditor.gd" type="Script" id=17]
+[ext_resource path="res://Songs/Template/mode.gd" type="Script" id=18]
+[ext_resource path="res://Songs/Template/info.gd" type="Script" id=19]
+[ext_resource path="res://UI/default_theme.tres" type="Theme" id=20]
 
 [sub_resource type="DynamicFont" id=12]
 size = 200
@@ -406,6 +409,23 @@ position = Vector2( 1483, 484 )
 [node name="PlacerHitBeat74" parent="Song/Gyro/HitBeats" instance=ExtResource( 4 )]
 visible = false
 position = Vector2( 1547, 952 )
+
+[node name="info" type="Control" parent="Song/Gyro"]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+script = ExtResource( 19 )
+file_name = "Louvre"
+
+[node name="mode" type="Label" parent="Song/Gyro/info"]
+margin_left = 64.0
+margin_top = 900.0
+margin_right = 404.0
+margin_bottom = 958.0
+rect_scale = Vector2( 2, 2 )
+theme = ExtResource( 20 )
+text = "Mode: "
+script = ExtResource( 18 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Song"]
 stream = ExtResource( 16 )
